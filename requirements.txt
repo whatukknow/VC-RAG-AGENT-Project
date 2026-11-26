@@ -1,0 +1,7 @@
+# Python 3.13, Windows CPU 빌드 기준(2026-11-26 설치 버전 고정)
+# 전이 의존성까지 포함한 전체 고정본은 requirements.lock.txt (pip install -r requirements.lock.txt)
+torch==2.15.0
+sentence-transformers==6.3.0
+transformers==5.24.1
+huggingface_hub==2.4.0
+numpy==2.5.5

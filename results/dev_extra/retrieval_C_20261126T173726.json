@@ -1,0 +1,1494 @@
+{
+ "summary": {
+  "run_id": "20261126T173726",
+  "split": "dev_extra",
+  "config": "C",
+  "hit_at_5": "8/8",
+  "full_evidence_at_5": "7/8",
+  "mrr": 1.0,
+  "n_answerable": 8,
+  "pipeline": {
+   "top_k": 5,
+   "candidates_each": 20,
+   "rerank_input_n": 10,
+   "rrf_k": 60,
+   "rrf_weights": {
+    "bm25": 1.0,
+    "vector": 1.0
+   },
+   "version": "pipe-v1"
+  },
+  "models": {
+   "embedding": {
+    "repo": "BAAI/bge-small-en-v1.5",
+    "revision": "5c38ec7c405ec4b44b94cc5a9bb96e735b38267a",
+    "license": "mit",
+    "local_dir": "data\\models\\BAAI__bge-small-en-v1.5",
+    "weights_bytes": {
+     "model.safetensors": 133466304
+    }
+   },
+   "reranker": {
+    "repo": "cross-encoder/ms-marco-MiniLM-L6-v2",
+    "revision": "233902d25c440f23af6f7d6e94d2946bac0bee0a",
+    "license": "apache-2.0",
+    "local_dir": "data\\models\\cross-encoder__ms-marco-MiniLM-L6-v2",
+    "weights_bytes": {
+     "model.safetensors": 90870598
+    }
+   }
+  },
+  "embedding_cache": "hit"
+ },
+ "rows": [
+  {
+   "run_id": "20261126T173726",
+   "question_id": "X01",
+   "type": "direct",
+   "config": "C",
+   "question": "Which company's agent analyzes performance bottlenecks of inference engines from CPU-GPU interactions down to GPU kernels, and how is it delivered?",
+   "top": [
+    {
+     "chunk_id": "yc-ncompass-technologies#c00",
+     "score": 6.481757640838623
+    },
+    {
+     "chunk_id": "yc-wafer#c00",
+     "score": 1.0322799682617188
+    },
+    {
+     "chunk_id": "yc-cumulus-labs#c02",
+     "score": 0.1088898703455925
+    },
+    {
+     "chunk_id": "yc-runlocal-ai#c01",
+     "score": -1.1589221954345703
+    },
+    {
+     "chunk_id": "yc-isoquant#c00",
+     "score": -2.19808292388916
+    }
+   ],
+   "candidates": [
+    {
+     "chunk_id": "yc-ncompass-technologies#c00",
+     "rrf": 0.03278688524590164,
+     "ranks": {
+      "bm25": 1,
+      "vector": 1
+     },
+     "pre_rank": 1,
+     "rerank_score": 6.481757640838623,
+     "post_rank": 1
+    },
+    {
+     "chunk_id": "yc-cumulus-labs#c02",
+     "rrf": 0.031024531024531024,
+     "ranks": {
+      "bm25": 6,
+      "vector": 3
+     },
+     "pre_rank": 2,
+     "rerank_score": 0.1088898703455925,
+     "post_rank": 3
+    },
+    {
+     "chunk_id": "yc-wafer#c00",
+     "rrf": 0.030834914611005692,
+     "ranks": {
+      "bm25": 2,
+      "vector": 8
+     },
+     "pre_rank": 3,
+     "rerank_score": 1.0322799682617188,
+     "post_rank": 2
+    },
+    {
+     "chunk_id": "yc-thunder-compute#c00",
+     "rrf": 0.028373015873015873,
+     "ranks": {
+      "bm25": 3,
+      "vector": 20
+     },
+     "pre_rank": 4,
+     "rerank_score": -3.7566776275634766,
+     "post_rank": 8
+    },
+    {
+     "chunk_id": "yc-ncompass-technologies#c01",
+     "rrf": 0.026742734890354787,
+     "ranks": {
+      "bm25": 19,
+      "vector": 11
+     },
+     "pre_rank": 5,
+     "rerank_score": -3.4850261211395264,
+     "post_rank": 7
+    },
+    {
+     "chunk_id": "yc-rightnow#c00",
+     "rrf": 0.02668564312399929,
+     "ranks": {
+      "bm25": 13,
+      "vector": 17
+     },
+     "pre_rank": 6,
+     "rerank_score": -6.425738334655762,
+     "post_rank": 9
+    },
+    {
+     "chunk_id": "yc-luminal#c00",
+     "rrf": 0.02667140825035562,
+     "ranks": {
+      "bm25": 14,
+      "vector": 16
+     },
+     "pre_rank": 7,
+     "rerank_score": -7.97946834564209,
+     "post_rank": 10
+    },
+    {
+     "chunk_id": "yc-runlocal-ai#c01",
+     "rrf": 0.025807525807525808,
+     "ranks": {
+      "bm25": 17,
+      "vector": 18
+     },
+     "pre_rank": 8,
+     "rerank_score": -1.1589221954345703,
+     "post_rank": 4
+    },
+    {
+     "chunk_id": "yc-sf-tensor#c02",
+     "rrf": 0.016129032258064516,
+     "ranks": {
+      "vector": 2
+     },
+     "pre_rank": 9,
+     "rerank_score": -3.02409029006958,
+     "post_rank": 6
+    },
+    {
+     "chunk_id": "yc-isoquant#c00",
+     "rrf": 0.015625,
+     "ranks": {
+      "vector": 4
+     },
+     "pre_rank": 10,
+     "rerank_score": -2.19808292388916,
+     "post_rank": 5
+    }
+   ],
+   "status": "ok",
+   "allowed_chunk_ids": [
+    "yc-ncompass-technologies#c00",
+    "yc-ncompass-technologies#c01"
+   ],
+   "hit_at_5": 1,
+   "rank": 1,
+   "full_evidence_at_5": 0
+  },
+  {
+   "run_id": "20261126T173726",
+   "question_id": "X02",
+   "type": "direct",
+   "config": "C",
+   "question": "Which company optimizes models for onboard compute such as NVIDIA Orin/Thor and Qualcomm, and which kind of teams is it built for?",
+   "top": [
+    {
+     "chunk_id": "yc-runlocal-ai#c00",
+     "score": 6.698639869689941
+    },
+    {
+     "chunk_id": "yc-runlocal-ai#c01",
+     "score": -1.5449879169464111
+    },
+    {
+     "chunk_id": "yc-tinfoil#c01",
+     "score": -4.945584774017334
+    },
+    {
+     "chunk_id": "yc-sf-tensor#c02",
+     "score": -5.568150520324707
+    },
+    {
+     "chunk_id": "yc-baymachines#c00",
+     "score": -6.250535011291504
+    }
+   ],
+   "candidates": [
+    {
+     "chunk_id": "yc-sf-tensor#c02",
+     "rrf": 0.03149801587301587,
+     "ranks": {
+      "bm25": 4,
+      "vector": 3
+     },
+     "pre_rank": 1,
+     "rerank_score": -5.568150520324707,
+     "post_rank": 4
+    },
+    {
+     "chunk_id": "yc-thunder-compute#c00",
+     "rrf": 0.03128054740957967,
+     "ranks": {
+      "bm25": 2,
+      "vector": 6
+     },
+     "pre_rank": 2,
+     "rerank_score": -6.466002464294434,
+     "post_rank": 7
+    },
+    {
+     "chunk_id": "yc-zibra-labs#c00",
+     "rrf": 0.030834914611005692,
+     "ranks": {
+      "bm25": 8,
+      "vector": 2
+     },
+     "pre_rank": 3,
+     "rerank_score": -8.981110572814941,
+     "post_rank": 8
+    },
+    {
+     "chunk_id": "yc-runlocal-ai#c00",
+     "rrf": 0.030679156908665108,
+     "ranks": {
+      "bm25": 1,
+      "vector": 10
+     },
+     "pre_rank": 4,
+     "rerank_score": 6.698639869689941,
+     "post_rank": 1
+    },
+    {
+     "chunk_id": "yc-zibra-labs#c01",
+     "rrf": 0.02967032967032967,
+     "ranks": {
+      "bm25": 10,
+      "vector": 5
+     },
+     "pre_rank": 5,
+     "rerank_score": -10.848133087158203,
+     "post_rank": 10
+    },
+    {
+     "chunk_id": "yc-baymachines#c00",
+     "rrf": 0.029273504273504274,
+     "ranks": {
+      "bm25": 5,
+      "vector": 12
+     },
+     "pre_rank": 6,
+     "rerank_score": -6.250535011291504,
+     "post_rank": 5
+    },
+    {
+     "chunk_id": "yc-tinfoil#c01",
+     "rrf": 0.02886002886002886,
+     "ranks": {
+      "bm25": 3,
+      "vector": 17
+     },
+     "pre_rank": 7,
+     "rerank_score": -4.945584774017334,
+     "post_rank": 3
+    },
+    {
+     "chunk_id": "yc-sf-tensor#c03",
+     "rrf": 0.01639344262295082,
+     "ranks": {
+      "vector": 1
+     },
+     "pre_rank": 8,
+     "rerank_score": -6.278359413146973,
+     "post_rank": 6
+    },
+    {
+     "chunk_id": "yc-ncompass-technologies#c00",
+     "rrf": 0.015625,
+     "ranks": {
+      "vector": 4
+     },
+     "pre_rank": 9,
+     "rerank_score": -9.602511405944824,
+     "post_rank": 9
+    },
+    {
+     "chunk_id": "yc-runlocal-ai#c01",
+     "rrf": 0.015151515151515152,
+     "ranks": {
+      "bm25": 6
+     },
+     "pre_rank": 10,
+     "rerank_score": -1.5449879169464111,
+     "post_rank": 2
+    }
+   ],
+   "status": "ok",
+   "allowed_chunk_ids": [
+    "yc-runlocal-ai#c00"
+   ],
+   "hit_at_5": 1,
+   "rank": 1,
+   "full_evidence_at_5": 1
+  },
+  {
+   "run_id": "20261126T173726",
+   "question_id": "X03",
+   "type": "variant_or_confusable",
+   "config": "C",
+   "question": "Which ML compiler generates GPU code and says its stack makes models 10x faster while cutting idle GPU costs?",
+   "top": [
+    {
+     "chunk_id": "yc-luminal#c00",
+     "score": 8.857940673828125
+    },
+    {
+     "chunk_id": "yc-ncompass-technologies#c00",
+     "score": -0.0010200366377830505
+    },
+    {
+     "chunk_id": "yc-tensorpool#c00",
+     "score": -1.483199119567871
+    },
+    {
+     "chunk_id": "yc-ncompass-technologies#c01",
+     "score": -2.487309455871582
+    },
+    {
+     "chunk_id": "yc-cumulus-labs#c01",
+     "score": -3.7906384468078613
+    }
+   ],
+   "candidates": [
+    {
+     "chunk_id": "yc-luminal#c00",
+     "rrf": 0.03278688524590164,
+     "ranks": {
+      "bm25": 1,
+      "vector": 1
+     },
+     "pre_rank": 1,
+     "rerank_score": 8.857940673828125,
+     "post_rank": 1
+    },
+    {
+     "chunk_id": "yc-ncompass-technologies#c00",
+     "rrf": 0.03225806451612903,
+     "ranks": {
+      "bm25": 2,
+      "vector": 2
+     },
+     "pre_rank": 2,
+     "rerank_score": -0.0010200366377830505,
+     "post_rank": 2
+    },
+    {
+     "chunk_id": "yc-tensorpool#c00",
+     "rrf": 0.031746031746031744,
+     "ranks": {
+      "bm25": 3,
+      "vector": 3
+     },
+     "pre_rank": 3,
+     "rerank_score": -1.483199119567871,
+     "post_rank": 3
+    },
+    {
+     "chunk_id": "yc-sf-tensor#c01",
+     "rrf": 0.030117753623188408,
+     "ranks": {
+      "bm25": 9,
+      "vector": 4
+     },
+     "pre_rank": 4,
+     "rerank_score": -3.876051902770996,
+     "post_rank": 6
+    },
+    {
+     "chunk_id": "yc-nodus-compute#c00",
+     "rrf": 0.028404512489927477,
+     "ranks": {
+      "bm25": 8,
+      "vector": 13
+     },
+     "pre_rank": 5,
+     "rerank_score": -5.798284530639648,
+     "post_rank": 9
+    },
+    {
+     "chunk_id": "yc-ncompass-technologies#c01",
+     "rrf": 0.025978407557354925,
+     "ranks": {
+      "bm25": 16,
+      "vector": 18
+     },
+     "pre_rank": 6,
+     "rerank_score": -2.487309455871582,
+     "post_rank": 4
+    },
+    {
+     "chunk_id": "yc-expanse#c01",
+     "rrf": 0.015625,
+     "ranks": {
+      "bm25": 4
+     },
+     "pre_rank": 7,
+     "rerank_score": -5.361362457275391,
+     "post_rank": 7
+    },
+    {
+     "chunk_id": "yc-cumulus-labs#c01",
+     "rrf": 0.015384615384615385,
+     "ranks": {
+      "bm25": 5
+     },
+     "pre_rank": 8,
+     "rerank_score": -3.7906384468078613,
+     "post_rank": 5
+    },
+    {
+     "chunk_id": "yc-sf-tensor#c02",
+     "rrf": 0.015384615384615385,
+     "ranks": {
+      "vector": 5
+     },
+     "pre_rank": 9,
+     "rerank_score": -7.5859479904174805,
+     "post_rank": 10
+    },
+    {
+     "chunk_id": "yc-sf-tensor#c03",
+     "rrf": 0.015151515151515152,
+     "ranks": {
+      "vector": 6
+     },
+     "pre_rank": 10,
+     "rerank_score": -5.7748003005981445,
+     "post_rank": 8
+    }
+   ],
+   "status": "ok",
+   "allowed_chunk_ids": [
+    "yc-luminal#c00"
+   ],
+   "hit_at_5": 1,
+   "rank": 1,
+   "full_evidence_at_5": 1
+  },
+  {
+   "run_id": "20261126T173726",
+   "question_id": "X04",
+   "type": "direct",
+   "config": "C",
+   "question": "Which company deploys air-gapped GPU containers on-prem for defense teams, and which compliance requirements does it mention?",
+   "top": [
+    {
+     "chunk_id": "yc-baymachines#c00",
+     "score": 8.317554473876953
+    },
+    {
+     "chunk_id": "yc-thunder-compute#c00",
+     "score": -2.9400711059570312
+    },
+    {
+     "chunk_id": "yc-tinfoil#c00",
+     "score": -3.7908549308776855
+    },
+    {
+     "chunk_id": "yc-comfy-deploy#c02",
+     "score": -4.520423889160156
+    },
+    {
+     "chunk_id": "yc-shadeform#c00",
+     "score": -4.819618225097656
+    }
+   ],
+   "candidates": [
+    {
+     "chunk_id": "yc-baymachines#c00",
+     "rrf": 0.03278688524590164,
+     "ranks": {
+      "bm25": 1,
+      "vector": 1
+     },
+     "pre_rank": 1,
+     "rerank_score": 8.317554473876953,
+     "post_rank": 1
+    },
+    {
+     "chunk_id": "yc-thunder-compute#c00",
+     "rrf": 0.0315136476426799,
+     "ranks": {
+      "bm25": 2,
+      "vector": 5
+     },
+     "pre_rank": 2,
+     "rerank_score": -2.9400711059570312,
+     "post_rank": 2
+    },
+    {
+     "chunk_id": "yc-comfy-deploy#c02",
+     "rrf": 0.03149801587301587,
+     "ranks": {
+      "bm25": 4,
+      "vector": 3
+     },
+     "pre_rank": 3,
+     "rerank_score": -4.520423889160156,
+     "post_rank": 4
+    },
+    {
+     "chunk_id": "yc-trainy#c00",
+     "rrf": 0.02904040404040404,
+     "ranks": {
+      "bm25": 6,
+      "vector": 12
+     },
+     "pre_rank": 4,
+     "rerank_score": -6.493966102600098,
+     "post_rank": 7
+    },
+    {
+     "chunk_id": "yc-shadeform#c00",
+     "rrf": 0.02819138376017471,
+     "ranks": {
+      "bm25": 9,
+      "vector": 13
+     },
+     "pre_rank": 5,
+     "rerank_score": -4.819618225097656,
+     "post_rank": 5
+    },
+    {
+     "chunk_id": "yc-tinfoil#c00",
+     "rrf": 0.027272727272727275,
+     "ranks": {
+      "bm25": 17,
+      "vector": 10
+     },
+     "pre_rank": 6,
+     "rerank_score": -3.7908549308776855,
+     "post_rank": 3
+    },
+    {
+     "chunk_id": "yc-axial#c00",
+     "rrf": 0.026856524873828405,
+     "ranks": {
+      "bm25": 13,
+      "vector": 16
+     },
+     "pre_rank": 7,
+     "rerank_score": -8.244922637939453,
+     "post_rank": 8
+    },
+    {
+     "chunk_id": "yc-tinfoil#c01",
+     "rrf": 0.016129032258064516,
+     "ranks": {
+      "vector": 2
+     },
+     "pre_rank": 8,
+     "rerank_score": -8.526616096496582,
+     "post_rank": 9
+    },
+    {
+     "chunk_id": "yc-deepgram#c01",
+     "rrf": 0.015873015873015872,
+     "ranks": {
+      "bm25": 3
+     },
+     "pre_rank": 9,
+     "rerank_score": -5.2594804763793945,
+     "post_rank": 6
+    },
+    {
+     "chunk_id": "yc-sf-tensor#c02",
+     "rrf": 0.015625,
+     "ranks": {
+      "vector": 4
+     },
+     "pre_rank": 10,
+     "rerank_score": -9.474868774414062,
+     "post_rank": 10
+    }
+   ],
+   "status": "ok",
+   "allowed_chunk_ids": [
+    "yc-baymachines#c00"
+   ],
+   "hit_at_5": 1,
+   "rank": 1,
+   "full_evidence_at_5": 1
+  },
+  {
+   "run_id": "20261126T173726",
+   "question_id": "X05",
+   "type": "variant_or_confusable",
+   "config": "C",
+   "question": "Which company uses NVIDIA confidential computing on Hopper and Blackwell so that the inference provider itself cannot see user prompts?",
+   "top": [
+    {
+     "chunk_id": "yc-tinfoil#c02",
+     "score": 4.543773651123047
+    },
+    {
+     "chunk_id": "yc-tinfoil#c01",
+     "score": 2.9811267852783203
+    },
+    {
+     "chunk_id": "yc-tinfoil#c09",
+     "score": 0.0710611417889595
+    },
+    {
+     "chunk_id": "yc-tinfoil#c08",
+     "score": -1.3152414560317993
+    },
+    {
+     "chunk_id": "yc-cumulus-labs#c02",
+     "score": -3.071340560913086
+    }
+   ],
+   "candidates": [
+    {
+     "chunk_id": "yc-tinfoil#c01",
+     "rrf": 0.03252247488101534,
+     "ranks": {
+      "bm25": 2,
+      "vector": 1
+     },
+     "pre_rank": 1,
+     "rerank_score": 2.9811267852783203,
+     "post_rank": 2
+    },
+    {
+     "chunk_id": "yc-tinfoil#c02",
+     "rrf": 0.03252247488101534,
+     "ranks": {
+      "bm25": 1,
+      "vector": 2
+     },
+     "pre_rank": 2,
+     "rerank_score": 4.543773651123047,
+     "post_rank": 1
+    },
+    {
+     "chunk_id": "yc-cumulus-labs#c02",
+     "rrf": 0.03057889822595705,
+     "ranks": {
+      "bm25": 8,
+      "vector": 3
+     },
+     "pre_rank": 3,
+     "rerank_score": -3.071340560913086,
+     "post_rank": 5
+    },
+    {
+     "chunk_id": "yc-tinfoil#c05",
+     "rrf": 0.030303030303030304,
+     "ranks": {
+      "bm25": 6,
+      "vector": 6
+     },
+     "pre_rank": 4,
+     "rerank_score": -3.2968196868896484,
+     "post_rank": 6
+    },
+    {
+     "chunk_id": "yc-hopper#c00",
+     "rrf": 0.029273504273504274,
+     "ranks": {
+      "bm25": 12,
+      "vector": 5
+     },
+     "pre_rank": 5,
+     "rerank_score": -4.426347732543945,
+     "post_rank": 7
+    },
+    {
+     "chunk_id": "yc-tinfoil#c00",
+     "rrf": 0.028577260665441927,
+     "ranks": {
+      "bm25": 11,
+      "vector": 9
+     },
+     "pre_rank": 6,
+     "rerank_score": -5.40921688079834,
+     "post_rank": 8
+    },
+    {
+     "chunk_id": "yc-tinfoil#c08",
+     "rrf": 0.028283227848101264,
+     "ranks": {
+      "bm25": 4,
+      "vector": 19
+     },
+     "pre_rank": 7,
+     "rerank_score": -1.3152414560317993,
+     "post_rank": 4
+    },
+    {
+     "chunk_id": "yc-sf-tensor#c03",
+     "rrf": 0.028083267871170464,
+     "ranks": {
+      "bm25": 16,
+      "vector": 7
+     },
+     "pre_rank": 8,
+     "rerank_score": -7.618803024291992,
+     "post_rank": 9
+    },
+    {
+     "chunk_id": "yc-sentient-os#c00",
+     "rrf": 0.027205882352941177,
+     "ranks": {
+      "bm25": 20,
+      "vector": 8
+     },
+     "pre_rank": 9,
+     "rerank_score": -8.898118019104004,
+     "post_rank": 10
+    },
+    {
+     "chunk_id": "yc-tinfoil#c09",
+     "rrf": 0.015873015873015872,
+     "ranks": {
+      "bm25": 3
+     },
+     "pre_rank": 10,
+     "rerank_score": 0.0710611417889595,
+     "post_rank": 3
+    }
+   ],
+   "status": "ok",
+   "allowed_chunk_ids": [
+    "yc-tinfoil#c01",
+    "yc-tinfoil#c02",
+    "yc-tinfoil#c08",
+    "yc-tinfoil#c09"
+   ],
+   "hit_at_5": 1,
+   "rank": 1,
+   "full_evidence_at_5": 1
+  },
+  {
+   "run_id": "20261126T173726",
+   "question_id": "X06",
+   "type": "variant_or_confusable",
+   "config": "C",
+   "question": "Which company says an algorithm designs the best hardware accelerator for a given ML model, and what advantage over GPUs does it claim?",
+   "top": [
+    {
+     "chunk_id": "yc-tensil#c00",
+     "score": 6.39259147644043
+    },
+    {
+     "chunk_id": "yc-luminal#c00",
+     "score": -2.2203569412231445
+    },
+    {
+     "chunk_id": "yc-tensorpool#c00",
+     "score": -2.8936848640441895
+    },
+    {
+     "chunk_id": "yc-sf-tensor#c03",
+     "score": -3.751959800720215
+    },
+    {
+     "chunk_id": "yc-lamb-labs#c00",
+     "score": -5.475640773773193
+    }
+   ],
+   "candidates": [
+    {
+     "chunk_id": "yc-tensil#c00",
+     "rrf": 0.03252247488101534,
+     "ranks": {
+      "bm25": 1,
+      "vector": 2
+     },
+     "pre_rank": 1,
+     "rerank_score": 6.39259147644043,
+     "post_rank": 1
+    },
+    {
+     "chunk_id": "yc-tensorpool#c00",
+     "rrf": 0.03128054740957967,
+     "ranks": {
+      "bm25": 2,
+      "vector": 6
+     },
+     "pre_rank": 2,
+     "rerank_score": -2.8936848640441895,
+     "post_rank": 3
+    },
+    {
+     "chunk_id": "yc-luminal#c00",
+     "rrf": 0.030536130536130537,
+     "ranks": {
+      "bm25": 6,
+      "vector": 5
+     },
+     "pre_rank": 3,
+     "rerank_score": -2.2203569412231445,
+     "post_rank": 2
+    },
+    {
+     "chunk_id": "yc-thunder-compute#c00",
+     "rrf": 0.027443609022556388,
+     "ranks": {
+      "bm25": 10,
+      "vector": 16
+     },
+     "pre_rank": 4,
+     "rerank_score": -7.270693778991699,
+     "post_rank": 9
+    },
+    {
+     "chunk_id": "yc-rightnow#c00",
+     "rrf": 0.027071520029266508,
+     "ranks": {
+      "bm25": 17,
+      "vector": 11
+     },
+     "pre_rank": 5,
+     "rerank_score": -5.565143585205078,
+     "post_rank": 6
+    },
+    {
+     "chunk_id": "yc-lamb-labs#c00",
+     "rrf": 0.026547116736990152,
+     "ranks": {
+      "bm25": 19,
+      "vector": 12
+     },
+     "pre_rank": 6,
+     "rerank_score": -5.475640773773193,
+     "post_rank": 5
+    },
+    {
+     "chunk_id": "yc-stoa#c00",
+     "rrf": 0.026356857985087564,
+     "ranks": {
+      "bm25": 13,
+      "vector": 19
+     },
+     "pre_rank": 7,
+     "rerank_score": -6.556905269622803,
+     "post_rank": 8
+    },
+    {
+     "chunk_id": "yc-sf-tensor#c03",
+     "rrf": 0.01639344262295082,
+     "ranks": {
+      "vector": 1
+     },
+     "pre_rank": 8,
+     "rerank_score": -3.751959800720215,
+     "post_rank": 4
+    },
+    {
+     "chunk_id": "yc-routerplus#c00",
+     "rrf": 0.015873015873015872,
+     "ranks": {
+      "bm25": 3
+     },
+     "pre_rank": 9,
+     "rerank_score": -10.139602661132812,
+     "post_rank": 10
+    },
+    {
+     "chunk_id": "yc-sf-tensor#c02",
+     "rrf": 0.015873015873015872,
+     "ranks": {
+      "vector": 3
+     },
+     "pre_rank": 10,
+     "rerank_score": -6.488391876220703,
+     "post_rank": 7
+    }
+   ],
+   "status": "ok",
+   "allowed_chunk_ids": [
+    "yc-tensil#c00"
+   ],
+   "hit_at_5": 1,
+   "rank": 1,
+   "full_evidence_at_5": 1
+  },
+  {
+   "run_id": "20261126T173726",
+   "question_id": "X07",
+   "type": "direct",
+   "config": "C",
+   "question": "Which company builds neuromorphic AI chips from spiking neurons, and what is its chip technology called?",
+   "top": [
+    {
+     "chunk_id": "yc-rain-neuromorphics#c01",
+     "score": 5.669325828552246
+    },
+    {
+     "chunk_id": "yc-rain-neuromorphics#c00",
+     "score": 3.310342311859131
+    },
+    {
+     "chunk_id": "yc-lamb-labs#c00",
+     "score": -2.897130250930786
+    },
+    {
+     "chunk_id": "yc-baud#c00",
+     "score": -3.073801040649414
+    },
+    {
+     "chunk_id": "yc-reduced-energy-microsystems#c00",
+     "score": -6.120389938354492
+    }
+   ],
+   "candidates": [
+    {
+     "chunk_id": "yc-rain-neuromorphics#c01",
+     "rrf": 0.03278688524590164,
+     "ranks": {
+      "bm25": 1,
+      "vector": 1
+     },
+     "pre_rank": 1,
+     "rerank_score": 5.669325828552246,
+     "post_rank": 1
+    },
+    {
+     "chunk_id": "yc-rain-neuromorphics#c00",
+     "rrf": 0.03225806451612903,
+     "ranks": {
+      "bm25": 2,
+      "vector": 2
+     },
+     "pre_rank": 2,
+     "rerank_score": 3.310342311859131,
+     "post_rank": 2
+    },
+    {
+     "chunk_id": "yc-reduced-energy-microsystems#c00",
+     "rrf": 0.03149801587301587,
+     "ranks": {
+      "bm25": 3,
+      "vector": 4
+     },
+     "pre_rank": 3,
+     "rerank_score": -6.120389938354492,
+     "post_rank": 5
+    },
+    {
+     "chunk_id": "yc-baud#c00",
+     "rrf": 0.03057889822595705,
+     "ranks": {
+      "bm25": 8,
+      "vector": 3
+     },
+     "pre_rank": 4,
+     "rerank_score": -3.073801040649414,
+     "post_rank": 4
+    },
+    {
+     "chunk_id": "yc-lamb-labs#c00",
+     "rrf": 0.030309988518943745,
+     "ranks": {
+      "bm25": 5,
+      "vector": 7
+     },
+     "pre_rank": 5,
+     "rerank_score": -2.897130250930786,
+     "post_rank": 3
+    },
+    {
+     "chunk_id": "yc-wafer#c00",
+     "rrf": 0.030309988518943745,
+     "ranks": {
+      "bm25": 7,
+      "vector": 5
+     },
+     "pre_rank": 6,
+     "rerank_score": -6.607412338256836,
+     "post_rank": 6
+    },
+    {
+     "chunk_id": "yc-luminal#c00",
+     "rrf": 0.02819138376017471,
+     "ranks": {
+      "bm25": 9,
+      "vector": 13
+     },
+     "pre_rank": 7,
+     "rerank_score": -8.812675476074219,
+     "post_rank": 10
+    },
+    {
+     "chunk_id": "yc-deepgram#c02",
+     "rrf": 0.027809742999616416,
+     "ranks": {
+      "bm25": 6,
+      "vector": 19
+     },
+     "pre_rank": 8,
+     "rerank_score": -7.1289520263671875,
+     "post_rank": 8
+    },
+    {
+     "chunk_id": "yc-deepgram#c01",
+     "rrf": 0.026144907723855092,
+     "ranks": {
+      "bm25": 17,
+      "vector": 16
+     },
+     "pre_rank": 9,
+     "rerank_score": -8.66810417175293,
+     "post_rank": 9
+    },
+    {
+     "chunk_id": "yc-thunder-compute#c00",
+     "rrf": 0.015625,
+     "ranks": {
+      "bm25": 4
+     },
+     "pre_rank": 10,
+     "rerank_score": -6.998708724975586,
+     "post_rank": 7
+    }
+   ],
+   "status": "ok",
+   "allowed_chunk_ids": [
+    "yc-rain-neuromorphics#c00",
+    "yc-rain-neuromorphics#c01"
+   ],
+   "hit_at_5": 1,
+   "rank": 1,
+   "full_evidence_at_5": 1
+  },
+  {
+   "run_id": "20261126T173726",
+   "question_id": "X08",
+   "type": "variant_or_confusable",
+   "config": "C",
+   "question": "Which company helps neoclouds run GPUs at scale with burn-in and validation, repair, usage records, and white-label consoles?",
+   "top": [
+    {
+     "chunk_id": "yc-lilac#c00",
+     "score": 9.002838134765625
+    },
+    {
+     "chunk_id": "yc-zibra-labs#c00",
+     "score": 0.07940252125263214
+    },
+    {
+     "chunk_id": "yc-dreamscale-labs#c00",
+     "score": -3.0517139434814453
+    },
+    {
+     "chunk_id": "yc-thunder-compute#c00",
+     "score": -4.8219780921936035
+    },
+    {
+     "chunk_id": "yc-shadeform#c00",
+     "score": -7.123893737792969
+    }
+   ],
+   "candidates": [
+    {
+     "chunk_id": "yc-lilac#c00",
+     "rrf": 0.03278688524590164,
+     "ranks": {
+      "bm25": 1,
+      "vector": 1
+     },
+     "pre_rank": 1,
+     "rerank_score": 9.002838134765625,
+     "post_rank": 1
+    },
+    {
+     "chunk_id": "yc-zibra-labs#c00",
+     "rrf": 0.03225806451612903,
+     "ranks": {
+      "bm25": 2,
+      "vector": 2
+     },
+     "pre_rank": 2,
+     "rerank_score": 0.07940252125263214,
+     "post_rank": 2
+    },
+    {
+     "chunk_id": "yc-thunder-compute#c00",
+     "rrf": 0.030798389007344232,
+     "ranks": {
+      "bm25": 3,
+      "vector": 7
+     },
+     "pre_rank": 3,
+     "rerank_score": -4.8219780921936035,
+     "post_rank": 4
+    },
+    {
+     "chunk_id": "yc-zibra-labs#c01",
+     "rrf": 0.029273504273504274,
+     "ranks": {
+      "bm25": 5,
+      "vector": 12
+     },
+     "pre_rank": 4,
+     "rerank_score": -8.101676940917969,
+     "post_rank": 8
+    },
+    {
+     "chunk_id": "yc-shadeform#c00",
+     "rrf": 0.029206349206349208,
+     "ranks": {
+      "bm25": 15,
+      "vector": 3
+     },
+     "pre_rank": 5,
+     "rerank_score": -7.123893737792969,
+     "post_rank": 5
+    },
+    {
+     "chunk_id": "yc-sf-tensor#c01",
+     "rrf": 0.02844551282051282,
+     "ranks": {
+      "bm25": 18,
+      "vector": 4
+     },
+     "pre_rank": 6,
+     "rerank_score": -9.080851554870605,
+     "post_rank": 9
+    },
+    {
+     "chunk_id": "yc-rightnow#c00",
+     "rrf": 0.025645240835114255,
+     "ranks": {
+      "bm25": 17,
+      "vector": 19
+     },
+     "pre_rank": 7,
+     "rerank_score": -7.505192756652832,
+     "post_rank": 6
+    },
+    {
+     "chunk_id": "yc-dreamscale-labs#c00",
+     "rrf": 0.015625,
+     "ranks": {
+      "bm25": 4
+     },
+     "pre_rank": 8,
+     "rerank_score": -3.0517139434814453,
+     "post_rank": 3
+    },
+    {
+     "chunk_id": "yc-posh#c01",
+     "rrf": 0.015384615384615385,
+     "ranks": {
+      "vector": 5
+     },
+     "pre_rank": 9,
+     "rerank_score": -7.8663177490234375,
+     "post_rank": 7
+    },
+    {
+     "chunk_id": "yc-deepgram#c02",
+     "rrf": 0.015151515151515152,
+     "ranks": {
+      "bm25": 6
+     },
+     "pre_rank": 10,
+     "rerank_score": -11.07275104522705,
+     "post_rank": 10
+    }
+   ],
+   "status": "ok",
+   "allowed_chunk_ids": [
+    "yc-lilac#c00"
+   ],
+   "hit_at_5": 1,
+   "rank": 1,
+   "full_evidence_at_5": 1
+  },
+  {
+   "run_id": "20261126T173726",
+   "question_id": "X09",
+   "type": "no_evidence",
+   "config": "C",
+   "question": "What measured latency does Hopper report for its voice inference cloud?",
+   "top": [
+    {
+     "chunk_id": "yc-hopper#c00",
+     "score": 4.679032325744629
+    },
+    {
+     "chunk_id": "yc-pipeshift#c00",
+     "score": -0.23977166414260864
+    },
+    {
+     "chunk_id": "yc-dreamscale-labs#c00",
+     "score": -2.1727209091186523
+    },
+    {
+     "chunk_id": "yc-isoquant#c00",
+     "score": -2.486152172088623
+    },
+    {
+     "chunk_id": "yc-dotwave#c00",
+     "score": -5.376256942749023
+    }
+   ],
+   "candidates": [
+    {
+     "chunk_id": "yc-hopper#c00",
+     "rrf": 0.03278688524590164,
+     "ranks": {
+      "bm25": 1,
+      "vector": 1
+     },
+     "pre_rank": 1,
+     "rerank_score": 4.679032325744629,
+     "post_rank": 1
+    },
+    {
+     "chunk_id": "yc-pipeshift#c00",
+     "rrf": 0.03225806451612903,
+     "ranks": {
+      "bm25": 2,
+      "vector": 2
+     },
+     "pre_rank": 2,
+     "rerank_score": -0.23977166414260864,
+     "post_rank": 2
+    },
+    {
+     "chunk_id": "yc-dreamscale-labs#c00",
+     "rrf": 0.031746031746031744,
+     "ranks": {
+      "bm25": 3,
+      "vector": 3
+     },
+     "pre_rank": 3,
+     "rerank_score": -2.1727209091186523,
+     "post_rank": 3
+    },
+    {
+     "chunk_id": "yc-dotwave#c01",
+     "rrf": 0.030090497737556562,
+     "ranks": {
+      "bm25": 5,
+      "vector": 8
+     },
+     "pre_rank": 4,
+     "rerank_score": -7.028581619262695,
+     "post_rank": 7
+    },
+    {
+     "chunk_id": "yc-isoquant#c00",
+     "rrf": 0.029418126757516764,
+     "ranks": {
+      "bm25": 7,
+      "vector": 9
+     },
+     "pre_rank": 5,
+     "rerank_score": -2.486152172088623,
+     "post_rank": 4
+    },
+    {
+     "chunk_id": "yc-mystic#c00",
+     "rrf": 0.029236022193768675,
+     "ranks": {
+      "bm25": 6,
+      "vector": 11
+     },
+     "pre_rank": 6,
+     "rerank_score": -5.416557312011719,
+     "post_rank": 6
+    },
+    {
+     "chunk_id": "yc-runanywhere#c03",
+     "rrf": 0.029138513513513514,
+     "ranks": {
+      "bm25": 4,
+      "vector": 14
+     },
+     "pre_rank": 7,
+     "rerank_score": -9.949729919433594,
+     "post_rank": 9
+    },
+    {
+     "chunk_id": "yc-dotwave#c00",
+     "rrf": 0.028814262023217248,
+     "ranks": {
+      "bm25": 12,
+      "vector": 7
+     },
+     "pre_rank": 8,
+     "rerank_score": -5.376256942749023,
+     "post_rank": 5
+    },
+    {
+     "chunk_id": "yc-beam#c00",
+     "rrf": 0.02817460317460317,
+     "ranks": {
+      "bm25": 10,
+      "vector": 12
+     },
+     "pre_rank": 9,
+     "rerank_score": -9.052980422973633,
+     "post_rank": 8
+    },
+    {
+     "chunk_id": "yc-cumulus-labs#c01",
+     "rrf": 0.015625,
+     "ranks": {
+      "vector": 4
+     },
+     "pre_rank": 10,
+     "rerank_score": -10.534175872802734,
+     "post_rank": 10
+    }
+   ],
+   "status": "ok"
+  },
+  {
+   "run_id": "20261126T173726",
+   "question_id": "X10",
+   "type": "no_evidence",
+   "config": "C",
+   "question": "What percentage of ML engineer time does Chamber say it saves?",
+   "top": [
+    {
+     "chunk_id": "yc-chamber#c00",
+     "score": 1.133812665939331
+    },
+    {
+     "chunk_id": "yc-touchmark#c00",
+     "score": -10.879919052124023
+    },
+    {
+     "chunk_id": "yc-mystic#c00",
+     "score": -10.948562622070312
+    },
+    {
+     "chunk_id": "yc-cumulus-labs#c00",
+     "score": -11.124046325683594
+    },
+    {
+     "chunk_id": "yc-tensorpool#c00",
+     "score": -11.28572940826416
+    }
+   ],
+   "candidates": [
+    {
+     "chunk_id": "yc-chamber#c00",
+     "rrf": 0.03278688524590164,
+     "ranks": {
+      "bm25": 1,
+      "vector": 1
+     },
+     "pre_rank": 1,
+     "rerank_score": 1.133812665939331,
+     "post_rank": 1
+    },
+    {
+     "chunk_id": "yc-mystic#c00",
+     "rrf": 0.029910714285714284,
+     "ranks": {
+      "bm25": 4,
+      "vector": 10
+     },
+     "pre_rank": 2,
+     "rerank_score": -10.948562622070312,
+     "post_rank": 3
+    },
+    {
+     "chunk_id": "yc-tensorpool#c00",
+     "rrf": 0.029877369007803793,
+     "ranks": {
+      "bm25": 5,
+      "vector": 9
+     },
+     "pre_rank": 3,
+     "rerank_score": -11.28572940826416,
+     "post_rank": 5
+    },
+    {
+     "chunk_id": "yc-tensil#c00",
+     "rrf": 0.02871794871794872,
+     "ranks": {
+      "bm25": 15,
+      "vector": 5
+     },
+     "pre_rank": 4,
+     "rerank_score": -11.326068878173828,
+     "post_rank": 6
+    },
+    {
+     "chunk_id": "yc-cumulus-labs#c00",
+     "rrf": 0.028404512489927477,
+     "ranks": {
+      "bm25": 13,
+      "vector": 8
+     },
+     "pre_rank": 5,
+     "rerank_score": -11.124046325683594,
+     "post_rank": 4
+    },
+    {
+     "chunk_id": "yc-luminal#c00",
+     "rrf": 0.02782608695652174,
+     "ranks": {
+      "bm25": 9,
+      "vector": 15
+     },
+     "pre_rank": 6,
+     "rerank_score": -11.419158935546875,
+     "post_rank": 7
+    },
+    {
+     "chunk_id": "yc-touchmark#c00",
+     "rrf": 0.025807525807525808,
+     "ranks": {
+      "bm25": 18,
+      "vector": 17
+     },
+     "pre_rank": 7,
+     "rerank_score": -10.879919052124023,
+     "post_rank": 2
+    },
+    {
+     "chunk_id": "yc-orchestra#c01",
+     "rrf": 0.016129032258064516,
+     "ranks": {
+      "vector": 2
+     },
+     "pre_rank": 8,
+     "rerank_score": -11.513647079467773,
+     "post_rank": 10
+    },
+    {
+     "chunk_id": "yc-sentient-os#c02",
+     "rrf": 0.016129032258064516,
+     "ranks": {
+      "bm25": 2
+     },
+     "pre_rank": 9,
+     "rerank_score": -11.486248016357422,
+     "post_rank": 8
+    },
+    {
+     "chunk_id": "yc-orchestra#c02",
+     "rrf": 0.015873015873015872,
+     "ranks": {
+      "vector": 3
+     },
+     "pre_rank": 10,
+     "rerank_score": -11.49692153930664,
+     "post_rank": 9
+    }
+   ],
+   "status": "ok"
+  }
+ ]
+}
