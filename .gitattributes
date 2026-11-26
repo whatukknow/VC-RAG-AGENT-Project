@@ -1,0 +1,4 @@
+# 해시 고정(eval/FREEZE.json) 검증이 clone 환경과 무관하게 같도록 줄바꿈을 LF로 고정한다.
+* text=auto eol=lf
+# csv 모듈이 CRLF로 쓴 파일은 바이트 그대로 보존(해시 고정 대상)
+docs/doc_list.csv -text

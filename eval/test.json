@@ -1,0 +1,199 @@
+{
+  "version": "test-v1.0",
+  "corpus": "docs/doc_list.csv (scope_v1, 68 docs, collected 2026-11-26)",
+  "note": "최종 평가 20문항(직접 10, 변형·유사 조건 구분 7, 근거 없음 3). 개발·튜닝에 사용 금지. 2026-11-26 사용자 승인으로 v1.0 고정(해시: eval/FREEZE.json).",
+  "questions": [
+    {
+      "id": "T01", "split": "test", "type": "direct", "answerable": true,
+      "question": "What improvements in cost and time to first token does the GPU live migration company claim?",
+      "question_ko": "GPU 라이브 마이그레이션 회사가 주장하는 비용 절감과 TTFT 개선은?",
+      "expected_key_facts": ["Cedana", "cost savings up to 80%", "time to first token 2-10x faster"],
+      "allowed_evidence": [
+        {"doc_id": "yc-cedana", "quote": "increases cost savings up to 80%, accelerates time to first token 2-10x"}
+      ]
+    },
+    {
+      "id": "T02", "split": "test", "type": "direct", "answerable": true,
+      "question": "Which company says its Ion inference engine delivers 30 to 50 percent more throughput than vLLM or SGLang, and what technique enables it?",
+      "question_ko": "Ion 추론 엔진이 vLLM·SGLang보다 처리량이 30~50% 높다고 주장하는 회사는 어디이며 무엇 덕분인가?",
+      "expected_key_facts": ["Cumulus Labs", "30 to 50 percent more throughput", "in-house custom GPU kernels"],
+      "allowed_evidence": [
+        {"doc_id": "yc-cumulus-labs", "quote": "Ion uses in-house custom GPU kernels to deliver 30 to 50 percent more throughput than standard vLLM or SGLang"}
+      ]
+    },
+    {
+      "id": "T03", "split": "test", "type": "direct", "answerable": true,
+      "question": "What serving speed and latency does the self-improving inference cloud report for its open models?",
+      "question_ko": "자기 개선형 추론 클라우드가 자사 오픈 모델에 대해 보고하는 서빙 속도와 지연시간은?",
+      "expected_key_facts": ["isoquant", "4x faster than other providers", "over 1200 tokens/sec", "sub-500ms latency"],
+      "allowed_evidence": [
+        {"doc_id": "yc-isoquant", "quote": "We serve 4x faster open models than other providers in prod crossing 1200 tokens/sec and sub-500ms latency"}
+      ]
+    },
+    {
+      "id": "T04", "split": "test", "type": "direct", "answerable": true,
+      "question": "Under what condition does the company that builds custom deployment images for vLLM and SGLang get paid?",
+      "question_ko": "vLLM·SGLang용 맞춤 배포 이미지를 만드는 회사는 어떤 조건에서 대금을 받는가?",
+      "expected_key_facts": ["Overshoot", "customers pay only if the agreed performance target is met"],
+      "allowed_evidence": [
+        {"doc_id": "yc-overshoot", "quote": "You only pay if we meet the performance target we agree on."}
+      ]
+    },
+    {
+      "id": "T05", "split": "test", "type": "direct", "answerable": true,
+      "question": "What time to ready-for-service does the modular data center company aim for, and what do customers bring?",
+      "question_ko": "모듈형 데이터센터 회사가 목표로 하는 서비스 준비 기간은 얼마이며 고객은 무엇을 가져오는가?",
+      "expected_key_facts": ["Posh", "6 months to ready-for-service", "customers bring the GPUs"],
+      "allowed_evidence": [
+        {"doc_id": "yc-posh", "quote": "aiming for 6 months to ready-for-service"},
+        {"doc_id": "yc-posh", "quote": "Customers bring the GPUs; we deliver the rest."}
+      ]
+    },
+    {
+      "id": "T06", "split": "test", "type": "direct", "answerable": true,
+      "question": "How many LLM APIs can the open-source LLM gateway call, and in which request format?",
+      "question_ko": "오픈소스 LLM 게이트웨이가 호출할 수 있는 LLM API 수와 요청 형식은?",
+      "expected_key_facts": ["LiteLLM", "100+ LLM APIs", "OpenAI format"],
+      "allowed_evidence": [
+        {"doc_id": "yc-litellm", "quote": "calling 100+ LLM APIs (Bedrock, Azure, OpenAI, VertexAI, Cohere, Anthropic) in the OpenAI format"}
+      ]
+    },
+    {
+      "id": "T07", "split": "test", "type": "direct", "answerable": true,
+      "question": "Which company describes itself as a GPU kernel lab and offers batch inference at half price?",
+      "question_ko": "스스로를 GPU 커널 연구소라고 소개하며 배치 추론을 반값에 제공하는 회사는?",
+      "expected_key_facts": ["RightNow", "batch at half price"],
+      "allowed_evidence": [
+        {"doc_id": "yc-rightnow", "quote": "RightNow is a GPU kernel lab."},
+        {"doc_id": "yc-rightnow", "quote": "batch at half price"}
+      ]
+    },
+    {
+      "id": "T08", "split": "test", "type": "direct", "answerable": true,
+      "question": "Which company put an Nvidia H100 on a satellite, and in which month and year was it launched?",
+      "question_ko": "위성에 엔비디아 H100을 실은 회사는 어디이며 언제 발사했는가?",
+      "expected_key_facts": ["Starcloud", "Starcloud-1", "November 2025"],
+      "allowed_evidence": [
+        {"doc_id": "yc-starcloud", "quote": "In November 2025"},
+        {"doc_id": "yc-starcloud", "quote": "launched its first satellite, Starcloud-1 to space"}
+      ]
+    },
+    {
+      "id": "T09", "split": "test", "type": "direct", "answerable": true,
+      "question": "What latency improvement does the real-time inference runtime company report for voice workloads, and what does that allow in terms of users?",
+      "question_ko": "음성 워크로드용 실시간 추론 런타임 회사가 보고하는 지연 개선과, 그것이 가능케 하는 사용자 수 효과는?",
+      "expected_key_facts": ["Pipeshift", "3 to 5X lower time-to-first-audio", "serve 2x the users on the same hardware"],
+      "allowed_evidence": [
+        {"doc_id": "yc-pipeshift", "quote": "typically 3 to 5X lower time-to-first-audio, so teams serve 2x the users on the same hardware"}
+      ]
+    },
+    {
+      "id": "T10", "split": "test", "type": "direct", "answerable": true,
+      "question": "Which open-model AI cloud keeps inference and storage in the EU, and who founded it?",
+      "question_ko": "추론과 저장을 EU 안에 두는 오픈 모델 AI 클라우드는 어디이며 누가 창업했는가?",
+      "expected_key_facts": ["Munito AI", "former inference lead at Mistral AI"],
+      "allowed_evidence": [
+        {"doc_id": "yc-munito-ai", "quote": "keep inference and storage in the EU"},
+        {"doc_id": "yc-munito-ai", "quote": "Founded by the former inference lead at Mistral AI"}
+      ]
+    },
+    {
+      "id": "T11", "split": "test", "type": "variant_or_confusable", "answerable": true,
+      "question": "Which company reports a 40-50% improvement over existing neoclouds, and does that figure describe cost or latency?",
+      "question_ko": "기존 네오클라우드 대비 40~50% 개선을 보고한 회사는 어디이며, 그 수치는 비용인가 지연시간인가?",
+      "expected_key_facts": ["Dreamscale Labs", "the 40-50% figure is lower latency", "no cost reduction is stated"],
+      "allowed_evidence": [
+        {"doc_id": "yc-dreamscale-labs", "quote": "we've hit 40-50% lower latency than existing neoclouds"}
+      ],
+      "grading_note": "수치를 비용 절감으로 답하면 오답."
+    },
+    {
+      "id": "T12", "split": "test", "type": "variant_or_confusable", "answerable": true,
+      "question": "Which CLI-based product handles GPU orchestration for ML training at half the cost of major cloud providers?",
+      "question_ko": "주요 클라우드 대비 절반 비용으로 ML 학습용 GPU 오케스트레이션을 처리하는 CLI 기반 제품은?",
+      "expected_key_facts": ["TensorPool", "half the cost of major cloud providers"],
+      "allowed_evidence": [
+        {"doc_id": "yc-tensorpool", "quote": "we handle GPU orchestration and execution at half the cost of major cloud providers"}
+      ],
+      "grading_note": "Cerebrium(40%), SF Tensor(80%), RightNow(batch half price)와 혼동하면 오답."
+    },
+    {
+      "id": "T13", "split": "test", "type": "variant_or_confusable", "answerable": true,
+      "question": "Which company finds the cheapest GPUs across providers, handles spot preemption, and claims compute cost cuts of up to 80%?",
+      "question_ko": "여러 공급자에서 가장 싼 GPU를 찾고 스팟 선점을 처리하며 최대 80% 비용 절감을 주장하는 회사는?",
+      "expected_key_facts": ["SF Tensor", "Elastic Cloud", "up to 80%"],
+      "allowed_evidence": [
+        {"doc_id": "yc-sf-tensor", "quote": "automatically finds the cheapest GPUs across all providers, handles spot instance preemption, and cuts compute costs by up to 80%"}
+      ],
+      "grading_note": "Cedana도 up to 80%를 말하지만 라이브 마이그레이션 기반이며 '가장 싼 GPU 탐색'이 아니다."
+    },
+    {
+      "id": "T14", "split": "test", "type": "variant_or_confusable", "answerable": true,
+      "question": "Which company tests models on a team's own traffic and then has providers compete for the workload, and what fallback does it keep ready?",
+      "question_ko": "팀의 실제 트래픽으로 모델을 시험한 뒤 공급업체들이 워크로드를 두고 경쟁하게 하는 회사는 어디이며, 어떤 대비책을 두는가?",
+      "expected_key_facts": ["RouterPlus", "a second provider kept ready as a backup"],
+      "allowed_evidence": [
+        {"doc_id": "yc-routerplus", "quote": "Providers then compete for the workload."},
+        {"doc_id": "yc-routerplus", "quote": "we keep a second provider ready as a backup"}
+      ],
+      "grading_note": "요청마다 모델을 자동 전환한다고 답하면 오답(문서에 그런 서술 없음)."
+    },
+    {
+      "id": "T15", "split": "test", "type": "variant_or_confusable", "answerable": true,
+      "question": "Which company starts routing production traffic to a specialized model only after it matches or beats the incumbent frontier model on a held-out evaluation?",
+      "question_ko": "특화 모델이 보류 평가에서 기존 프런티어 모델과 같거나 앞선 뒤에야 운영 트래픽을 그쪽으로 라우팅하는 회사는?",
+      "expected_key_facts": ["Orchestra", "routing starts once the model matches or beats the incumbent on a held-out evaluation"],
+      "allowed_evidence": [
+        {"doc_id": "yc-orchestra", "quote": "Once that model matches or beats Claude on a held-out evaluation, Orchestra starts routing production traffic to it."}
+      ],
+      "grading_note": "ReasonBlocks도 트레이스로 특화 모델을 만들지만 '보류 평가 후 라우팅' 조건은 Orchestra에만 있다."
+    },
+    {
+      "id": "T16", "split": "test", "type": "variant_or_confusable", "answerable": true,
+      "question": "Which company uses unikernels to get fast cold starts for browsers used by AI agents, and what cold-start time does it state?",
+      "question_ko": "AI 에이전트용 브라우저의 빠른 콜드스타트를 위해 유니커널을 쓰는 회사는 어디이며 콜드스타트 시간은?",
+      "expected_key_facts": ["KERNEL", "sub-150ms cold starts"],
+      "allowed_evidence": [
+        {"doc_id": "yc-kernel", "quote": "Built on unikernels for crazy fast cold starts and low resource usage"},
+        {"doc_id": "yc-kernel", "quote": "Sub-150ms cold starts on managed headful browsers"}
+      ],
+      "grading_note": "'GPU 커널' 회사(RightNow, Wafer 등)와 혼동하면 오답."
+    },
+    {
+      "id": "T17", "split": "test", "type": "variant_or_confusable", "answerable": true,
+      "question": "Which AI research lab studies multiple open-source models working together to exceed the capability of any single model?",
+      "question_ko": "여러 오픈소스 모델이 협력해 단일 모델의 능력을 넘어서는 방법을 연구하는 AI 연구소는?",
+      "expected_key_facts": ["Tracer", "adaptive inference and ensembling of open-source models"],
+      "allowed_evidence": [
+        {"doc_id": "yc-tracer", "quote": "multiple open-source models work together to produce capabilities beyond any single model"}
+      ]
+    },
+    {
+      "id": "T18", "split": "test", "type": "no_evidence", "answerable": false,
+      "question": "What cost savings does Wafer claim for its serverless and dedicated inference?",
+      "question_ko": "Wafer가 자사 서버리스·전용 추론에 대해 주장하는 비용 절감 수치는?",
+      "expected_key_facts": ["정보 부족 안내"],
+      "allowed_evidence": [],
+      "absence_reason": "Wafer 소개문은 GPU 커널 최적화와 속도(fastest open source LLMs)만 서술하고 비용 언급이 없다.",
+      "absence_checks": [{"doc_id": "yc-wafer", "must_not_match": "cost|cheap|pric|sav"}]
+    },
+    {
+      "id": "T19", "split": "test", "type": "no_evidence", "answerable": false,
+      "question": "Does Unify currently offer a router that picks a model per prompt based on quality, speed, and cost?",
+      "question_ko": "Unify는 현재 품질·속도·비용에 따라 프롬프트마다 모델을 고르는 라우터를 제공하는가?",
+      "expected_key_facts": ["정보 부족 안내"],
+      "allowed_evidence": [],
+      "absence_reason": "Unify 소개문(88자)은 지속 학습 모델만 설명하며 라우터 언급이 없다. Riften·Morph·Mystic의 라우팅 문구와 혼동 위험.",
+      "absence_checks": [{"doc_id": "yc-unify", "must_not_match": "rout|cost|latency|quality|speed"}]
+    },
+    {
+      "id": "T20", "split": "test", "type": "no_evidence", "answerable": false,
+      "question": "By what percentage, and under which deployment and usage conditions, is RunAnywhere cheaper than per-token pricing?",
+      "question_ko": "RunAnywhere는 어떤 배포·사용량 조건에서 토큰당 과금보다 몇 % 저렴한가?",
+      "expected_key_facts": ["정보 부족 안내"],
+      "allowed_evidence": [],
+      "absence_reason": "RunAnywhere 소개문은 faster and cheaper라고만 말하며 수치·배포 방식·사용량·비교 대상 조건이 없다.",
+      "absence_checks": [{"doc_id": "yc-runanywhere", "must_not_match": "per[- ]token|\\d+\\s?%|\\$|pricing"}]
+    }
+  ]
+}

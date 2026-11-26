@@ -1,0 +1,102 @@
+{
+  "version": "dev-v1.0",
+  "corpus": "docs/doc_list.csv (scope_v1, 68 docs, collected 2026-11-26)",
+  "note": "튜닝용 10문항(답변 가능 8, 근거 없음 2). 최종 평가셋과 문서가 겹치지 않는다.",
+  "questions": [
+    {
+      "id": "D01", "split": "dev", "type": "direct", "answerable": true,
+      "question": "Which serverless GPU platform offers over 12 varieties of GPU chips, and what cost savings do customers typically see versus traditional cloud providers?",
+      "question_ko": "12종 이상의 GPU 칩을 제공하는 서버리스 GPU 플랫폼은 어디이며, 기존 클라우드 대비 고객이 보통 얻는 비용 절감은?",
+      "expected_key_facts": ["Cerebrium", "about 40% cost savings versus traditional cloud providers"],
+      "allowed_evidence": [
+        {"doc_id": "yc-cerebrium", "quote": "over 12 varieties of GPU chips"},
+        {"doc_id": "yc-cerebrium", "quote": "Customers typically experience 40% in cost savings when compared to using traditional cloud providers"}
+      ]
+    },
+    {
+      "id": "D02", "split": "dev", "type": "direct", "answerable": true,
+      "question": "Which open-source inference engine tunes its kernels on the user's hardware, and how much faster than Ollama does it claim to be?",
+      "question_ko": "사용자 하드웨어에서 커널을 튜닝하는 오픈소스 추론 엔진은 무엇이며 Ollama보다 얼마나 빠르다고 하는가?",
+      "expected_key_facts": ["Magnitude", "over 2x faster than Ollama"],
+      "allowed_evidence": [
+        {"doc_id": "yc-magnitude", "quote": "open source inference engine that tunes its kernels on your hardware"},
+        {"doc_id": "yc-magnitude", "quote": "over 2x faster than Ollama"}
+      ]
+    },
+    {
+      "id": "D03", "split": "dev", "type": "direct", "answerable": true,
+      "question": "Which company claims a 10x TTFT speedup by optimizing prefill with KV cache transfer?",
+      "question_ko": "프리필 최적화와 KV 캐시 전송으로 TTFT를 10배 줄인다고 주장하는 회사는?",
+      "expected_key_facts": ["OneTriangle", "10x faster TTFT"],
+      "allowed_evidence": [
+        {"doc_id": "yc-onetriangle", "quote": "OneTriangle optimizes prefill, speeding up TTFT 10x utilizing KV cache transfer tech"}
+      ]
+    },
+    {
+      "id": "D04", "split": "dev", "type": "direct", "answerable": true,
+      "question": "Which company sells inference tokens for a future time window at a price fixed today, and what discount does it advertise?",
+      "question_ko": "미래 시간대의 추론 토큰을 오늘 고정한 가격에 파는 회사는 어디이며 어떤 할인율을 내세우는가?",
+      "expected_key_facts": ["Touchmark", "10-30% off the on-demand price"],
+      "allowed_evidence": [
+        {"doc_id": "yc-touchmark", "quote": "at a price fixed today - 10-30% off the on-demand price"}
+      ]
+    },
+    {
+      "id": "D05", "split": "dev", "type": "direct", "answerable": true,
+      "question": "Which Claude Code plugin claims to be cheaper than Claude Code alone, and by what range?",
+      "question_ko": "Claude Code 단독보다 저렴하다고 주장하는 Claude Code 플러그인은 무엇이며 어느 범위인가?",
+      "expected_key_facts": ["WOZCODE (Woz)", "25-55% cheaper than Claude Code alone"],
+      "allowed_evidence": [
+        {"doc_id": "yc-woz", "quote": "Cost: 25-55% cheaper"},
+        {"doc_id": "yc-woz", "quote": "outperforms Claude Code alone"}
+      ]
+    },
+    {
+      "id": "D06", "split": "dev", "type": "direct", "answerable": true,
+      "question": "Which inference provider sells Dedicated Lanes so customers do not pay for idle GPUs, and what do customers pay for?",
+      "question_ko": "유휴 GPU 비용 없이 쓰는 Dedicated Lanes를 파는 추론 제공자는 어디이며 고객은 무엇에 대해 지불하는가?",
+      "expected_key_facts": [".Wave", "pay only for reserved capacity and time windows"],
+      "allowed_evidence": [
+        {"doc_id": "yc-dotwave", "quote": "Our Dedicated Lanes give you the guarantees of a dedicated endpoint"},
+        {"doc_id": "yc-dotwave", "quote": "You only pay for the capacity and time windows you reserve."}
+      ]
+    },
+    {
+      "id": "D07", "split": "dev", "type": "direct", "answerable": true,
+      "question": "Which company is building custom chips that hardcode LLM weights into silicon, and what are the chips called?",
+      "question_ko": "LLM 가중치를 실리콘에 직접 새기는 맞춤 칩을 만드는 회사는 어디이며 칩 이름은?",
+      "expected_key_facts": ["Lamb Labs", "Model Processing Units (MPUs)"],
+      "allowed_evidence": [
+        {"doc_id": "yc-lamb-labs", "quote": "Model Processing Units (MPUs)"},
+        {"doc_id": "yc-lamb-labs", "quote": "hardcode LLM weights directly into silicon"}
+      ]
+    },
+    {
+      "id": "D08", "split": "dev", "type": "direct", "answerable": true,
+      "question": "Which coding tools can developers point at the local inference workstation that ships with a tuned inference engine?",
+      "question_ko": "튜닝된 추론 엔진이 설치돼 오는 로컬 추론 워크스테이션에 연결할 수 있는 코딩 도구는?",
+      "expected_key_facts": ["Lucebox", "Claude Code, Codex, OpenCode"],
+      "allowed_evidence": [
+        {"doc_id": "yc-lucebox", "quote": "developers point Claude Code, Codex or OpenCode on their own hardware"}
+      ]
+    },
+    {
+      "id": "D09", "split": "dev", "type": "no_evidence", "answerable": false,
+      "question": "What is Beam's price per GPU-hour for an H100?",
+      "question_ko": "Beam의 H100 GPU 시간당 가격은?",
+      "expected_key_facts": ["정보 부족 안내"],
+      "allowed_evidence": [],
+      "absence_reason": "Beam 소개문은 한 문장이며 가격 정보가 없다.",
+      "absence_checks": [{"doc_id": "yc-beam", "must_not_match": "pric|\\$|cost|per hour"}]
+    },
+    {
+      "id": "D10", "split": "dev", "type": "no_evidence", "answerable": false,
+      "question": "How many GPUs does Thunder Compute operate in its fleet?",
+      "question_ko": "Thunder Compute가 운영하는 GPU 수는?",
+      "expected_key_facts": ["정보 부족 안내"],
+      "allowed_evidence": [],
+      "absence_reason": "Thunder Compute 소개문은 제품 설명 한 문단이며 보유 GPU 수가 없다.",
+      "absence_checks": [{"doc_id": "yc-thunder-compute", "must_not_match": "\\d"}]
+    }
+  ]
+}

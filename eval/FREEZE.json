@@ -1,0 +1,11 @@
+{
+  "frozen_at": "2026-11-26",
+  "approved_by": "user (chat, 2026-11-26)",
+  "rule": "test.json 은 개발·튜닝에 사용 금지. 변경 시 새 버전과 사유를 problem.md 변경 기록에 남긴다.",
+  "files": {
+    "eval/test.json": "fd91c6da770e55c608c51b7241c1b53fcaaedc95f1c1acf0b2ae704061a0536d",
+    "eval/dev.json": "884fff10391609bc92116f4ad46404454cf8d35d2ef945196f69d7172be4c9d7",
+    "data/corpus/corpus.jsonl": "65796a5c9a8bac76bf765bb17221a8caaa685e086d9f1ad1c2d0882b85c41881",
+    "docs/doc_list.csv": "c943c193f8c58aec0a10de77c55020a1131dd37c178270b4b3ac1df3f8a127af"
+  }
+}
