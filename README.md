@@ -23,7 +23,7 @@ BM25 + Vector 하이브리드 검색, re-ranking, 근거 인용/근거 부족 �
 - 외부 모델로 보내는 텍스트는 공개 프로필 문구뿐이다. API 키는 `.env`(미커밋)에 둔다. 예시는 `.env.example`.
 
 ## 재현 (현재까지)
-Python 3.13. 외부 의존성 없음.
+Python 3.13. 1~4단계는 표준 라이브러리만 쓴다. 5단계부터(벡터 검색·reranker) `requirements.txt`의 패키지와 모델 다운로드가 필요하다.
 ```powershell
 # 1) 데이터 수집 (data/raw/all.json) — 수동 다운로드 후 경로 고정
 curl -L -o data/raw/all.json https://yc-oss.github.io/api/companies/all.json
