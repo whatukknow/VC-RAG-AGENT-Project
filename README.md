@@ -3,7 +3,7 @@
 VC 딜소싱 심사역이 **YC 공개 프로필(AI 추론 인프라 회사)** 문서에서 근거 있는 답을 찾도록 돕는 Knowledge Agent.
 BM25 + Vector 하이브리드 검색, re-ranking, 근거 인용/근거 부족 안내, 고정 평가셋 비교 실험을 1인으로 수행한다.
 
-> 상태: **Day 1~2 진행 중.** 문제 정의·문서·평가셋 고정, 청킹·BM25·RRF 구현 완료. 벡터 검색·re-ranking·답변·최적화·최종 평가는 미구현.
+> 상태: **Day 2 진행 중.** 문제 정의·문서·평가셋 고정, 청킹·BM25·RRF, 벡터 검색(A)·하이브리드(B)·re-ranking(C) 구현 완료(개발셋 평가만 수행). 답변·최적화·최종 평가는 미구현.
 > 과제 요건은 팀 과제이나 1인 수행이다. 편차는 `docs/problem.md` 6절에 기록한다.
 
 ## 구조
@@ -32,11 +32,17 @@ python -I src/build_corpus.py data/raw/all.json data/corpus/candidates.jsonl
 python -I src/curate_corpus.py data/raw/all.json data/corpus/candidates.jsonl data/corpus/corpus.jsonl docs/doc_list.csv
 # 3) 평가셋 무결성 검사
 python -I src/check_eval.py data/corpus/corpus.jsonl eval/dev.json eval/test.json
-# 4) 청킹·색인·근거 매핑, 개발셋 BM25 평가, 테스트
+# 4) 청킹·색인·근거 매핑
 python src/build_index.py
-python src/eval_retrieval.py --config bm25
-python -m unittest discover -s tests -v
+# 5) 격리 환경과 모델(리비전 고정: configs/models.lock.json, CPU)
+python -m venv .venv
+.venv/Scripts/python -m pip install -r requirements.txt
+.venv/Scripts/python src/download_models.py     # bge-small-en-v1.5(133MB, MIT), ms-marco-MiniLM-L6-v2(91MB, Apache-2.0)
+# 6) 개발셋에서 A(Vector)·B(BM25+RRF)·C(+reranker) 검색 평가, 테스트
+.venv/Scripts/python src/eval_retrieval.py --configs A B C
+.venv/Scripts/python -m unittest discover -s tests
 ```
+최종 평가(`--final`)는 Day 4에 한 번만 수행하며, `eval/FREEZE.json` 해시가 맞지 않으면 중단된다.
 
 ## 규칙
 - 최종 평가셋(`eval/test.json`)은 개발·튜닝에 쓰지 않는다. 변경은 새 버전과 사유를 `docs/problem.md` 변경 기록에 남긴다.
