@@ -1,0 +1,408 @@
+{
+ "summary": {
+  "run_id": "20261126T173726",
+  "split": "dev_extra",
+  "config": "A",
+  "hit_at_5": "7/8",
+  "full_evidence_at_5": "5/8",
+  "mrr": 0.8125,
+  "n_answerable": 8,
+  "pipeline": {
+   "top_k": 5,
+   "candidates_each": 20,
+   "rerank_input_n": 10,
+   "rrf_k": 60,
+   "rrf_weights": {
+    "bm25": 1.0,
+    "vector": 1.0
+   },
+   "version": "pipe-v1"
+  },
+  "models": {
+   "embedding": {
+    "repo": "BAAI/bge-small-en-v1.5",
+    "revision": "5c38ec7c405ec4b44b94cc5a9bb96e735b38267a",
+    "license": "mit",
+    "local_dir": "data\\models\\BAAI__bge-small-en-v1.5",
+    "weights_bytes": {
+     "model.safetensors": 133466304
+    }
+   },
+   "reranker": {
+    "repo": "cross-encoder/ms-marco-MiniLM-L6-v2",
+    "revision": "233902d25c440f23af6f7d6e94d2946bac0bee0a",
+    "license": "apache-2.0",
+    "local_dir": "data\\models\\cross-encoder__ms-marco-MiniLM-L6-v2",
+    "weights_bytes": {
+     "model.safetensors": 90870598
+    }
+   }
+  },
+  "embedding_cache": "hit"
+ },
+ "rows": [
+  {
+   "run_id": "20261126T173726",
+   "question_id": "X01",
+   "type": "direct",
+   "config": "A",
+   "question": "Which company's agent analyzes performance bottlenecks of inference engines from CPU-GPU interactions down to GPU kernels, and how is it delivered?",
+   "top": [
+    {
+     "chunk_id": "yc-ncompass-technologies#c00",
+     "score": 0.819537878036499
+    },
+    {
+     "chunk_id": "yc-sf-tensor#c02",
+     "score": 0.7565828561782837
+    },
+    {
+     "chunk_id": "yc-cumulus-labs#c02",
+     "score": 0.7322055697441101
+    },
+    {
+     "chunk_id": "yc-isoquant#c00",
+     "score": 0.727340579032898
+    },
+    {
+     "chunk_id": "yc-sf-tensor#c03",
+     "score": 0.7271813154220581
+    }
+   ],
+   "candidates": [],
+   "status": "ok",
+   "allowed_chunk_ids": [
+    "yc-ncompass-technologies#c00",
+    "yc-ncompass-technologies#c01"
+   ],
+   "hit_at_5": 1,
+   "rank": 1,
+   "full_evidence_at_5": 0
+  },
+  {
+   "run_id": "20261126T173726",
+   "question_id": "X02",
+   "type": "direct",
+   "config": "A",
+   "question": "Which company optimizes models for onboard compute such as NVIDIA Orin/Thor and Qualcomm, and which kind of teams is it built for?",
+   "top": [
+    {
+     "chunk_id": "yc-sf-tensor#c03",
+     "score": 0.6774924993515015
+    },
+    {
+     "chunk_id": "yc-zibra-labs#c00",
+     "score": 0.6729121208190918
+    },
+    {
+     "chunk_id": "yc-sf-tensor#c02",
+     "score": 0.6708121299743652
+    },
+    {
+     "chunk_id": "yc-ncompass-technologies#c00",
+     "score": 0.6634660363197327
+    },
+    {
+     "chunk_id": "yc-zibra-labs#c01",
+     "score": 0.6632803678512573
+    }
+   ],
+   "candidates": [],
+   "status": "ok",
+   "allowed_chunk_ids": [
+    "yc-runlocal-ai#c00"
+   ],
+   "hit_at_5": 0,
+   "rank": null,
+   "full_evidence_at_5": 0
+  },
+  {
+   "run_id": "20261126T173726",
+   "question_id": "X03",
+   "type": "variant_or_confusable",
+   "config": "A",
+   "question": "Which ML compiler generates GPU code and says its stack makes models 10x faster while cutting idle GPU costs?",
+   "top": [
+    {
+     "chunk_id": "yc-luminal#c00",
+     "score": 0.8229566812515259
+    },
+    {
+     "chunk_id": "yc-ncompass-technologies#c00",
+     "score": 0.7511217594146729
+    },
+    {
+     "chunk_id": "yc-tensorpool#c00",
+     "score": 0.7462534308433533
+    },
+    {
+     "chunk_id": "yc-sf-tensor#c01",
+     "score": 0.7193722724914551
+    },
+    {
+     "chunk_id": "yc-sf-tensor#c02",
+     "score": 0.7127590179443359
+    }
+   ],
+   "candidates": [],
+   "status": "ok",
+   "allowed_chunk_ids": [
+    "yc-luminal#c00"
+   ],
+   "hit_at_5": 1,
+   "rank": 1,
+   "full_evidence_at_5": 1
+  },
+  {
+   "run_id": "20261126T173726",
+   "question_id": "X04",
+   "type": "direct",
+   "config": "A",
+   "question": "Which company deploys air-gapped GPU containers on-prem for defense teams, and which compliance requirements does it mention?",
+   "top": [
+    {
+     "chunk_id": "yc-baymachines#c00",
+     "score": 0.79485023021698
+    },
+    {
+     "chunk_id": "yc-tinfoil#c01",
+     "score": 0.6630665063858032
+    },
+    {
+     "chunk_id": "yc-comfy-deploy#c02",
+     "score": 0.6517539024353027
+    },
+    {
+     "chunk_id": "yc-sf-tensor#c02",
+     "score": 0.6497979760169983
+    },
+    {
+     "chunk_id": "yc-thunder-compute#c00",
+     "score": 0.6443147659301758
+    }
+   ],
+   "candidates": [],
+   "status": "ok",
+   "allowed_chunk_ids": [
+    "yc-baymachines#c00"
+   ],
+   "hit_at_5": 1,
+   "rank": 1,
+   "full_evidence_at_5": 1
+  },
+  {
+   "run_id": "20261126T173726",
+   "question_id": "X05",
+   "type": "variant_or_confusable",
+   "config": "A",
+   "question": "Which company uses NVIDIA confidential computing on Hopper and Blackwell so that the inference provider itself cannot see user prompts?",
+   "top": [
+    {
+     "chunk_id": "yc-tinfoil#c01",
+     "score": 0.7501555681228638
+    },
+    {
+     "chunk_id": "yc-tinfoil#c02",
+     "score": 0.7372757196426392
+    },
+    {
+     "chunk_id": "yc-cumulus-labs#c02",
+     "score": 0.6768125295639038
+    },
+    {
+     "chunk_id": "yc-cumulus-labs#c01",
+     "score": 0.6570212841033936
+    },
+    {
+     "chunk_id": "yc-hopper#c00",
+     "score": 0.642814040184021
+    }
+   ],
+   "candidates": [],
+   "status": "ok",
+   "allowed_chunk_ids": [
+    "yc-tinfoil#c01",
+    "yc-tinfoil#c02",
+    "yc-tinfoil#c08",
+    "yc-tinfoil#c09"
+   ],
+   "hit_at_5": 1,
+   "rank": 1,
+   "full_evidence_at_5": 0
+  },
+  {
+   "run_id": "20261126T173726",
+   "question_id": "X06",
+   "type": "variant_or_confusable",
+   "config": "A",
+   "question": "Which company says an algorithm designs the best hardware accelerator for a given ML model, and what advantage over GPUs does it claim?",
+   "top": [
+    {
+     "chunk_id": "yc-sf-tensor#c03",
+     "score": 0.7633017301559448
+    },
+    {
+     "chunk_id": "yc-tensil#c00",
+     "score": 0.7617979049682617
+    },
+    {
+     "chunk_id": "yc-sf-tensor#c02",
+     "score": 0.7486557960510254
+    },
+    {
+     "chunk_id": "yc-sf-tensor#c01",
+     "score": 0.7417383790016174
+    },
+    {
+     "chunk_id": "yc-luminal#c00",
+     "score": 0.7408726811408997
+    }
+   ],
+   "candidates": [],
+   "status": "ok",
+   "allowed_chunk_ids": [
+    "yc-tensil#c00"
+   ],
+   "hit_at_5": 1,
+   "rank": 2,
+   "full_evidence_at_5": 1
+  },
+  {
+   "run_id": "20261126T173726",
+   "question_id": "X07",
+   "type": "direct",
+   "config": "A",
+   "question": "Which company builds neuromorphic AI chips from spiking neurons, and what is its chip technology called?",
+   "top": [
+    {
+     "chunk_id": "yc-rain-neuromorphics#c01",
+     "score": 0.7784596085548401
+    },
+    {
+     "chunk_id": "yc-rain-neuromorphics#c00",
+     "score": 0.7381301522254944
+    },
+    {
+     "chunk_id": "yc-baud#c00",
+     "score": 0.69261234998703
+    },
+    {
+     "chunk_id": "yc-reduced-energy-microsystems#c00",
+     "score": 0.6480230689048767
+    },
+    {
+     "chunk_id": "yc-wafer#c00",
+     "score": 0.6319857835769653
+    }
+   ],
+   "candidates": [],
+   "status": "ok",
+   "allowed_chunk_ids": [
+    "yc-rain-neuromorphics#c00",
+    "yc-rain-neuromorphics#c01"
+   ],
+   "hit_at_5": 1,
+   "rank": 1,
+   "full_evidence_at_5": 1
+  },
+  {
+   "run_id": "20261126T173726",
+   "question_id": "X08",
+   "type": "variant_or_confusable",
+   "config": "A",
+   "question": "Which company helps neoclouds run GPUs at scale with burn-in and validation, repair, usage records, and white-label consoles?",
+   "top": [
+    {
+     "chunk_id": "yc-lilac#c00",
+     "score": 0.7789142727851868
+    },
+    {
+     "chunk_id": "yc-zibra-labs#c00",
+     "score": 0.6557869911193848
+    },
+    {
+     "chunk_id": "yc-shadeform#c00",
+     "score": 0.6533477902412415
+    },
+    {
+     "chunk_id": "yc-sf-tensor#c01",
+     "score": 0.6415872573852539
+    },
+    {
+     "chunk_id": "yc-posh#c01",
+     "score": 0.6325191259384155
+    }
+   ],
+   "candidates": [],
+   "status": "ok",
+   "allowed_chunk_ids": [
+    "yc-lilac#c00"
+   ],
+   "hit_at_5": 1,
+   "rank": 1,
+   "full_evidence_at_5": 1
+  },
+  {
+   "run_id": "20261126T173726",
+   "question_id": "X09",
+   "type": "no_evidence",
+   "config": "A",
+   "question": "What measured latency does Hopper report for its voice inference cloud?",
+   "top": [
+    {
+     "chunk_id": "yc-hopper#c00",
+     "score": 0.79176926612854
+    },
+    {
+     "chunk_id": "yc-pipeshift#c00",
+     "score": 0.6991575360298157
+    },
+    {
+     "chunk_id": "yc-dreamscale-labs#c00",
+     "score": 0.660947322845459
+    },
+    {
+     "chunk_id": "yc-cumulus-labs#c01",
+     "score": 0.652817964553833
+    },
+    {
+     "chunk_id": "yc-cumulus-labs#c02",
+     "score": 0.6490532755851746
+    }
+   ],
+   "candidates": [],
+   "status": "ok"
+  },
+  {
+   "run_id": "20261126T173726",
+   "question_id": "X10",
+   "type": "no_evidence",
+   "config": "A",
+   "question": "What percentage of ML engineer time does Chamber say it saves?",
+   "top": [
+    {
+     "chunk_id": "yc-chamber#c00",
+     "score": 0.7279369831085205
+    },
+    {
+     "chunk_id": "yc-orchestra#c01",
+     "score": 0.5838698148727417
+    },
+    {
+     "chunk_id": "yc-orchestra#c02",
+     "score": 0.5775151252746582
+    },
+    {
+     "chunk_id": "yc-overshoot#c00",
+     "score": 0.5726186633110046
+    },
+    {
+     "chunk_id": "yc-tensil#c00",
+     "score": 0.5685362219810486
+    }
+   ],
+   "candidates": [],
+   "status": "ok"
+  }
+ ]
+}

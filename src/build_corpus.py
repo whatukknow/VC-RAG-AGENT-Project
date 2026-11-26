@@ -4,6 +4,7 @@
 사용: python -I src/build_corpus.py data/raw/all.json data/corpus/candidates.jsonl
 """
 import json
+import os
 import re
 import sys
 
@@ -37,6 +38,7 @@ def main(src, dst):
             "tags": c.get("tags"), "long_description": c.get("long_description"),
             "scope": SCOPE, "hits": hits,
         })
+    os.makedirs(os.path.dirname(os.path.abspath(dst)), exist_ok=True)
     with open(dst, "w", encoding="utf-8") as f:
         for r in out:
             f.write(json.dumps(r, ensure_ascii=False) + "\n")

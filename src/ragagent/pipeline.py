@@ -38,6 +38,8 @@ class Retriever:
             return {"config": "B", "top": [{"chunk_id": d["chunk_id"], "score": d["rrf"]} for d in cands[:k]],
                     "candidates": cands}
         if config == "C":
+            if self.reranker is None:
+                raise ValueError("구성 C 는 reranker 가 필요하다(build_retriever(with_reranker=True)).")
             pool = cands[:self.cfg["rerank_input_n"]]
             texts = [self.chunks[self.pos[d["chunk_id"]]]["text"] for d in pool]
             scores = self.reranker.score(q, texts)

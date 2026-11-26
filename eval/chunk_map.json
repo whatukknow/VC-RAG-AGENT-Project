@@ -4,7 +4,7 @@
       "max_chars": 500,
       "overlap_sentences": 1,
       "title_prefix": true,
-      "version": "chunk-v1"
+      "version": "chunk-v2"
     },
     "bm25": {
       "k1": 1.5,
@@ -22,11 +22,10 @@
     },
     "corpus_sha256": "65796a5c9a8bac76bf765bb17221a8caaa685e086d9f1ad1c2d0882b85c41881",
     "n_docs": 68,
-    "n_chunks": 120
+    "n_chunks": 122
   },
   "map": {
     "D01": {
-      "split": "dev",
       "evidence": [
         {
           "doc_id": "yc-cerebrium",
@@ -38,6 +37,9 @@
             "yc-cerebrium#c00"
           ],
           "chunk_ids_overlap": [
+            "yc-cerebrium#c00"
+          ],
+          "chunk_ids": [
             "yc-cerebrium#c00"
           ]
         },
@@ -52,16 +54,27 @@
           ],
           "chunk_ids_overlap": [
             "yc-cerebrium#c01"
+          ],
+          "chunk_ids": [
+            "yc-cerebrium#c01"
           ]
         }
       ],
       "allowed_chunk_ids": [
         "yc-cerebrium#c00",
         "yc-cerebrium#c01"
-      ]
+      ],
+      "evidence_groups": [
+        [
+          "yc-cerebrium#c00"
+        ],
+        [
+          "yc-cerebrium#c01"
+        ]
+      ],
+      "split": "dev"
     },
     "D02": {
-      "split": "dev",
       "evidence": [
         {
           "doc_id": "yc-magnitude",
@@ -73,6 +86,9 @@
             "yc-magnitude#c00"
           ],
           "chunk_ids_overlap": [
+            "yc-magnitude#c00"
+          ],
+          "chunk_ids": [
             "yc-magnitude#c00"
           ]
         },
@@ -87,15 +103,26 @@
           ],
           "chunk_ids_overlap": [
             "yc-magnitude#c00"
+          ],
+          "chunk_ids": [
+            "yc-magnitude#c00"
           ]
         }
       ],
       "allowed_chunk_ids": [
         "yc-magnitude#c00"
-      ]
+      ],
+      "evidence_groups": [
+        [
+          "yc-magnitude#c00"
+        ],
+        [
+          "yc-magnitude#c00"
+        ]
+      ],
+      "split": "dev"
     },
     "D03": {
-      "split": "dev",
       "evidence": [
         {
           "doc_id": "yc-onetriangle",
@@ -108,15 +135,23 @@
           ],
           "chunk_ids_overlap": [
             "yc-onetriangle#c00"
+          ],
+          "chunk_ids": [
+            "yc-onetriangle#c00"
           ]
         }
       ],
       "allowed_chunk_ids": [
         "yc-onetriangle#c00"
-      ]
+      ],
+      "evidence_groups": [
+        [
+          "yc-onetriangle#c00"
+        ]
+      ],
+      "split": "dev"
     },
     "D04": {
-      "split": "dev",
       "evidence": [
         {
           "doc_id": "yc-touchmark",
@@ -129,15 +164,23 @@
           ],
           "chunk_ids_overlap": [
             "yc-touchmark#c00"
+          ],
+          "chunk_ids": [
+            "yc-touchmark#c00"
           ]
         }
       ],
       "allowed_chunk_ids": [
         "yc-touchmark#c00"
-      ]
+      ],
+      "evidence_groups": [
+        [
+          "yc-touchmark#c00"
+        ]
+      ],
+      "split": "dev"
     },
     "D05": {
-      "split": "dev",
       "evidence": [
         {
           "doc_id": "yc-woz",
@@ -149,6 +192,9 @@
             "yc-woz#c00"
           ],
           "chunk_ids_overlap": [
+            "yc-woz#c00"
+          ],
+          "chunk_ids": [
             "yc-woz#c00"
           ]
         },
@@ -163,15 +209,26 @@
           ],
           "chunk_ids_overlap": [
             "yc-woz#c00"
+          ],
+          "chunk_ids": [
+            "yc-woz#c00"
           ]
         }
       ],
       "allowed_chunk_ids": [
         "yc-woz#c00"
-      ]
+      ],
+      "evidence_groups": [
+        [
+          "yc-woz#c00"
+        ],
+        [
+          "yc-woz#c00"
+        ]
+      ],
+      "split": "dev"
     },
     "D06": {
-      "split": "dev",
       "evidence": [
         {
           "doc_id": "yc-dotwave",
@@ -183,6 +240,9 @@
             "yc-dotwave#c00"
           ],
           "chunk_ids_overlap": [
+            "yc-dotwave#c00"
+          ],
+          "chunk_ids": [
             "yc-dotwave#c00"
           ]
         },
@@ -199,16 +259,29 @@
           "chunk_ids_overlap": [
             "yc-dotwave#c00",
             "yc-dotwave#c01"
+          ],
+          "chunk_ids": [
+            "yc-dotwave#c00",
+            "yc-dotwave#c01"
           ]
         }
       ],
       "allowed_chunk_ids": [
         "yc-dotwave#c00",
         "yc-dotwave#c01"
-      ]
+      ],
+      "evidence_groups": [
+        [
+          "yc-dotwave#c00"
+        ],
+        [
+          "yc-dotwave#c00",
+          "yc-dotwave#c01"
+        ]
+      ],
+      "split": "dev"
     },
     "D07": {
-      "split": "dev",
       "evidence": [
         {
           "doc_id": "yc-lamb-labs",
@@ -220,6 +293,9 @@
             "yc-lamb-labs#c00"
           ],
           "chunk_ids_overlap": [
+            "yc-lamb-labs#c00"
+          ],
+          "chunk_ids": [
             "yc-lamb-labs#c00"
           ]
         },
@@ -234,15 +310,26 @@
           ],
           "chunk_ids_overlap": [
             "yc-lamb-labs#c00"
+          ],
+          "chunk_ids": [
+            "yc-lamb-labs#c00"
           ]
         }
       ],
       "allowed_chunk_ids": [
         "yc-lamb-labs#c00"
-      ]
+      ],
+      "evidence_groups": [
+        [
+          "yc-lamb-labs#c00"
+        ],
+        [
+          "yc-lamb-labs#c00"
+        ]
+      ],
+      "split": "dev"
     },
     "D08": {
-      "split": "dev",
       "evidence": [
         {
           "doc_id": "yc-lucebox",
@@ -255,25 +342,35 @@
           ],
           "chunk_ids_overlap": [
             "yc-lucebox#c00"
+          ],
+          "chunk_ids": [
+            "yc-lucebox#c00"
           ]
         }
       ],
       "allowed_chunk_ids": [
         "yc-lucebox#c00"
-      ]
+      ],
+      "evidence_groups": [
+        [
+          "yc-lucebox#c00"
+        ]
+      ],
+      "split": "dev"
     },
     "D09": {
-      "split": "dev",
       "evidence": [],
-      "allowed_chunk_ids": []
+      "allowed_chunk_ids": [],
+      "evidence_groups": [],
+      "split": "dev"
     },
     "D10": {
-      "split": "dev",
       "evidence": [],
-      "allowed_chunk_ids": []
+      "allowed_chunk_ids": [],
+      "evidence_groups": [],
+      "split": "dev"
     },
     "X01": {
-      "split": "dev_extra",
       "evidence": [
         {
           "doc_id": "yc-ncompass-technologies",
@@ -285,6 +382,9 @@
             "yc-ncompass-technologies#c00"
           ],
           "chunk_ids_overlap": [
+            "yc-ncompass-technologies#c00"
+          ],
+          "chunk_ids": [
             "yc-ncompass-technologies#c00"
           ]
         },
@@ -299,16 +399,27 @@
           ],
           "chunk_ids_overlap": [
             "yc-ncompass-technologies#c01"
+          ],
+          "chunk_ids": [
+            "yc-ncompass-technologies#c01"
           ]
         }
       ],
       "allowed_chunk_ids": [
         "yc-ncompass-technologies#c00",
         "yc-ncompass-technologies#c01"
-      ]
+      ],
+      "evidence_groups": [
+        [
+          "yc-ncompass-technologies#c00"
+        ],
+        [
+          "yc-ncompass-technologies#c01"
+        ]
+      ],
+      "split": "dev_extra"
     },
     "X02": {
-      "split": "dev_extra",
       "evidence": [
         {
           "doc_id": "yc-runlocal-ai",
@@ -320,6 +431,9 @@
             "yc-runlocal-ai#c00"
           ],
           "chunk_ids_overlap": [
+            "yc-runlocal-ai#c00"
+          ],
+          "chunk_ids": [
             "yc-runlocal-ai#c00"
           ]
         },
@@ -334,15 +448,26 @@
           ],
           "chunk_ids_overlap": [
             "yc-runlocal-ai#c00"
+          ],
+          "chunk_ids": [
+            "yc-runlocal-ai#c00"
           ]
         }
       ],
       "allowed_chunk_ids": [
         "yc-runlocal-ai#c00"
-      ]
+      ],
+      "evidence_groups": [
+        [
+          "yc-runlocal-ai#c00"
+        ],
+        [
+          "yc-runlocal-ai#c00"
+        ]
+      ],
+      "split": "dev_extra"
     },
     "X03": {
-      "split": "dev_extra",
       "evidence": [
         {
           "doc_id": "yc-luminal",
@@ -354,6 +479,9 @@
             "yc-luminal#c00"
           ],
           "chunk_ids_overlap": [
+            "yc-luminal#c00"
+          ],
+          "chunk_ids": [
             "yc-luminal#c00"
           ]
         },
@@ -368,15 +496,26 @@
           ],
           "chunk_ids_overlap": [
             "yc-luminal#c00"
+          ],
+          "chunk_ids": [
+            "yc-luminal#c00"
           ]
         }
       ],
       "allowed_chunk_ids": [
         "yc-luminal#c00"
-      ]
+      ],
+      "evidence_groups": [
+        [
+          "yc-luminal#c00"
+        ],
+        [
+          "yc-luminal#c00"
+        ]
+      ],
+      "split": "dev_extra"
     },
     "X04": {
-      "split": "dev_extra",
       "evidence": [
         {
           "doc_id": "yc-baymachines",
@@ -388,6 +527,9 @@
             "yc-baymachines#c00"
           ],
           "chunk_ids_overlap": [
+            "yc-baymachines#c00"
+          ],
+          "chunk_ids": [
             "yc-baymachines#c00"
           ]
         },
@@ -402,15 +544,26 @@
           ],
           "chunk_ids_overlap": [
             "yc-baymachines#c00"
+          ],
+          "chunk_ids": [
+            "yc-baymachines#c00"
           ]
         }
       ],
       "allowed_chunk_ids": [
         "yc-baymachines#c00"
-      ]
+      ],
+      "evidence_groups": [
+        [
+          "yc-baymachines#c00"
+        ],
+        [
+          "yc-baymachines#c00"
+        ]
+      ],
+      "split": "dev_extra"
     },
     "X05": {
-      "split": "dev_extra",
       "evidence": [
         {
           "doc_id": "yc-tinfoil",
@@ -423,6 +576,10 @@
             "yc-tinfoil#c02"
           ],
           "chunk_ids_overlap": [
+            "yc-tinfoil#c01",
+            "yc-tinfoil#c02"
+          ],
+          "chunk_ids": [
             "yc-tinfoil#c01",
             "yc-tinfoil#c02"
           ]
@@ -440,6 +597,10 @@
           "chunk_ids_overlap": [
             "yc-tinfoil#c08",
             "yc-tinfoil#c09"
+          ],
+          "chunk_ids": [
+            "yc-tinfoil#c08",
+            "yc-tinfoil#c09"
           ]
         }
       ],
@@ -448,10 +609,20 @@
         "yc-tinfoil#c02",
         "yc-tinfoil#c08",
         "yc-tinfoil#c09"
-      ]
+      ],
+      "evidence_groups": [
+        [
+          "yc-tinfoil#c01",
+          "yc-tinfoil#c02"
+        ],
+        [
+          "yc-tinfoil#c08",
+          "yc-tinfoil#c09"
+        ]
+      ],
+      "split": "dev_extra"
     },
     "X06": {
-      "split": "dev_extra",
       "evidence": [
         {
           "doc_id": "yc-tensil",
@@ -463,6 +634,9 @@
             "yc-tensil#c00"
           ],
           "chunk_ids_overlap": [
+            "yc-tensil#c00"
+          ],
+          "chunk_ids": [
             "yc-tensil#c00"
           ]
         },
@@ -477,15 +651,26 @@
           ],
           "chunk_ids_overlap": [
             "yc-tensil#c00"
+          ],
+          "chunk_ids": [
+            "yc-tensil#c00"
           ]
         }
       ],
       "allowed_chunk_ids": [
         "yc-tensil#c00"
-      ]
+      ],
+      "evidence_groups": [
+        [
+          "yc-tensil#c00"
+        ],
+        [
+          "yc-tensil#c00"
+        ]
+      ],
+      "split": "dev_extra"
     },
     "X07": {
-      "split": "dev_extra",
       "evidence": [
         {
           "doc_id": "yc-rain-neuromorphics",
@@ -497,6 +682,9 @@
             "yc-rain-neuromorphics#c01"
           ],
           "chunk_ids_overlap": [
+            "yc-rain-neuromorphics#c01"
+          ],
+          "chunk_ids": [
             "yc-rain-neuromorphics#c01"
           ]
         },
@@ -513,16 +701,29 @@
           "chunk_ids_overlap": [
             "yc-rain-neuromorphics#c00",
             "yc-rain-neuromorphics#c01"
+          ],
+          "chunk_ids": [
+            "yc-rain-neuromorphics#c00",
+            "yc-rain-neuromorphics#c01"
           ]
         }
       ],
       "allowed_chunk_ids": [
         "yc-rain-neuromorphics#c00",
         "yc-rain-neuromorphics#c01"
-      ]
+      ],
+      "evidence_groups": [
+        [
+          "yc-rain-neuromorphics#c01"
+        ],
+        [
+          "yc-rain-neuromorphics#c00",
+          "yc-rain-neuromorphics#c01"
+        ]
+      ],
+      "split": "dev_extra"
     },
     "X08": {
-      "split": "dev_extra",
       "evidence": [
         {
           "doc_id": "yc-lilac",
@@ -535,25 +736,35 @@
           ],
           "chunk_ids_overlap": [
             "yc-lilac#c00"
+          ],
+          "chunk_ids": [
+            "yc-lilac#c00"
           ]
         }
       ],
       "allowed_chunk_ids": [
         "yc-lilac#c00"
-      ]
+      ],
+      "evidence_groups": [
+        [
+          "yc-lilac#c00"
+        ]
+      ],
+      "split": "dev_extra"
     },
     "X09": {
-      "split": "dev_extra",
       "evidence": [],
-      "allowed_chunk_ids": []
+      "allowed_chunk_ids": [],
+      "evidence_groups": [],
+      "split": "dev_extra"
     },
     "X10": {
-      "split": "dev_extra",
       "evidence": [],
-      "allowed_chunk_ids": []
+      "allowed_chunk_ids": [],
+      "evidence_groups": [],
+      "split": "dev_extra"
     },
     "T01": {
-      "split": "test",
       "evidence": [
         {
           "doc_id": "yc-cedana",
@@ -566,15 +777,23 @@
           ],
           "chunk_ids_overlap": [
             "yc-cedana#c00"
+          ],
+          "chunk_ids": [
+            "yc-cedana#c00"
           ]
         }
       ],
       "allowed_chunk_ids": [
         "yc-cedana#c00"
-      ]
+      ],
+      "evidence_groups": [
+        [
+          "yc-cedana#c00"
+        ]
+      ],
+      "split": "test"
     },
     "T02": {
-      "split": "test",
       "evidence": [
         {
           "doc_id": "yc-cumulus-labs",
@@ -587,15 +806,23 @@
           ],
           "chunk_ids_overlap": [
             "yc-cumulus-labs#c02"
+          ],
+          "chunk_ids": [
+            "yc-cumulus-labs#c02"
           ]
         }
       ],
       "allowed_chunk_ids": [
         "yc-cumulus-labs#c02"
-      ]
+      ],
+      "evidence_groups": [
+        [
+          "yc-cumulus-labs#c02"
+        ]
+      ],
+      "split": "test"
     },
     "T03": {
-      "split": "test",
       "evidence": [
         {
           "doc_id": "yc-isoquant",
@@ -608,15 +835,23 @@
           ],
           "chunk_ids_overlap": [
             "yc-isoquant#c00"
+          ],
+          "chunk_ids": [
+            "yc-isoquant#c00"
           ]
         }
       ],
       "allowed_chunk_ids": [
         "yc-isoquant#c00"
-      ]
+      ],
+      "evidence_groups": [
+        [
+          "yc-isoquant#c00"
+        ]
+      ],
+      "split": "test"
     },
     "T04": {
-      "split": "test",
       "evidence": [
         {
           "doc_id": "yc-overshoot",
@@ -629,15 +864,23 @@
           ],
           "chunk_ids_overlap": [
             "yc-overshoot#c00"
+          ],
+          "chunk_ids": [
+            "yc-overshoot#c00"
           ]
         }
       ],
       "allowed_chunk_ids": [
         "yc-overshoot#c00"
-      ]
+      ],
+      "evidence_groups": [
+        [
+          "yc-overshoot#c00"
+        ]
+      ],
+      "split": "test"
     },
     "T05": {
-      "split": "test",
       "evidence": [
         {
           "doc_id": "yc-posh",
@@ -649,6 +892,9 @@
             "yc-posh#c00"
           ],
           "chunk_ids_overlap": [
+            "yc-posh#c00"
+          ],
+          "chunk_ids": [
             "yc-posh#c00"
           ]
         },
@@ -665,16 +911,29 @@
           "chunk_ids_overlap": [
             "yc-posh#c00",
             "yc-posh#c01"
+          ],
+          "chunk_ids": [
+            "yc-posh#c00",
+            "yc-posh#c01"
           ]
         }
       ],
       "allowed_chunk_ids": [
         "yc-posh#c00",
         "yc-posh#c01"
-      ]
+      ],
+      "evidence_groups": [
+        [
+          "yc-posh#c00"
+        ],
+        [
+          "yc-posh#c00",
+          "yc-posh#c01"
+        ]
+      ],
+      "split": "test"
     },
     "T06": {
-      "split": "test",
       "evidence": [
         {
           "doc_id": "yc-litellm",
@@ -687,15 +946,23 @@
           ],
           "chunk_ids_overlap": [
             "yc-litellm#c00"
+          ],
+          "chunk_ids": [
+            "yc-litellm#c00"
           ]
         }
       ],
       "allowed_chunk_ids": [
         "yc-litellm#c00"
-      ]
+      ],
+      "evidence_groups": [
+        [
+          "yc-litellm#c00"
+        ]
+      ],
+      "split": "test"
     },
     "T07": {
-      "split": "test",
       "evidence": [
         {
           "doc_id": "yc-rightnow",
@@ -707,6 +974,9 @@
             "yc-rightnow#c00"
           ],
           "chunk_ids_overlap": [
+            "yc-rightnow#c00"
+          ],
+          "chunk_ids": [
             "yc-rightnow#c00"
           ]
         },
@@ -721,15 +991,26 @@
           ],
           "chunk_ids_overlap": [
             "yc-rightnow#c00"
+          ],
+          "chunk_ids": [
+            "yc-rightnow#c00"
           ]
         }
       ],
       "allowed_chunk_ids": [
         "yc-rightnow#c00"
-      ]
+      ],
+      "evidence_groups": [
+        [
+          "yc-rightnow#c00"
+        ],
+        [
+          "yc-rightnow#c00"
+        ]
+      ],
+      "split": "test"
     },
     "T08": {
-      "split": "test",
       "evidence": [
         {
           "doc_id": "yc-starcloud",
@@ -742,6 +1023,10 @@
             "yc-starcloud#c01"
           ],
           "chunk_ids_overlap": [
+            "yc-starcloud#c00",
+            "yc-starcloud#c01"
+          ],
+          "chunk_ids": [
             "yc-starcloud#c00",
             "yc-starcloud#c01"
           ]
@@ -759,16 +1044,30 @@
           "chunk_ids_overlap": [
             "yc-starcloud#c00",
             "yc-starcloud#c01"
+          ],
+          "chunk_ids": [
+            "yc-starcloud#c00",
+            "yc-starcloud#c01"
           ]
         }
       ],
       "allowed_chunk_ids": [
         "yc-starcloud#c00",
         "yc-starcloud#c01"
-      ]
+      ],
+      "evidence_groups": [
+        [
+          "yc-starcloud#c00",
+          "yc-starcloud#c01"
+        ],
+        [
+          "yc-starcloud#c00",
+          "yc-starcloud#c01"
+        ]
+      ],
+      "split": "test"
     },
     "T09": {
-      "split": "test",
       "evidence": [
         {
           "doc_id": "yc-pipeshift",
@@ -781,15 +1080,23 @@
           ],
           "chunk_ids_overlap": [
             "yc-pipeshift#c00"
+          ],
+          "chunk_ids": [
+            "yc-pipeshift#c00"
           ]
         }
       ],
       "allowed_chunk_ids": [
         "yc-pipeshift#c00"
-      ]
+      ],
+      "evidence_groups": [
+        [
+          "yc-pipeshift#c00"
+        ]
+      ],
+      "split": "test"
     },
     "T10": {
-      "split": "test",
       "evidence": [
         {
           "doc_id": "yc-munito-ai",
@@ -801,6 +1108,9 @@
             "yc-munito-ai#c00"
           ],
           "chunk_ids_overlap": [
+            "yc-munito-ai#c00"
+          ],
+          "chunk_ids": [
             "yc-munito-ai#c00"
           ]
         },
@@ -815,16 +1125,27 @@
           ],
           "chunk_ids_overlap": [
             "yc-munito-ai#c01"
+          ],
+          "chunk_ids": [
+            "yc-munito-ai#c01"
           ]
         }
       ],
       "allowed_chunk_ids": [
         "yc-munito-ai#c00",
         "yc-munito-ai#c01"
-      ]
+      ],
+      "evidence_groups": [
+        [
+          "yc-munito-ai#c00"
+        ],
+        [
+          "yc-munito-ai#c01"
+        ]
+      ],
+      "split": "test"
     },
     "T11": {
-      "split": "test",
       "evidence": [
         {
           "doc_id": "yc-dreamscale-labs",
@@ -837,15 +1158,23 @@
           ],
           "chunk_ids_overlap": [
             "yc-dreamscale-labs#c00"
+          ],
+          "chunk_ids": [
+            "yc-dreamscale-labs#c00"
           ]
         }
       ],
       "allowed_chunk_ids": [
         "yc-dreamscale-labs#c00"
-      ]
+      ],
+      "evidence_groups": [
+        [
+          "yc-dreamscale-labs#c00"
+        ]
+      ],
+      "split": "test"
     },
     "T12": {
-      "split": "test",
       "evidence": [
         {
           "doc_id": "yc-tensorpool",
@@ -858,15 +1187,23 @@
           ],
           "chunk_ids_overlap": [
             "yc-tensorpool#c00"
+          ],
+          "chunk_ids": [
+            "yc-tensorpool#c00"
           ]
         }
       ],
       "allowed_chunk_ids": [
         "yc-tensorpool#c00"
-      ]
+      ],
+      "evidence_groups": [
+        [
+          "yc-tensorpool#c00"
+        ]
+      ],
+      "split": "test"
     },
     "T13": {
-      "split": "test",
       "evidence": [
         {
           "doc_id": "yc-sf-tensor",
@@ -879,15 +1216,23 @@
           ],
           "chunk_ids_overlap": [
             "yc-sf-tensor#c01"
+          ],
+          "chunk_ids": [
+            "yc-sf-tensor#c01"
           ]
         }
       ],
       "allowed_chunk_ids": [
         "yc-sf-tensor#c01"
-      ]
+      ],
+      "evidence_groups": [
+        [
+          "yc-sf-tensor#c01"
+        ]
+      ],
+      "split": "test"
     },
     "T14": {
-      "split": "test",
       "evidence": [
         {
           "doc_id": "yc-routerplus",
@@ -899,6 +1244,9 @@
             "yc-routerplus#c01"
           ],
           "chunk_ids_overlap": [
+            "yc-routerplus#c01"
+          ],
+          "chunk_ids": [
             "yc-routerplus#c01"
           ]
         },
@@ -913,15 +1261,26 @@
           ],
           "chunk_ids_overlap": [
             "yc-routerplus#c01"
+          ],
+          "chunk_ids": [
+            "yc-routerplus#c01"
           ]
         }
       ],
       "allowed_chunk_ids": [
         "yc-routerplus#c01"
-      ]
+      ],
+      "evidence_groups": [
+        [
+          "yc-routerplus#c01"
+        ],
+        [
+          "yc-routerplus#c01"
+        ]
+      ],
+      "split": "test"
     },
     "T15": {
-      "split": "test",
       "evidence": [
         {
           "doc_id": "yc-orchestra",
@@ -934,15 +1293,23 @@
           ],
           "chunk_ids_overlap": [
             "yc-orchestra#c01"
+          ],
+          "chunk_ids": [
+            "yc-orchestra#c01"
           ]
         }
       ],
       "allowed_chunk_ids": [
         "yc-orchestra#c01"
-      ]
+      ],
+      "evidence_groups": [
+        [
+          "yc-orchestra#c01"
+        ]
+      ],
+      "split": "test"
     },
     "T16": {
-      "split": "test",
       "evidence": [
         {
           "doc_id": "yc-kernel",
@@ -954,6 +1321,9 @@
             "yc-kernel#c00"
           ],
           "chunk_ids_overlap": [
+            "yc-kernel#c00"
+          ],
+          "chunk_ids": [
             "yc-kernel#c00"
           ]
         },
@@ -968,15 +1338,26 @@
           ],
           "chunk_ids_overlap": [
             "yc-kernel#c00"
+          ],
+          "chunk_ids": [
+            "yc-kernel#c00"
           ]
         }
       ],
       "allowed_chunk_ids": [
         "yc-kernel#c00"
-      ]
+      ],
+      "evidence_groups": [
+        [
+          "yc-kernel#c00"
+        ],
+        [
+          "yc-kernel#c00"
+        ]
+      ],
+      "split": "test"
     },
     "T17": {
-      "split": "test",
       "evidence": [
         {
           "doc_id": "yc-tracer",
@@ -989,27 +1370,39 @@
           ],
           "chunk_ids_overlap": [
             "yc-tracer#c00"
+          ],
+          "chunk_ids": [
+            "yc-tracer#c00"
           ]
         }
       ],
       "allowed_chunk_ids": [
         "yc-tracer#c00"
-      ]
+      ],
+      "evidence_groups": [
+        [
+          "yc-tracer#c00"
+        ]
+      ],
+      "split": "test"
     },
     "T18": {
-      "split": "test",
       "evidence": [],
-      "allowed_chunk_ids": []
+      "allowed_chunk_ids": [],
+      "evidence_groups": [],
+      "split": "test"
     },
     "T19": {
-      "split": "test",
       "evidence": [],
-      "allowed_chunk_ids": []
+      "allowed_chunk_ids": [],
+      "evidence_groups": [],
+      "split": "test"
     },
     "T20": {
-      "split": "test",
       "evidence": [],
-      "allowed_chunk_ids": []
+      "allowed_chunk_ids": [],
+      "evidence_groups": [],
+      "split": "test"
     }
   }
 }

@@ -2,14 +2,13 @@
 사용: python -I src/check_eval.py data/corpus/corpus.jsonl eval/dev.json eval/test.json
 """
 import json
+import os
 import re
 import sys
 from collections import Counter
 
-
-def norm(s):
-    s = s.replace("’", "'").replace("‘", "'").replace("“", '"').replace("”", '"')
-    return " ".join(s.split())
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))  # python -I 에서도 공유 모듈을 찾는다
+from ragagent.textnorm import norm  # noqa: E402  (build_index 와 같은 정규화)
 
 
 def main(corpus_path, dev_path, test_path, extra_path=None):
@@ -66,7 +65,12 @@ def main(corpus_path, dev_path, test_path, extra_path=None):
     for q in dev + test + extra:
         if q["answerable"]:
             continue
+        if not q.get("absence_checks"):
+            err(f"{q['id']}: 근거 없음 문항에 absence_checks가 없다(부재 확인 불가)")
         for chk in q.get("absence_checks", []):
+            if chk["doc_id"] not in docs:
+                err(f"{q['id']}: absence_checks의 doc_id가 코퍼스에 없다 {chk['doc_id']}")
+                continue
             m = re.search(chk["must_not_match"], docs[chk["doc_id"]], re.I)
             if m:
                 err(f"{q['id']}: 부재 가정 위반 [{chk['doc_id']}] '{m.group(0)}'")

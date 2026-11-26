@@ -12,7 +12,8 @@ BM25 + Vector 하이브리드 검색, re-ranking, 근거 인용/근거 부족 �
 | `docs/problem.md` | 문제 정의, 범위, 성공 기준(사전 확정), 데이터 점검 결과 |
 | `docs/doc_list.csv` | 문서 68개 목록(ID·출처 URL·이용 조건·수집일·원문 위치) |
 | `eval/dev.json`, `eval/dev_extra.json`, `eval/test.json` | 개발 10문항, 보조 개발 10문항, **최종 20문항(v1.0 고정)**. 스키마는 `eval/README.md` |
-| `eval/FREEZE.json` | 고정 시점 SHA-256. `src/eval_retrieval.py --final`이 검증 |
+| `eval/FREEZE.json`, `configs/final.lock.json` | 평가셋 고정(현재), 검색 설정 고정(최종 평가 직전 생성). `--final`이 둘 다 검증 |
+| `configs/` | 모델 리비전 고정(`models.lock.json`), 원본 스냅샷 해시(`data_snapshot.json`) |
 | `eval/chunk_map.json` | 근거 인용 → 청크 ID 매핑(청킹 변경 시 재생성) |
 | `src/` | 코퍼스 구성, 청킹·BM25·RRF, 색인 빌드, 검색 평가 |
 | `tests/` | 단위 테스트 |
@@ -23,9 +24,12 @@ BM25 + Vector 하이브리드 검색, re-ranking, 근거 인용/근거 부족 �
 - 외부 모델로 보내는 텍스트는 공개 프로필 문구뿐이다. API 키는 `.env`(미커밋)에 둔다. 예시는 `.env.example`.
 
 ## 재현 (현재까지)
-Python 3.13. 1~4단계는 표준 라이브러리만 쓴다. 5단계부터(벡터 검색·reranker) `requirements.txt`의 패키지와 모델 다운로드가 필요하다.
+Python 3.13. 1~4단계는 표준 라이브러리만 쓴다. 5단계부터(벡터 검색·reranker) `requirements.txt`의 패키지와 모델 다운로드가 필요하다(전이 의존성까지 고정한 `requirements.lock.txt` 제공).
+
+> **주의(원본 스냅샷):** yc-oss 일괄 JSON은 매일 갱신된다. 고정된 코퍼스·평가셋은 `configs/data_snapshot.json`의 해시(2026-11-26 수집본)와 같은 파일에서만 재현된다. 다른 날 받은 파일이면 2단계의 `curate_corpus.py`가 중단된다. 원문은 재배포하지 않으므로 같은 스냅샷을 얻을 수 없으면 평가셋을 새로 설계해야 한다.
 ```powershell
-# 1) 데이터 수집 (data/raw/all.json) — 수동 다운로드 후 경로 고정
+# 1) 데이터 수집 (data/raw/all.json)
+mkdir -p data/raw
 curl -L -o data/raw/all.json https://yc-oss.github.io/api/companies/all.json
 # 2) 후보 추출 -> 수동 검토 목록 반영 -> 코퍼스·문서 목록
 python -I src/build_corpus.py data/raw/all.json data/corpus/candidates.jsonl
@@ -36,13 +40,18 @@ python -I src/check_eval.py data/corpus/corpus.jsonl eval/dev.json eval/test.jso
 python src/build_index.py
 # 5) 격리 환경과 모델(리비전 고정: configs/models.lock.json, CPU)
 python -m venv .venv
-.venv/Scripts/python -m pip install -r requirements.txt
+.venv/Scripts/python -m pip install -r requirements.lock.txt
 .venv/Scripts/python src/download_models.py     # bge-small-en-v1.5(133MB, MIT), ms-marco-MiniLM-L6-v2(91MB, Apache-2.0)
-# 6) 개발셋에서 A(Vector)·B(BM25+RRF)·C(+reranker) 검색 평가, 테스트
+# 6) 개발용 셋에서 A(Vector)·B(BM25+RRF)·C(+reranker) 검색 평가, 테스트
 .venv/Scripts/python src/eval_retrieval.py --configs A B C
+.venv/Scripts/python src/eval_retrieval.py --split dev_extra --configs A B C
 .venv/Scripts/python -m unittest discover -s tests
 ```
-최종 평가(`--final`)는 Day 4에 한 번만 수행하며, `eval/FREEZE.json` 해시가 맞지 않으면 중단된다.
+
+### 최종 평가의 고정 절차 (Day 3 종료 시점 → Day 4)
+1. `eval/FREEZE.json`: 평가셋·코퍼스·문서목록 해시. 누락·불일치는 모두 오류다.
+2. `.venv/Scripts/python src/freeze_final.py`: chunk_map·모델 리비전·청크 색인·모든 검색 설정을 `configs/final.lock.json`에 고정한다. **이 파일이 없으면 `--final`은 거부된다.**
+3. `.venv/Scripts/python src/eval_retrieval.py --final`: 위 두 검사를 통과해야 실행된다. 최종 평가는 Day 4에 한 번만 수행한다.
 
 ## 규칙
 - 최종 평가셋(`eval/test.json`)은 개발·튜닝에 쓰지 않는다. 변경은 새 버전과 사유를 `docs/problem.md` 변경 기록에 남긴다.

@@ -1,0 +1,7 @@
+{
+  "source_url": "https://yc-oss.github.io/api/companies/all.json",
+  "collected_at": "2026-11-26",
+  "raw_sha256": "e0735378cad315b4a1007652900b769fd506b0d8e3042268764884cbed40c677",
+  "raw_bytes": 10979120,
+  "note": "yc-oss 일괄 JSON은 매일 갱신된다. 이 해시와 다른 파일은 고정된 코퍼스·평가셋과 맞지 않을 수 있어 curate_corpus.py가 중단한다. 원문은 저장소에 올리지 않는다."
+}

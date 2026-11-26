@@ -6,9 +6,25 @@ role=distractor  : 키워드는 겹치지만 업종이 다른 문서. 혼동 질
 사용: python -I src/curate_corpus.py data/raw/all.json data/corpus/candidates.jsonl data/corpus/corpus.jsonl docs/doc_list.csv
 """
 import csv
+import hashlib
 import json
+import os
 import sys
-from datetime import date
+
+SNAPSHOT = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "configs", "data_snapshot.json")
+
+
+def load_snapshot(raw_path):
+    """고정된 원본 스냅샷(configs/data_snapshot.json)과 raw 파일의 해시가 같을 때만 진행한다."""
+    with open(SNAPSHOT, encoding="utf-8") as f:
+        snap = json.load(f)
+    with open(raw_path, "rb") as f:
+        got = hashlib.sha256(f.read()).hexdigest()
+    if got != snap["raw_sha256"]:
+        sys.exit("원본 JSON이 고정된 스냅샷과 다르다(매일 갱신되는 데이터일 수 있음).\n"
+                 f" 기대 {snap['raw_sha256'][:12]}… / 실제 {got[:12]}…\n"
+                 " 이 데이터로는 고정된 코퍼스·평가셋을 재현할 수 없다. 새 스냅샷으로 평가를 다시 설계해야 한다.")
+    return snap
 
 CORE = """mystic cerebrium beam posh poplarml texel-ai litellm cedana baud trainy shadeform morph
 ncompass-technologies tamarind-bio unsloth-ai runlocal-ai thunder-compute starcloud pipeshift dotwave
@@ -37,6 +53,7 @@ DISTRACTOR = {
 
 def main(raw, cand, out, listcsv):
     sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+    snap = load_snapshot(raw)
     cands = {json.loads(l)["slug"]: json.loads(l) for l in open(cand, encoding="utf-8")}
     rawmap = {c["slug"]: c for c in json.load(open(raw, encoding="utf-8"))}
     rows, missing = [], []
@@ -52,7 +69,10 @@ def main(raw, cand, out, listcsv):
             "long_description": c.get("long_description") or "",
             "role": role, "role_note": note, "in_rule_candidates": slug in cands,
         })
-    with open(out, "w", encoding="utf-8") as f:
+    for p in (out, listcsv):
+        os.makedirs(os.path.dirname(os.path.abspath(p)), exist_ok=True)
+    # 줄바꿈을 CRLF로 명시해 운영체제와 무관하게 같은 바이트(=고정 해시)를 만든다
+    with open(out, "w", encoding="utf-8", newline="\r\n") as f:
         for r in rows:
             f.write(json.dumps(r, ensure_ascii=False) + "\n")
     with open(listcsv, "w", encoding="utf-8-sig", newline="") as f:
@@ -61,7 +81,7 @@ def main(raw, cand, out, listcsv):
         for r in rows:
             w.writerow([r["doc_id"], r["name"], r["url"],
                         "unofficial yc-oss API 사본, 라이선스 명시 없음. 원문 재배포 금지, URL·ID만 공개",
-                        date.today().isoformat(), "all.json 의 long_description 필드", r["role"],
+                        snap["collected_at"], "all.json 의 long_description 필드", r["role"],
                         r["batch"], r["status"], r["role_note"]])
     n_core = sum(r["role"] == "core" for r in rows)
     print(f"docs={len(rows)} core={n_core} distractor={len(rows) - n_core} missing={missing}")
