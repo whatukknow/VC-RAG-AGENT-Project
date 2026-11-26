@@ -31,12 +31,15 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--configs", nargs="+", default=["A", "B", "C"], choices=["A", "B", "C"])
     ap.add_argument("--final", action="store_true")
+    ap.add_argument("--split", default="dev", choices=["dev", "dev_extra"], help="--final 이 없을 때 대상(개발용만)")
     ap.add_argument("--out", default=None, help="결과 디렉터리(기본 results/<split>)")
     a = ap.parse_args()
-    split = "test" if a.final else "dev"
+    split = "test" if a.final else a.split
     if a.final:
         check_freeze()
-    qs = json.load(open(os.path.join(ROOT, "eval", f"{split}.json"), encoding="utf-8"))["questions"]
+    fname = "dev_extra.json" if split == "dev_extra" else f"{split}.json"
+    with open(os.path.join(ROOT, "eval", fname), encoding="utf-8") as f:
+        qs = json.load(f)["questions"]
     cmap = json.load(open(os.path.join(ROOT, "eval", "chunk_map.json"), encoding="utf-8"))["map"]
     retr, meta = build_retriever()
     outdir = a.out or os.path.join(ROOT, "results", split)

@@ -3,7 +3,8 @@
 | 파일 | 내용 |
 |---|---|
 | `dev.json` | 개발용 10문항 (답변 가능 8, 근거 없음 2). 튜닝·근거 부족 판정 방법 결정에 사용 |
-| `test.json` | 최종 20문항 (직접 10, 변형·유사 조건 구분 7, 근거 없음 3). **튜닝 금지, 승인 후 버전 고정** |
+| `dev_extra.json` | 보조 개발셋 10문항 (직접 4, 변형·혼동 4, 근거 없음 2). 공식 `dev.json`은 매뉴얼 구성(10문항)을 유지하고, 구성 비교 신호가 필요할 때 함께 쓴다. 튜닝 허용 |
+| `test.json` | 최종 20문항 (직접 10, 변형·유사 조건 구분 7, 근거 없음 3). **튜닝 금지, v1.0 고정(해시: FREEZE.json)** |
 
 ## 필드
 - `id`: D01~D10, T01~T20. `type`: `direct` / `variant_or_confusable` / `no_evidence`.
@@ -15,6 +16,7 @@
 
 ## 규칙
 - 정답표(`eval/`)는 검색 색인과 프롬프트에 넣지 않는다. 검색 대상은 `data/corpus/corpus.jsonl`의 `long_description`뿐이다.
-- 개발셋과 최종셋은 근거 문서가 겹치지 않는다(`check_eval.py`가 검사).
+- `dev.json`·`dev_extra.json`·`test.json`은 서로 근거 문서가 겹치지 않는다(`check_eval.py`가 검사).
 - 최종셋 결과를 본 뒤 질문을 교체·삭제하지 않는다.
-- 검사: `python -I src/check_eval.py data/corpus/corpus.jsonl eval/dev.json eval/test.json`
+- 검사: `python -I src/check_eval.py data/corpus/corpus.jsonl eval/dev.json eval/test.json eval/dev_extra.json`
+- `absence_checks`의 정규식은 문항이 묻는 **정답 정보가 없음**을 확인하는 용도다(예: 측정 수치 문항은 숫자+단위 패턴으로 검사).

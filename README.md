@@ -11,7 +11,7 @@ BM25 + Vector 하이브리드 검색, re-ranking, 근거 인용/근거 부족 �
 |---|---|
 | `docs/problem.md` | 문제 정의, 범위, 성공 기준(사전 확정), 데이터 점검 결과 |
 | `docs/doc_list.csv` | 문서 68개 목록(ID·출처 URL·이용 조건·수집일·원문 위치) |
-| `eval/dev.json`, `eval/test.json` | 개발 10문항, **최종 20문항(v1.0 고정)**. 스키마는 `eval/README.md` |
+| `eval/dev.json`, `eval/dev_extra.json`, `eval/test.json` | 개발 10문항, 보조 개발 10문항, **최종 20문항(v1.0 고정)**. 스키마는 `eval/README.md` |
 | `eval/FREEZE.json` | 고정 시점 SHA-256. `src/eval_retrieval.py --final`이 검증 |
 | `eval/chunk_map.json` | 근거 인용 → 청크 ID 매핑(청킹 변경 시 재생성) |
 | `src/` | 코퍼스 구성, 청킹·BM25·RRF, 색인 빌드, 검색 평가 |
@@ -31,7 +31,7 @@ curl -L -o data/raw/all.json https://yc-oss.github.io/api/companies/all.json
 python -I src/build_corpus.py data/raw/all.json data/corpus/candidates.jsonl
 python -I src/curate_corpus.py data/raw/all.json data/corpus/candidates.jsonl data/corpus/corpus.jsonl docs/doc_list.csv
 # 3) 평가셋 무결성 검사
-python -I src/check_eval.py data/corpus/corpus.jsonl eval/dev.json eval/test.json
+python -I src/check_eval.py data/corpus/corpus.jsonl eval/dev.json eval/test.json eval/dev_extra.json
 # 4) 청킹·색인·근거 매핑
 python src/build_index.py
 # 5) 격리 환경과 모델(리비전 고정: configs/models.lock.json, CPU)

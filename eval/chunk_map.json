@@ -272,6 +272,286 @@
       "evidence": [],
       "allowed_chunk_ids": []
     },
+    "X01": {
+      "split": "dev_extra",
+      "evidence": [
+        {
+          "doc_id": "yc-ncompass-technologies",
+          "span": [
+            269,
+            314
+          ],
+          "chunk_ids_full": [
+            "yc-ncompass-technologies#c00"
+          ],
+          "chunk_ids_overlap": [
+            "yc-ncompass-technologies#c00"
+          ]
+        },
+        {
+          "doc_id": "yc-ncompass-technologies",
+          "span": [
+            659,
+            675
+          ],
+          "chunk_ids_full": [
+            "yc-ncompass-technologies#c01"
+          ],
+          "chunk_ids_overlap": [
+            "yc-ncompass-technologies#c01"
+          ]
+        }
+      ],
+      "allowed_chunk_ids": [
+        "yc-ncompass-technologies#c00",
+        "yc-ncompass-technologies#c01"
+      ]
+    },
+    "X02": {
+      "split": "dev_extra",
+      "evidence": [
+        {
+          "doc_id": "yc-runlocal-ai",
+          "span": [
+            76,
+            136
+          ],
+          "chunk_ids_full": [
+            "yc-runlocal-ai#c00"
+          ],
+          "chunk_ids_overlap": [
+            "yc-runlocal-ai#c00"
+          ]
+        },
+        {
+          "doc_id": "yc-runlocal-ai",
+          "span": [
+            158,
+            209
+          ],
+          "chunk_ids_full": [
+            "yc-runlocal-ai#c00"
+          ],
+          "chunk_ids_overlap": [
+            "yc-runlocal-ai#c00"
+          ]
+        }
+      ],
+      "allowed_chunk_ids": [
+        "yc-runlocal-ai#c00"
+      ]
+    },
+    "X03": {
+      "split": "dev_extra",
+      "evidence": [
+        {
+          "doc_id": "yc-luminal",
+          "span": [
+            0,
+            67
+          ],
+          "chunk_ids_full": [
+            "yc-luminal#c00"
+          ],
+          "chunk_ids_overlap": [
+            "yc-luminal#c00"
+          ]
+        },
+        {
+          "doc_id": "yc-luminal",
+          "span": [
+            131,
+            153
+          ],
+          "chunk_ids_full": [
+            "yc-luminal#c00"
+          ],
+          "chunk_ids_overlap": [
+            "yc-luminal#c00"
+          ]
+        }
+      ],
+      "allowed_chunk_ids": [
+        "yc-luminal#c00"
+      ]
+    },
+    "X04": {
+      "split": "dev_extra",
+      "evidence": [
+        {
+          "doc_id": "yc-baymachines",
+          "span": [
+            20,
+            72
+          ],
+          "chunk_ids_full": [
+            "yc-baymachines#c00"
+          ],
+          "chunk_ids_overlap": [
+            "yc-baymachines#c00"
+          ]
+        },
+        {
+          "doc_id": "yc-baymachines",
+          "span": [
+            220,
+            254
+          ],
+          "chunk_ids_full": [
+            "yc-baymachines#c00"
+          ],
+          "chunk_ids_overlap": [
+            "yc-baymachines#c00"
+          ]
+        }
+      ],
+      "allowed_chunk_ids": [
+        "yc-baymachines#c00"
+      ]
+    },
+    "X05": {
+      "split": "dev_extra",
+      "evidence": [
+        {
+          "doc_id": "yc-tinfoil",
+          "span": [
+            499,
+            558
+          ],
+          "chunk_ids_full": [
+            "yc-tinfoil#c01",
+            "yc-tinfoil#c02"
+          ],
+          "chunk_ids_overlap": [
+            "yc-tinfoil#c01",
+            "yc-tinfoil#c02"
+          ]
+        },
+        {
+          "doc_id": "yc-tinfoil",
+          "span": [
+            2515,
+            2573
+          ],
+          "chunk_ids_full": [
+            "yc-tinfoil#c08",
+            "yc-tinfoil#c09"
+          ],
+          "chunk_ids_overlap": [
+            "yc-tinfoil#c08",
+            "yc-tinfoil#c09"
+          ]
+        }
+      ],
+      "allowed_chunk_ids": [
+        "yc-tinfoil#c01",
+        "yc-tinfoil#c02",
+        "yc-tinfoil#c08",
+        "yc-tinfoil#c09"
+      ]
+    },
+    "X06": {
+      "split": "dev_extra",
+      "evidence": [
+        {
+          "doc_id": "yc-tensil",
+          "span": [
+            143,
+            211
+          ],
+          "chunk_ids_full": [
+            "yc-tensil#c00"
+          ],
+          "chunk_ids_overlap": [
+            "yc-tensil#c00"
+          ]
+        },
+        {
+          "doc_id": "yc-tensil",
+          "span": [
+            223,
+            271
+          ],
+          "chunk_ids_full": [
+            "yc-tensil#c00"
+          ],
+          "chunk_ids_overlap": [
+            "yc-tensil#c00"
+          ]
+        }
+      ],
+      "allowed_chunk_ids": [
+        "yc-tensil#c00"
+      ]
+    },
+    "X07": {
+      "split": "dev_extra",
+      "evidence": [
+        {
+          "doc_id": "yc-rain-neuromorphics",
+          "span": [
+            562,
+            602
+          ],
+          "chunk_ids_full": [
+            "yc-rain-neuromorphics#c01"
+          ],
+          "chunk_ids_overlap": [
+            "yc-rain-neuromorphics#c01"
+          ]
+        },
+        {
+          "doc_id": "yc-rain-neuromorphics",
+          "span": [
+            391,
+            406
+          ],
+          "chunk_ids_full": [
+            "yc-rain-neuromorphics#c00",
+            "yc-rain-neuromorphics#c01"
+          ],
+          "chunk_ids_overlap": [
+            "yc-rain-neuromorphics#c00",
+            "yc-rain-neuromorphics#c01"
+          ]
+        }
+      ],
+      "allowed_chunk_ids": [
+        "yc-rain-neuromorphics#c00",
+        "yc-rain-neuromorphics#c01"
+      ]
+    },
+    "X08": {
+      "split": "dev_extra",
+      "evidence": [
+        {
+          "doc_id": "yc-lilac",
+          "span": [
+            53,
+            149
+          ],
+          "chunk_ids_full": [
+            "yc-lilac#c00"
+          ],
+          "chunk_ids_overlap": [
+            "yc-lilac#c00"
+          ]
+        }
+      ],
+      "allowed_chunk_ids": [
+        "yc-lilac#c00"
+      ]
+    },
+    "X09": {
+      "split": "dev_extra",
+      "evidence": [],
+      "allowed_chunk_ids": []
+    },
+    "X10": {
+      "split": "dev_extra",
+      "evidence": [],
+      "allowed_chunk_ids": []
+    },
     "T01": {
       "split": "test",
       "evidence": [

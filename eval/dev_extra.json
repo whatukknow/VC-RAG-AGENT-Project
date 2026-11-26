@@ -1,0 +1,108 @@
+{
+  "version": "dev-extra-v1.0",
+  "corpus": "docs/doc_list.csv (scope_v1, 68 docs, collected 2026-11-26)",
+  "note": "보조 개발셋(튜닝 신호 보강용). 공식 개발셋(dev.json 10문항)은 매뉴얼 구성을 유지하고, 여기서 변형·혼동 문항을 추가했다. 최종셋(test.json)·dev.json과 근거 문서가 겹치지 않는다. 최종셋의 함정 문서(ReasonBlocks, Riften, Morph, Mystic 등)는 쓰지 않았다.",
+  "questions": [
+    {
+      "id": "X01", "split": "dev_extra", "type": "direct", "answerable": true,
+      "question": "Which company's agent analyzes performance bottlenecks of inference engines from CPU-GPU interactions down to GPU kernels, and how is it delivered?",
+      "question_ko": "추론 엔진의 성능 병목을 CPU-GPU 상호작용부터 GPU 커널까지 분석하는 에이전트를 만드는 회사는 어디이며 어떤 형태로 제공하는가?",
+      "expected_key_facts": ["nCompass Technologies", "VSCode extension (paired with Cursor / Claude Code)"],
+      "allowed_evidence": [
+        {"doc_id": "yc-ncompass-technologies", "quote": "from CPU-GPU interactions down to GPU kernels"},
+        {"doc_id": "yc-ncompass-technologies", "quote": "VSCode extension"}
+      ]
+    },
+    {
+      "id": "X02", "split": "dev_extra", "type": "direct", "answerable": true,
+      "question": "Which company optimizes models for onboard compute such as NVIDIA Orin/Thor and Qualcomm, and which kind of teams is it built for?",
+      "question_ko": "NVIDIA Orin/Thor, Qualcomm 같은 온보드 컴퓨트용으로 모델을 최적화하는 회사는 어디이며 어떤 팀을 위한 것인가?",
+      "expected_key_facts": ["RunLocal AI", "Physical AI engineering teams (autonomous vehicles, robotics, smart cameras)"],
+      "allowed_evidence": [
+        {"doc_id": "yc-runlocal-ai", "quote": "onboard compute platforms like NVIDIA Orin/Thor and Qualcomm"},
+        {"doc_id": "yc-runlocal-ai", "quote": "RunLocal is built for Physical AI engineering teams"}
+      ]
+    },
+    {
+      "id": "X03", "split": "dev_extra", "type": "variant_or_confusable", "answerable": true,
+      "question": "Which ML compiler generates GPU code and says its stack makes models 10x faster while cutting idle GPU costs?",
+      "question_ko": "GPU 코드를 생성하는 ML 컴파일러로, 모델 속도 10배와 유휴 GPU 비용 절감을 내세우는 회사는?",
+      "expected_key_facts": ["Luminal", "ML framework and compiler that generates GPU code", "10x model speed"],
+      "allowed_evidence": [
+        {"doc_id": "yc-luminal", "quote": "Luminal builds an ML framework and compiler that generates GPU code"},
+        {"doc_id": "yc-luminal", "quote": "cutting idle GPU costs"}
+      ],
+      "grading_note": "nCompass('10x faster')·Texel('10 times faster')과 혼동하면 오답. 컴파일러/프레임워크는 Luminal."
+    },
+    {
+      "id": "X04", "split": "dev_extra", "type": "direct", "answerable": true,
+      "question": "Which company deploys air-gapped GPU containers on-prem for defense teams, and which compliance requirements does it mention?",
+      "question_ko": "방산팀을 위해 온프레미스 에어갭 GPU 컨테이너를 배포하는 회사는 어디이며 어떤 규정 요건을 언급하는가?",
+      "expected_key_facts": ["BayMachines", "CMMC", "NIST 800-171"],
+      "allowed_evidence": [
+        {"doc_id": "yc-baymachines", "quote": "on-prem, air-gapped GPU containers for defense teams"},
+        {"doc_id": "yc-baymachines", "quote": "CMMC and NIST 800-171 requirements"}
+      ]
+    },
+    {
+      "id": "X05", "split": "dev_extra", "type": "variant_or_confusable", "answerable": true,
+      "question": "Which company uses NVIDIA confidential computing on Hopper and Blackwell so that the inference provider itself cannot see user prompts?",
+      "question_ko": "Hopper·Blackwell의 NVIDIA 기밀 컴퓨팅으로 추론 제공자조차 사용자 프롬프트를 볼 수 없게 하는 회사는?",
+      "expected_key_facts": ["Tinfoil", "NVIDIA confidential compute mode on Hopper and Blackwell"],
+      "allowed_evidence": [
+        {"doc_id": "yc-tinfoil", "quote": "confidential compute mode available on Hopper and Blackwell"},
+        {"doc_id": "yc-tinfoil", "quote": "we as the inference provider cannot see any of the prompts"}
+      ],
+      "grading_note": "BayMachines(에어갭 온프레미스)와 혼동하면 오답. Tinfoil은 클라우드에서 기밀 컴퓨팅."
+    },
+    {
+      "id": "X06", "split": "dev_extra", "type": "variant_or_confusable", "answerable": true,
+      "question": "Which company says an algorithm designs the best hardware accelerator for a given ML model, and what advantage over GPUs does it claim?",
+      "question_ko": "알고리즘이 주어진 ML 모델에 최적인 하드웨어 가속기를 설계한다고 하는 회사는 어디이며 GPU 대비 어떤 이점을 주장하는가?",
+      "expected_key_facts": ["Tensil", "10x better performance per watt-dollar than GPUs"],
+      "allowed_evidence": [
+        {"doc_id": "yc-tensil", "quote": "design the best hardware accelerator for your machine learning model"},
+        {"doc_id": "yc-tensil", "quote": "10x better performance per watt-dollar than GPUs"}
+      ],
+      "grading_note": "10x per watt-dollar를 처리량·속도 10배로 답하면 오답. Lamb Labs·Baud 등 다른 칩 회사와 구분."
+    },
+    {
+      "id": "X07", "split": "dev_extra", "type": "direct", "answerable": true,
+      "question": "Which company builds neuromorphic AI chips from spiking neurons, and what is its chip technology called?",
+      "question_ko": "스파이킹 뉴런으로 뉴로모픽 AI 칩을 만드는 회사는 어디이며 칩 기술 이름은?",
+      "expected_key_facts": ["Rain Neuromorphics", "Memristive Nanowire Neural Network (MN3)"],
+      "allowed_evidence": [
+        {"doc_id": "yc-rain-neuromorphics", "quote": "Memristive Nanowire Neural Network (MN3)"},
+        {"doc_id": "yc-rain-neuromorphics", "quote": "spiking neurons"}
+      ]
+    },
+    {
+      "id": "X08", "split": "dev_extra", "type": "variant_or_confusable", "answerable": true,
+      "question": "Which company helps neoclouds run GPUs at scale with burn-in and validation, repair, usage records, and white-label consoles?",
+      "question_ko": "번인·검증, 수리, 사용 기록, 화이트라벨 콘솔로 네오클라우드의 GPU 대규모 운영을 돕는 회사는?",
+      "expected_key_facts": ["Lilac", "provisioning, burn-in and validation, monitoring, repair, usage records, white-label consoles"],
+      "allowed_evidence": [
+        {"doc_id": "yc-lilac", "quote": "provisioning, burn-in and validation, monitoring, repair, usage records and white-label consoles"}
+      ],
+      "grading_note": "Chamber(AIOps 에이전트, 장애 감지·원인 분석)·Nodus·Expanse와 혼동하면 오답."
+    },
+    {
+      "id": "X09", "split": "dev_extra", "type": "no_evidence", "answerable": false,
+      "question": "What measured latency does Hopper report for its voice inference cloud?",
+      "question_ko": "Hopper가 자사 음성 추론 클라우드에 대해 보고하는 측정 지연시간은?",
+      "expected_key_facts": ["정보 부족 안내"],
+      "allowed_evidence": [],
+      "absence_reason": "Hopper 소개문은 'latency-sensitive'라는 형용만 쓰고 측정 수치가 없다(숫자는 투자사명 a16z뿐). Pipeshift(3~5배 낮은 time-to-first-audio)·.Wave의 지연 문구와 혼동 위험.",
+      "absence_checks": [{"doc_id": "yc-hopper", "must_not_match": "\\d+\\s?(ms|msec|sec|seconds?|x|%)|\\d+X"}]
+    },
+    {
+      "id": "X10", "split": "dev_extra", "type": "no_evidence", "answerable": false,
+      "question": "What percentage of ML engineer time does Chamber say it saves?",
+      "question_ko": "Chamber는 ML 엔지니어 시간을 몇 % 절감한다고 말하는가?",
+      "expected_key_facts": ["정보 부족 안내"],
+      "allowed_evidence": [],
+      "absence_reason": "Chamber 소개문은 '시간을 절약'이라고만 말하고 수치가 없다.",
+      "absence_checks": [{"doc_id": "yc-chamber", "must_not_match": "\\d|%|percent"}]
+    }
+  ]
+}

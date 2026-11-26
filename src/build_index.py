@@ -49,8 +49,10 @@ def main():
         by_doc.setdefault(c.doc_id, []).append(c)
     text_of = {d["doc_id"]: d["long_description"] for d in docs}
     cmap, problems = {}, []
-    for split in ("dev", "test"):
-        path = os.path.join(ROOT, "eval", f"{split}.json")
+    for split in ("dev", "dev_extra", "test"):
+        path = os.path.join(ROOT, "eval", "dev_extra.json" if split == "dev_extra" else f"{split}.json")
+        if not os.path.exists(path):
+            continue
         for q in json.load(open(path, encoding="utf-8"))["questions"]:
             entries = []
             for ev in q["allowed_evidence"]:
