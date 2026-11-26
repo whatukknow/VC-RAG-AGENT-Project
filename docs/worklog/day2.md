@@ -4,7 +4,7 @@
 - 수행 형태: 1인 수행, 코드는 Claude가 작성하고 결정·승인은 본인이 수행(바이브 코딩)
 - 일자: 2026-11-26 (프로젝트 2일차 범위 기준)
 - 관련 저장소: https://github.com/whatukknow/VC-RAG-AGENT-Project
-- 작성 시점 기준 상태: PR #1 등록됨(Open, 미병합). 코드 리뷰 지적 9건은 모두 수정해 PR 브랜치에 반영함(머지는 본인 승인 대기)
+- 작성 시점 기준 상태: PR #1 병합 완료(main 258ef7f, 2026-11-26). 코드 리뷰 지적 9건은 모두 수정해 병합에 포함됨
 
 ## Notion 입력용 요약
 
@@ -23,7 +23,7 @@
 - 리뷰 지적 9건은 공유 정규화, 최종 설정 고정(final.lock) 추가, 재현 경로(폴더 생성·원본 스냅샷 해시) 보강, 청킹 한도 수정, 테스트 16건 추가로 모두 수정(테스트 33건 통과)(작성 시점 기준 미반영)
 
 **산출물 링크**
-[PR #1](https://github.com/whatukknow/VC-RAG-AGENT-Project/pull/1) · [src/ragagent](https://github.com/whatukknow/VC-RAG-AGENT-Project/tree/feat/vector-search/src/ragagent) · [dev_extra.json](https://github.com/whatukknow/VC-RAG-AGENT-Project/blob/feat/vector-search/eval/dev_extra.json) · [results](https://github.com/whatukknow/VC-RAG-AGENT-Project/tree/feat/vector-search/results) · [models.lock.json](https://github.com/whatukknow/VC-RAG-AGENT-Project/blob/feat/vector-search/configs/models.lock.json)
+[PR #1](https://github.com/whatukknow/VC-RAG-AGENT-Project/pull/1) · [src/ragagent](https://github.com/whatukknow/VC-RAG-AGENT-Project/tree/main/src/ragagent) · [dev_extra.json](https://github.com/whatukknow/VC-RAG-AGENT-Project/blob/main/eval/dev_extra.json) · [results](https://github.com/whatukknow/VC-RAG-AGENT-Project/tree/main/results) · [models.lock.json](https://github.com/whatukknow/VC-RAG-AGENT-Project/blob/main/configs/models.lock.json)
 
 ## 1. 오늘의 목표 (매뉴얼 2일차)
 전처리·색인, Vector와 Hybrid 구현. 중간 결과물은 청크·메타데이터, A/B 검색 기록, 개발셋 동작.
@@ -90,7 +90,8 @@ Hit@5(하나 이상)는 A가 dev_extra에서 7/8이지만 필요한 근거를 �
 | c612737 | 벡터 검색, 하이브리드, reranker |
 | db9c0a7 | 보조 개발셋 dev_extra |
 | 7097c12 | README 의존성 문구 정정 |
-| PR #1 | https://github.com/whatukknow/VC-RAG-AGENT-Project/pull/1 (feat/vector-search -> main, Open) |
+| 57016f6 | 코드 리뷰 지적 9건 수정(재현 경로, 고정 장치, 매핑, 청킹 한도, 테스트) |
+| PR #1 | https://github.com/whatukknow/VC-RAG-AGENT-Project/pull/1 (feat/vector-search -> main, 병합 완료, 병합 커밋 258ef7f) |
 
 ## 6. 문제와 해결 (시행착오)
 | 문제 | 원인 | 해결 |
@@ -126,10 +127,10 @@ Hit@5(하나 이상)는 A가 dev_extra에서 7/8이지만 필요한 근거를 �
 - 근거 없음 문항은 검색 단계에서 걸러지지 않음. 정보 부족 판정은 Day 3 답변 단계에서 개발셋으로 정해야 함
 - 문서가 짧아 기업당 청크가 1~2개 수준이라 청킹·재정렬 효과는 작을 수 있음
 - 1인 수행이라 교차 채점·타인 재현·팀원 PR 리뷰는 대체 방식으로만 충족(problem.md 6절)
-- PR #1은 미병합. 머지는 본인 승인 후에만 진행
+- 최종 설정 고정(configs/final.lock.json)은 아직 만들지 않음(Day 3 종료 시점에 생성). 최종셋은 한 번도 실행하지 않음
 
 ## 9. 다음 단계 (Day 3)
-1. PR #1 머지 승인(본인 확인 후)
+1. (완료) PR #1 병합. Day 3 작업은 main에서 새 기능 브랜치를 만들어 시작
 2. 근거 기반 답변 흐름(근거 부족 판정을 개발셋으로 결정)과 출처 인용
 3. 캐싱 또는 쿼리 리라이트 중 1개 선택·구현, 실행 인터페이스(Streamlit)
 4. 최종 설정 고정(src/freeze_final.py) 후 Day 4에 고정 평가 실행
