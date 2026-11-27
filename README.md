@@ -3,7 +3,7 @@
 VC 딜소싱 심사역이 **YC 공개 프로필(AI 추론 인프라 회사)** 문서에서 근거 있는 답을 찾도록 돕는 Knowledge Agent.
 BM25 + Vector 하이브리드 검색, re-ranking, 근거 인용/근거 부족 안내, 고정 평가셋 비교 실험을 1인으로 수행한다.
 
-> 상태: **Day 2 진행 중.** 문제 정의·문서·평가셋 고정, 청킹·BM25·RRF, 벡터 검색(A)·하이브리드(B)·re-ranking(C) 구현 완료(개발셋 평가만 수행). 답변·최적화·최종 평가는 미구현.
+> 상태: **Day 3 진행 중.** 검색(A/B/C), 근거 기반 답변(출처 인용·근거 부족 안내), 쿼리 리라이트(C+R), 생성기(OpenAI `gpt-6-luna` 기본), Streamlit 인터페이스 구현 완료. 평가는 개발용 20문항만 수행했고 **최종 평가(최종셋 20문항)는 아직 실행하지 않았다.**
 > 과제 요건은 팀 과제이나 1인 수행이다. 편차는 `docs/problem.md` 6절에 기록한다.
 
 ## 구조
@@ -15,7 +15,7 @@ BM25 + Vector 하이브리드 검색, re-ranking, 근거 인용/근거 부족 �
 | `eval/FREEZE.json`, `configs/final.lock.json` | 평가셋 고정(현재), 검색 설정 고정(최종 평가 직전 생성). `--final`이 둘 다 검증 |
 | `configs/` | 모델 리비전 고정(`models.lock.json`), 원본 스냅샷 해시(`data_snapshot.json`) |
 | `eval/chunk_map.json` | 근거 인용 → 청크 ID 매핑(청킹 변경 시 재생성) |
-| `src/` | 코퍼스 구성, 청킹·BM25·RRF, 색인 빌드, 검색 평가 |
+| `src/` | 코퍼스 구성, 청킹·BM25·RRF, 색인 빌드, 검색·답변 평가(`eval_retrieval.py`, `run_answers.py`), 채점(`grade.py`), 인터페이스(`app.py`) |
 | `tests/` | 단위 테스트 |
 
 ## 데이터와 이용 조건
@@ -50,8 +50,20 @@ python -m venv .venv
 
 ### 최종 평가의 고정 절차 (Day 3 종료 시점 → Day 4)
 1. `eval/FREEZE.json`: 평가셋·코퍼스·문서목록 해시. 누락·불일치는 모두 오류다.
-2. `.venv/Scripts/python src/freeze_final.py`: chunk_map·모델 리비전·청크 색인·모든 검색 설정을 `configs/final.lock.json`에 고정한다. **이 파일이 없으면 `--final`은 거부된다.**
-3. `.venv/Scripts/python src/eval_retrieval.py --final`: 위 두 검사를 통과해야 실행된다. 최종 평가는 Day 4에 한 번만 수행한다.
+2. `.venv/Scripts/python src/freeze_final.py`: chunk_map·모델 리비전·청크 색인·모든 검색·답변 설정(프롬프트 해시 포함)·**평가 결과를 만드는 코드의 해시**·최종 생성 백엔드를 `configs/final.lock.json`에 고정한다(커밋되지 않은 변경이 있으면 거부). **이 파일이 없으면 `--final`은 거부된다.** 현재 고정됨(`openai`, `gpt-6-luna`).
+3. `--final` 실행(Day 4에 한 번만): `.venv/Scripts/python src/run_answers.py --final --backend openai --configs A B C C+R`, `.venv/Scripts/python src/eval_retrieval.py --final --configs A B C`. FREEZE와 final.lock을 모두 통과해야 하고, 고정 이후 코드·설정이 바뀌었거나 다른 백엔드이면 거부된다.
+4. 같은 구성의 최종 결과가 이미 있으면 `--rerun-reason "사유"` 없이는 실행되지 않으며, 재실행해도 기존 결과는 삭제하지 않는다(좋은 결과만 고르지 않기 위함).
+
+## 실행 인터페이스(Streamlit)
+```powershell
+.venv/Scripts/streamlit run src/app.py
+```
+질문을 입력하면 답변, 인용한 근거 청크의 원문 발췌와 출처 링크, 검색 상위 5개, 쿼리 리라이트(C+R), 응답 시간·토큰·비용을 볼 수 있다.
+오류(생성·검색 실패)는 정상적인 '근거 부족' 거절과 다르게 표시한다. 사이드바에서 검색 구성(A/B/C/C+R)과 생성 백엔드를 고르고,
+**'검색만 보기'**를 켜면 API 호출 없이 검색 결과만 확인한다.
+- 생성 단계는 질문과 검색된 공개 프로필 문구를 선택한 외부 API(기본 OpenAI)로 보낸다. 키는 프로젝트 루트 `.env`의 `OPENAI_API_KEY`(예시: `.env.example`) 또는 환경변수에 두며 화면·기록에 나오지 않는다.
+- API 비용은 원장(`results/openai_cost_ledger.jsonl`)에 기록되고 한도($5)에 도달하면 실행을 멈춘다.
+- 화면 테스트(AppTest)는 로컬 색인·모델(`data/`)이 있을 때만 실행된다.
 
 ## 규칙
 - 최종 평가셋(`eval/test.json`)은 개발·튜닝에 쓰지 않는다. 변경은 새 버전과 사유를 `docs/problem.md` 변경 기록에 남긴다.

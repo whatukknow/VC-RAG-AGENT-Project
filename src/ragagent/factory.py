@@ -11,8 +11,10 @@ ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)
 
 
 def build_retriever(with_reranker=True):
-    chunks = [json.loads(l) for l in open(os.path.join(ROOT, "data", "index", "chunks.jsonl"), encoding="utf-8")]
-    lock = json.load(open(os.path.join(ROOT, "configs", "models.lock.json"), encoding="utf-8"))
+    with open(os.path.join(ROOT, "data", "index", "chunks.jsonl"), encoding="utf-8") as f:
+        chunks = [json.loads(line) for line in f]
+    with open(os.path.join(ROOT, "configs", "models.lock.json"), encoding="utf-8") as f:
+        lock = json.load(f)
     emb = Embedder(os.path.join(ROOT, lock["embedding"]["local_dir"]))
     matrix, state = load_or_build(emb, [c["text"] for c in chunks], lock["embedding"]["revision"],
                                   os.path.join(ROOT, "data", "index"))

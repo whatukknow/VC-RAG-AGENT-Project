@@ -12,7 +12,7 @@ import sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from ragagent.factory import build_retriever  # noqa: E402
-from ragagent.freeze import verify_files, verify_final_lock  # noqa: E402
+from ragagent.freeze import check_final_run, verify_files, verify_final_lock  # noqa: E402
 from ragagent.pipeline import PIPELINE_CONFIG  # noqa: E402
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -44,10 +44,15 @@ def main():
     ap.add_argument("--final", action="store_true")
     ap.add_argument("--split", default="dev", choices=["dev", "dev_extra"], help="--final 이 없을 때 대상(개발용만)")
     ap.add_argument("--out", default=None, help="결과 디렉터리(기본 results/<split>)")
+    ap.add_argument("--rerun-reason", default=None, help="--final 에서 같은 구성의 결과가 이미 있을 때 재실행 사유")
     a = ap.parse_args()
     split = "test" if a.final else a.split
     if a.final:
         check_freeze()
+        errs = check_final_run(ROOT, None, a.configs, a.out or os.path.join(ROOT, "results", "test"), "retrieval",
+                               a.rerun_reason)
+        if errs:
+            sys.exit("최종 실행을 중단한다:\n - " + "\n - ".join(errs))
     with open(os.path.join(ROOT, "eval", SPLIT_FILES[split]), encoding="utf-8") as f:
         qs = json.load(f)["questions"]
     with open(os.path.join(ROOT, "eval", "chunk_map.json"), encoding="utf-8") as f:

@@ -1,0 +1,1103 @@
+{
+ "summary": {
+  "run_id": "20261127T095105",
+  "split": "dev_extra",
+  "config": "A",
+  "n": 10,
+  "status_counts": {
+   "answered": 7,
+   "insufficient_evidence": 3,
+   "error_retrieval": 0,
+   "error_generation": 0
+  },
+  "answerable_answered": "7/8",
+  "answerable_wrongly_refused": 1,
+  "no_evidence_refused": "2/2",
+  "no_evidence_answered": 0,
+  "errors": 0,
+  "rewrite_fallbacks": {
+   "error": 0,
+   "empty": 0,
+   "too_long": 0,
+   "intent_guard": 0
+  },
+  "generation_ms_mean_median_n": [
+   1167.4,
+   1213.3,
+   10
+  ],
+  "generation_config": {
+   "backend": "openai",
+   "model": "gpt-6-luna",
+   "effort": "low",
+   "max_new_tokens": 1024,
+   "min_max_tokens": 512,
+   "context_chunks": 5,
+   "prefill": null,
+   "store": false,
+   "sampling": "not sent (temperature/top_p 허용 여부 미확인, Responses API 에는 seed 없음)",
+   "budget_usd": 5.0,
+   "prices_usd_per_mtok": {
+    "input": 0.1,
+    "output": 0.5
+   },
+   "prompt_version": "prompt-v3",
+   "prompt_sha256": "2ded3a8d0e0c3bd04f27407038749c0f7561de7f486acbe91a233204683280cf"
+  },
+  "models": {
+   "embedding": {
+    "repo": "BAAI/bge-small-en-v1.5",
+    "revision": "5c38ec7c405ec4b44b94cc5a9bb96e735b38267a",
+    "license": "mit",
+    "local_dir": "data/models/BAAI__bge-small-en-v1.5",
+    "weights_bytes": {
+     "model.safetensors": 133466304
+    }
+   },
+   "reranker": {
+    "repo": "cross-encoder/ms-marco-MiniLM-L6-v2",
+    "revision": "233902d25c440f23af6f7d6e94d2946bac0bee0a",
+    "license": "apache-2.0",
+    "local_dir": "data/models/cross-encoder__ms-marco-MiniLM-L6-v2",
+    "weights_bytes": {
+     "model.safetensors": 90870598
+    }
+   },
+   "generator": {
+    "repo": "Qwen/Qwen2.5-1.5B-Instruct",
+    "revision": "989aa7980e4cf806f80c7fef2b1adb7bc71aa306",
+    "license": "apache-2.0",
+    "local_dir": "data/models/Qwen__Qwen2.5-1.5B-Instruct",
+    "weights_bytes": {
+     "model.safetensors": 3087467144
+    }
+   }
+  },
+  "api_cost_usd": 0.00086,
+  "served_models": [
+   "gpt-6-luna"
+  ]
+ },
+ "rows": [
+  {
+   "question": "Which company's agent analyzes performance bottlenecks of inference engines from CPU-GPU interactions down to GPU kernels, and how is it delivered?",
+   "config": "A",
+   "status": "answered",
+   "answer": "nCompass Technologies’ agent analyzes GPU-system performance bottlenecks, including inference engines, from CPU-GPU interactions down to GPU kernels [1]. It is delivered paired with Cursor or Claude Code to automate the reasoning and code implementation steps of performance optimization [1].",
+   "citations": [
+    {
+     "n": 1,
+     "chunk_id": "yc-ncompass-technologies#c00",
+     "doc_id": "yc-ncompass-technologies",
+     "span": [
+      0,
+      464
+     ]
+    }
+   ],
+   "invalid_citations": [],
+   "blocked_reason": null,
+   "error": null,
+   "raw_output": "STATUS: ANSWER\nANSWER: nCompass Technologies’ agent analyzes GPU-system performance bottlenecks, including inference engines, from CPU-GPU interactions down to GPU kernels [1]. It is delivered paired with Cursor or Claude Code to automate the reasoning and code implementation steps of performance optimization [1].",
+   "retrieved": [
+    {
+     "n": 1,
+     "chunk_id": "yc-ncompass-technologies#c00",
+     "doc_id": "yc-ncompass-technologies",
+     "span": [
+      0,
+      464
+     ],
+     "score": 0.819537878036499
+    },
+    {
+     "n": 2,
+     "chunk_id": "yc-sf-tensor#c02",
+     "doc_id": "yc-sf-tensor",
+     "span": [
+      780,
+      1213
+     ],
+     "score": 0.7565828561782837
+    },
+    {
+     "n": 3,
+     "chunk_id": "yc-cumulus-labs#c02",
+     "doc_id": "yc-cumulus-labs",
+     "span": [
+      629,
+      891
+     ],
+     "score": 0.7322055697441101
+    },
+    {
+     "n": 4,
+     "chunk_id": "yc-isoquant#c00",
+     "doc_id": "yc-isoquant",
+     "span": [
+      0,
+      469
+     ],
+     "score": 0.727340579032898
+    },
+    {
+     "n": 5,
+     "chunk_id": "yc-sf-tensor#c03",
+     "doc_id": "yc-sf-tensor",
+     "span": [
+      1130,
+      1477
+     ],
+     "score": 0.7271813154220581
+    }
+   ],
+   "timing_ms": {
+    "retrieval": 18.1,
+    "generation": 1333.7,
+    "total": 1351.9
+   },
+   "generated_tokens": 63,
+   "rewrite": null,
+   "llm_meta": {
+    "requested_model": "gpt-6-luna",
+    "served_model": "gpt-6-luna",
+    "request_id": "req_12226df8f46c406eb6b4c7ee702e62a2",
+    "response_id": "resp_091466c2176b009b016b08d3f920a087d0ac543dad9abb705d",
+    "input_tokens": 715,
+    "output_tokens": 63,
+    "reasoning_tokens": 0,
+    "status": "completed",
+    "incomplete_reason": null,
+    "cost_usd": 0.000103
+   },
+   "run_id": "20261127T095105",
+   "question_id": "X01",
+   "type": "direct",
+   "answerable": true,
+   "expected_key_facts": [
+    "nCompass Technologies",
+    "VSCode extension (paired with Cursor / Claude Code)"
+   ],
+   "allowed_chunk_ids": [
+    "yc-ncompass-technologies#c00",
+    "yc-ncompass-technologies#c01"
+   ],
+   "grading": null
+  },
+  {
+   "question": "Which company optimizes models for onboard compute such as NVIDIA Orin/Thor and Qualcomm, and which kind of teams is it built for?",
+   "config": "A",
+   "status": "insufficient_evidence",
+   "answer": "The provided documents do not contain this information.",
+   "citations": [],
+   "invalid_citations": [],
+   "blocked_reason": null,
+   "error": null,
+   "raw_output": "STATUS: INSUFFICIENT\nANSWER: The provided documents do not contain this information.",
+   "retrieved": [
+    {
+     "n": 1,
+     "chunk_id": "yc-sf-tensor#c03",
+     "doc_id": "yc-sf-tensor",
+     "span": [
+      1130,
+      1477
+     ],
+     "score": 0.6774924993515015
+    },
+    {
+     "n": 2,
+     "chunk_id": "yc-zibra-labs#c00",
+     "doc_id": "yc-zibra-labs",
+     "span": [
+      0,
+      351
+     ],
+     "score": 0.6729121208190918
+    },
+    {
+     "n": 3,
+     "chunk_id": "yc-sf-tensor#c02",
+     "doc_id": "yc-sf-tensor",
+     "span": [
+      780,
+      1213
+     ],
+     "score": 0.6708121299743652
+    },
+    {
+     "n": 4,
+     "chunk_id": "yc-ncompass-technologies#c00",
+     "doc_id": "yc-ncompass-technologies",
+     "span": [
+      0,
+      464
+     ],
+     "score": 0.6634660363197327
+    },
+    {
+     "n": 5,
+     "chunk_id": "yc-zibra-labs#c01",
+     "doc_id": "yc-zibra-labs",
+     "span": [
+      182,
+      532
+     ],
+     "score": 0.6632803678512573
+    }
+   ],
+   "timing_ms": {
+    "retrieval": 15.5,
+    "generation": 1125.2,
+    "total": 1140.7
+   },
+   "generated_tokens": 22,
+   "rewrite": null,
+   "llm_meta": {
+    "requested_model": "gpt-6-luna",
+    "served_model": "gpt-6-luna",
+    "request_id": "req_50c3dbdb6fee4ad394bc7376f9798c9b",
+    "response_id": "resp_0e192543d10dac37016b08d3fa5ea087d0b7796dd685b9ff59",
+    "input_tokens": 680,
+    "output_tokens": 22,
+    "reasoning_tokens": 0,
+    "status": "completed",
+    "incomplete_reason": null,
+    "cost_usd": 7.9e-05
+   },
+   "run_id": "20261127T095105",
+   "question_id": "X02",
+   "type": "direct",
+   "answerable": true,
+   "expected_key_facts": [
+    "RunLocal AI",
+    "Physical AI engineering teams (autonomous vehicles, robotics, smart cameras)"
+   ],
+   "allowed_chunk_ids": [
+    "yc-runlocal-ai#c00"
+   ],
+   "grading": null
+  },
+  {
+   "question": "Which ML compiler generates GPU code and says its stack makes models 10x faster while cutting idle GPU costs?",
+   "config": "A",
+   "status": "answered",
+   "answer": "Luminal builds an ML framework and compiler that generates GPU code; it says its stack makes models 10x faster and cuts idle GPU costs. [1]",
+   "citations": [
+    {
+     "n": 1,
+     "chunk_id": "yc-luminal#c00",
+     "doc_id": "yc-luminal",
+     "span": [
+      0,
+      242
+     ]
+    }
+   ],
+   "invalid_citations": [],
+   "blocked_reason": null,
+   "error": null,
+   "raw_output": "STATUS: ANSWER\nANSWER: Luminal builds an ML framework and compiler that generates GPU code; it says its stack makes models 10x faster and cuts idle GPU costs. [1]",
+   "retrieved": [
+    {
+     "n": 1,
+     "chunk_id": "yc-luminal#c00",
+     "doc_id": "yc-luminal",
+     "span": [
+      0,
+      242
+     ],
+     "score": 0.8229566812515259
+    },
+    {
+     "n": 2,
+     "chunk_id": "yc-ncompass-technologies#c00",
+     "doc_id": "yc-ncompass-technologies",
+     "span": [
+      0,
+      464
+     ],
+     "score": 0.7511217594146729
+    },
+    {
+     "n": 3,
+     "chunk_id": "yc-tensorpool#c00",
+     "doc_id": "yc-tensorpool",
+     "span": [
+      0,
+      157
+     ],
+     "score": 0.7462534308433533
+    },
+    {
+     "n": 4,
+     "chunk_id": "yc-sf-tensor#c01",
+     "doc_id": "yc-sf-tensor",
+     "span": [
+      415,
+      869
+     ],
+     "score": 0.7193722724914551
+    },
+    {
+     "n": 5,
+     "chunk_id": "yc-sf-tensor#c02",
+     "doc_id": "yc-sf-tensor",
+     "span": [
+      780,
+      1213
+     ],
+     "score": 0.7127590179443359
+    }
+   ],
+   "timing_ms": {
+    "retrieval": 9.9,
+    "generation": 1256.8,
+    "total": 1266.7
+   },
+   "generated_tokens": 43,
+   "rewrite": null,
+   "llm_meta": {
+    "requested_model": "gpt-6-luna",
+    "served_model": "gpt-6-luna",
+    "request_id": "req_c4226250a8b744b39e3e7560b2f85fe7",
+    "response_id": "resp_0aaf57be070af40f016b08d3fb7b2487d0bb0c8fdd0d41d848",
+    "input_tokens": 643,
+    "output_tokens": 43,
+    "reasoning_tokens": 0,
+    "status": "completed",
+    "incomplete_reason": null,
+    "cost_usd": 8.6e-05
+   },
+   "run_id": "20261127T095105",
+   "question_id": "X03",
+   "type": "variant_or_confusable",
+   "answerable": true,
+   "expected_key_facts": [
+    "Luminal",
+    "ML framework and compiler that generates GPU code",
+    "10x model speed"
+   ],
+   "allowed_chunk_ids": [
+    "yc-luminal#c00"
+   ],
+   "grading": null
+  },
+  {
+   "question": "Which company deploys air-gapped GPU containers on-prem for defense teams, and which compliance requirements does it mention?",
+   "config": "A",
+   "status": "answered",
+   "answer": "BayMachines deploys air-gapped GPU containers on-prem for defense teams [1]. It mentions CMMC and NIST 800-171 requirements [1].",
+   "citations": [
+    {
+     "n": 1,
+     "chunk_id": "yc-baymachines#c00",
+     "doc_id": "yc-baymachines",
+     "span": [
+      0,
+      255
+     ]
+    }
+   ],
+   "invalid_citations": [],
+   "blocked_reason": null,
+   "error": null,
+   "raw_output": "STATUS: ANSWER\nANSWER: BayMachines deploys air-gapped GPU containers on-prem for defense teams [1]. It mentions CMMC and NIST 800-171 requirements [1].",
+   "retrieved": [
+    {
+     "n": 1,
+     "chunk_id": "yc-baymachines#c00",
+     "doc_id": "yc-baymachines",
+     "span": [
+      0,
+      255
+     ],
+     "score": 0.79485023021698
+    },
+    {
+     "n": 2,
+     "chunk_id": "yc-tinfoil#c01",
+     "doc_id": "yc-tinfoil",
+     "span": [
+      224,
+      559
+     ],
+     "score": 0.6630665063858032
+    },
+    {
+     "n": 3,
+     "chunk_id": "yc-comfy-deploy#c02",
+     "doc_id": "yc-comfy-deploy",
+     "span": [
+      529,
+      1029
+     ],
+     "score": 0.6517539024353027
+    },
+    {
+     "n": 4,
+     "chunk_id": "yc-sf-tensor#c02",
+     "doc_id": "yc-sf-tensor",
+     "span": [
+      780,
+      1213
+     ],
+     "score": 0.6497979760169983
+    },
+    {
+     "n": 5,
+     "chunk_id": "yc-thunder-compute#c00",
+     "doc_id": "yc-thunder-compute",
+     "span": [
+      0,
+      166
+     ],
+     "score": 0.6443147659301758
+    }
+   ],
+   "timing_ms": {
+    "retrieval": 11.9,
+    "generation": 1015.4,
+    "total": 1027.4
+   },
+   "generated_tokens": 43,
+   "rewrite": null,
+   "llm_meta": {
+    "requested_model": "gpt-6-luna",
+    "served_model": "gpt-6-luna",
+    "request_id": "req_f655e51557bd4a2abedc9f98774f94f7",
+    "response_id": "resp_0e3c61fec429ac18016b08d3fcbf2487d0a430b404148fa3bf",
+    "input_tokens": 635,
+    "output_tokens": 43,
+    "reasoning_tokens": 0,
+    "status": "completed",
+    "incomplete_reason": null,
+    "cost_usd": 8.5e-05
+   },
+   "run_id": "20261127T095105",
+   "question_id": "X04",
+   "type": "direct",
+   "answerable": true,
+   "expected_key_facts": [
+    "BayMachines",
+    "CMMC",
+    "NIST 800-171"
+   ],
+   "allowed_chunk_ids": [
+    "yc-baymachines#c00"
+   ],
+   "grading": null
+  },
+  {
+   "question": "Which company uses NVIDIA confidential computing on Hopper and Blackwell so that the inference provider itself cannot see user prompts?",
+   "config": "A",
+   "status": "answered",
+   "answer": "Tinfoil uses NVIDIA confidential compute mode available on Hopper and Blackwell, and states that it cannot see or access users’ queries [1][2].",
+   "citations": [
+    {
+     "n": 1,
+     "chunk_id": "yc-tinfoil#c01",
+     "doc_id": "yc-tinfoil",
+     "span": [
+      224,
+      559
+     ]
+    },
+    {
+     "n": 2,
+     "chunk_id": "yc-tinfoil#c02",
+     "doc_id": "yc-tinfoil",
+     "span": [
+      403,
+      869
+     ]
+    }
+   ],
+   "invalid_citations": [],
+   "blocked_reason": null,
+   "error": null,
+   "raw_output": "STATUS: ANSWER\nANSWER: Tinfoil uses NVIDIA confidential compute mode available on Hopper and Blackwell, and states that it cannot see or access users’ queries [1][2].",
+   "retrieved": [
+    {
+     "n": 1,
+     "chunk_id": "yc-tinfoil#c01",
+     "doc_id": "yc-tinfoil",
+     "span": [
+      224,
+      559
+     ],
+     "score": 0.7501555681228638
+    },
+    {
+     "n": 2,
+     "chunk_id": "yc-tinfoil#c02",
+     "doc_id": "yc-tinfoil",
+     "span": [
+      403,
+      869
+     ],
+     "score": 0.7372757196426392
+    },
+    {
+     "n": 3,
+     "chunk_id": "yc-cumulus-labs#c02",
+     "doc_id": "yc-cumulus-labs",
+     "span": [
+      629,
+      891
+     ],
+     "score": 0.6768125295639038
+    },
+    {
+     "n": 4,
+     "chunk_id": "yc-cumulus-labs#c01",
+     "doc_id": "yc-cumulus-labs",
+     "span": [
+      363,
+      733
+     ],
+     "score": 0.6570212841033936
+    },
+    {
+     "n": 5,
+     "chunk_id": "yc-hopper#c00",
+     "doc_id": "yc-hopper",
+     "span": [
+      0,
+      357
+     ],
+     "score": 0.642814040184021
+    }
+   ],
+   "timing_ms": {
+    "retrieval": 10.7,
+    "generation": 1250.2,
+    "total": 1260.9
+   },
+   "generated_tokens": 42,
+   "rewrite": null,
+   "llm_meta": {
+    "requested_model": "gpt-6-luna",
+    "served_model": "gpt-6-luna",
+    "request_id": "req_a39bdeb1782643dd86d2add2c4e66997",
+    "response_id": "resp_06372c245b13d647016b08d3fdc6b487d09dceba7f570b93d6",
+    "input_tokens": 660,
+    "output_tokens": 42,
+    "reasoning_tokens": 0,
+    "status": "completed",
+    "incomplete_reason": null,
+    "cost_usd": 8.7e-05
+   },
+   "run_id": "20261127T095105",
+   "question_id": "X05",
+   "type": "variant_or_confusable",
+   "answerable": true,
+   "expected_key_facts": [
+    "Tinfoil",
+    "NVIDIA confidential compute mode on Hopper and Blackwell"
+   ],
+   "allowed_chunk_ids": [
+    "yc-tinfoil#c01",
+    "yc-tinfoil#c02",
+    "yc-tinfoil#c08",
+    "yc-tinfoil#c09"
+   ],
+   "grading": null
+  },
+  {
+   "question": "Which company says an algorithm designs the best hardware accelerator for a given ML model, and what advantage over GPUs does it claim?",
+   "config": "A",
+   "status": "answered",
+   "answer": "Tensil says its algorithm designs the best hardware accelerator for a machine learning model [2]. It claims 10x better performance per watt-dollar than GPUs and other hardware accelerators [2].",
+   "citations": [
+    {
+     "n": 2,
+     "chunk_id": "yc-tensil#c00",
+     "doc_id": "yc-tensil",
+     "span": [
+      0,
+      412
+     ]
+    }
+   ],
+   "invalid_citations": [],
+   "blocked_reason": null,
+   "error": null,
+   "raw_output": "STATUS: ANSWER\nANSWER: Tensil says its algorithm designs the best hardware accelerator for a machine learning model [2]. It claims 10x better performance per watt-dollar than GPUs and other hardware accelerators [2].",
+   "retrieved": [
+    {
+     "n": 1,
+     "chunk_id": "yc-sf-tensor#c03",
+     "doc_id": "yc-sf-tensor",
+     "span": [
+      1130,
+      1477
+     ],
+     "score": 0.7633017301559448
+    },
+    {
+     "n": 2,
+     "chunk_id": "yc-tensil#c00",
+     "doc_id": "yc-tensil",
+     "span": [
+      0,
+      412
+     ],
+     "score": 0.7617979049682617
+    },
+    {
+     "n": 3,
+     "chunk_id": "yc-sf-tensor#c02",
+     "doc_id": "yc-sf-tensor",
+     "span": [
+      780,
+      1213
+     ],
+     "score": 0.7486557960510254
+    },
+    {
+     "n": 4,
+     "chunk_id": "yc-sf-tensor#c01",
+     "doc_id": "yc-sf-tensor",
+     "span": [
+      415,
+      869
+     ],
+     "score": 0.7417383790016174
+    },
+    {
+     "n": 5,
+     "chunk_id": "yc-luminal#c00",
+     "doc_id": "yc-luminal",
+     "span": [
+      0,
+      242
+     ],
+     "score": 0.7408726811408997
+    }
+   ],
+   "timing_ms": {
+    "retrieval": 10.4,
+    "generation": 1342.4,
+    "total": 1352.8
+   },
+   "generated_tokens": 49,
+   "rewrite": null,
+   "llm_meta": {
+    "requested_model": "gpt-6-luna",
+    "served_model": "gpt-6-luna",
+    "request_id": "req_4ad19da770fc4d2b83879b2cd06bc882",
+    "response_id": "resp_0f262b795beee0e8016b08d3ff095487d0bcdceb9096fffae9",
+    "input_tokens": 667,
+    "output_tokens": 49,
+    "reasoning_tokens": 0,
+    "status": "completed",
+    "incomplete_reason": null,
+    "cost_usd": 9.1e-05
+   },
+   "run_id": "20261127T095105",
+   "question_id": "X06",
+   "type": "variant_or_confusable",
+   "answerable": true,
+   "expected_key_facts": [
+    "Tensil",
+    "10x better performance per watt-dollar than GPUs"
+   ],
+   "allowed_chunk_ids": [
+    "yc-tensil#c00"
+   ],
+   "grading": null
+  },
+  {
+   "question": "Which company builds neuromorphic AI chips from spiking neurons, and what is its chip technology called?",
+   "config": "A",
+   "status": "answered",
+   "answer": "Rain Neuromorphics builds neuromorphic AI chips from spiking neurons and physical synapses [1]. Its chip technology is called the Memristive Nanowire Neural Network (MN3) [1].",
+   "citations": [
+    {
+     "n": 1,
+     "chunk_id": "yc-rain-neuromorphics#c01",
+     "doc_id": "yc-rain-neuromorphics",
+     "span": [
+      284,
+      759
+     ]
+    }
+   ],
+   "invalid_citations": [],
+   "blocked_reason": null,
+   "error": null,
+   "raw_output": "STATUS: ANSWER\nANSWER: Rain Neuromorphics builds neuromorphic AI chips from spiking neurons and physical synapses [1]. Its chip technology is called the Memristive Nanowire Neural Network (MN3) [1].",
+   "retrieved": [
+    {
+     "n": 1,
+     "chunk_id": "yc-rain-neuromorphics#c01",
+     "doc_id": "yc-rain-neuromorphics",
+     "span": [
+      284,
+      759
+     ],
+     "score": 0.7784596085548401
+    },
+    {
+     "n": 2,
+     "chunk_id": "yc-rain-neuromorphics#c00",
+     "doc_id": "yc-rain-neuromorphics",
+     "span": [
+      0,
+      429
+     ],
+     "score": 0.7381301522254944
+    },
+    {
+     "n": 3,
+     "chunk_id": "yc-baud#c00",
+     "doc_id": "yc-baud",
+     "span": [
+      0,
+      167
+     ],
+     "score": 0.69261234998703
+    },
+    {
+     "n": 4,
+     "chunk_id": "yc-reduced-energy-microsystems#c00",
+     "doc_id": "yc-reduced-energy-microsystems",
+     "span": [
+      0,
+      471
+     ],
+     "score": 0.6480230689048767
+    },
+    {
+     "n": 5,
+     "chunk_id": "yc-wafer#c00",
+     "doc_id": "yc-wafer",
+     "span": [
+      0,
+      261
+     ],
+     "score": 0.6319857835769653
+    }
+   ],
+   "timing_ms": {
+    "retrieval": 8.9,
+    "generation": 1463.4,
+    "total": 1472.3
+   },
+   "generated_tokens": 54,
+   "rewrite": null,
+   "llm_meta": {
+    "requested_model": "gpt-6-luna",
+    "served_model": "gpt-6-luna",
+    "request_id": "req_364e22ef5f714137af0712a73c167667",
+    "response_id": "resp_02445c4f7588ea43016b08d40067f487d0af06c42009508e01",
+    "input_tokens": 660,
+    "output_tokens": 54,
+    "reasoning_tokens": 0,
+    "status": "completed",
+    "incomplete_reason": null,
+    "cost_usd": 9.3e-05
+   },
+   "run_id": "20261127T095105",
+   "question_id": "X07",
+   "type": "direct",
+   "answerable": true,
+   "expected_key_facts": [
+    "Rain Neuromorphics",
+    "Memristive Nanowire Neural Network (MN3)"
+   ],
+   "allowed_chunk_ids": [
+    "yc-rain-neuromorphics#c00",
+    "yc-rain-neuromorphics#c01"
+   ],
+   "grading": null
+  },
+  {
+   "question": "Which company helps neoclouds run GPUs at scale with burn-in and validation, repair, usage records, and white-label consoles?",
+   "config": "A",
+   "status": "answered",
+   "answer": "Lilac helps neoclouds operate GPUs at scale, including burn-in and validation, repair, usage records, and white-label consoles. [1]",
+   "citations": [
+    {
+     "n": 1,
+     "chunk_id": "yc-lilac#c00",
+     "doc_id": "yc-lilac",
+     "span": [
+      0,
+      150
+     ]
+    }
+   ],
+   "invalid_citations": [],
+   "blocked_reason": null,
+   "error": null,
+   "raw_output": "STATUS: ANSWER\nANSWER: Lilac helps neoclouds operate GPUs at scale, including burn-in and validation, repair, usage records, and white-label consoles. [1]",
+   "retrieved": [
+    {
+     "n": 1,
+     "chunk_id": "yc-lilac#c00",
+     "doc_id": "yc-lilac",
+     "span": [
+      0,
+      150
+     ],
+     "score": 0.7789142727851868
+    },
+    {
+     "n": 2,
+     "chunk_id": "yc-zibra-labs#c00",
+     "doc_id": "yc-zibra-labs",
+     "span": [
+      0,
+      351
+     ],
+     "score": 0.6557869911193848
+    },
+    {
+     "n": 3,
+     "chunk_id": "yc-shadeform#c00",
+     "doc_id": "yc-shadeform",
+     "span": [
+      0,
+      397
+     ],
+     "score": 0.6533477902412415
+    },
+    {
+     "n": 4,
+     "chunk_id": "yc-sf-tensor#c01",
+     "doc_id": "yc-sf-tensor",
+     "span": [
+      415,
+      869
+     ],
+     "score": 0.6415872573852539
+    },
+    {
+     "n": 5,
+     "chunk_id": "yc-posh#c01",
+     "doc_id": "yc-posh",
+     "span": [
+      447,
+      680
+     ],
+     "score": 0.6325191259384155
+    }
+   ],
+   "timing_ms": {
+    "retrieval": 14.0,
+    "generation": 1176.4,
+    "total": 1190.4
+   },
+   "generated_tokens": 42,
+   "rewrite": null,
+   "llm_meta": {
+    "requested_model": "gpt-6-luna",
+    "served_model": "gpt-6-luna",
+    "request_id": "req_48fd6373c6d241848ca83fd2384e8e89",
+    "response_id": "resp_01d23ed4f3c0b872016b08d401e2f487d0901462db307cbe9b",
+    "input_tokens": 622,
+    "output_tokens": 42,
+    "reasoning_tokens": 0,
+    "status": "completed",
+    "incomplete_reason": null,
+    "cost_usd": 8.3e-05
+   },
+   "run_id": "20261127T095105",
+   "question_id": "X08",
+   "type": "variant_or_confusable",
+   "answerable": true,
+   "expected_key_facts": [
+    "Lilac",
+    "provisioning, burn-in and validation, monitoring, repair, usage records, white-label consoles"
+   ],
+   "allowed_chunk_ids": [
+    "yc-lilac#c00"
+   ],
+   "grading": null
+  },
+  {
+   "question": "What measured latency does Hopper report for its voice inference cloud?",
+   "config": "A",
+   "status": "insufficient_evidence",
+   "answer": "The provided documents do not contain this information.",
+   "citations": [],
+   "invalid_citations": [],
+   "blocked_reason": null,
+   "error": null,
+   "raw_output": "STATUS: INSUFFICIENT\nANSWER: The provided documents do not contain this information.",
+   "retrieved": [
+    {
+     "n": 1,
+     "chunk_id": "yc-hopper#c00",
+     "doc_id": "yc-hopper",
+     "span": [
+      0,
+      357
+     ],
+     "score": 0.79176926612854
+    },
+    {
+     "n": 2,
+     "chunk_id": "yc-pipeshift#c00",
+     "doc_id": "yc-pipeshift",
+     "span": [
+      0,
+      374
+     ],
+     "score": 0.6991575360298157
+    },
+    {
+     "n": 3,
+     "chunk_id": "yc-dreamscale-labs#c00",
+     "doc_id": "yc-dreamscale-labs",
+     "span": [
+      0,
+      309
+     ],
+     "score": 0.660947322845459
+    },
+    {
+     "n": 4,
+     "chunk_id": "yc-cumulus-labs#c01",
+     "doc_id": "yc-cumulus-labs",
+     "span": [
+      363,
+      733
+     ],
+     "score": 0.652817964553833
+    },
+    {
+     "n": 5,
+     "chunk_id": "yc-cumulus-labs#c02",
+     "doc_id": "yc-cumulus-labs",
+     "span": [
+      629,
+      891
+     ],
+     "score": 0.6490532755851746
+    }
+   ],
+   "timing_ms": {
+    "retrieval": 11.9,
+    "generation": 843.0,
+    "total": 854.9
+   },
+   "generated_tokens": 22,
+   "rewrite": null,
+   "llm_meta": {
+    "requested_model": "gpt-6-luna",
+    "served_model": "gpt-6-luna",
+    "request_id": "req_0b1861ec614e497b8d1a577c59893fcb",
+    "response_id": "resp_0a737799f9841c8b016b08d403105087d08a1cc67678ecc113",
+    "input_tokens": 645,
+    "output_tokens": 22,
+    "reasoning_tokens": 0,
+    "status": "completed",
+    "incomplete_reason": null,
+    "cost_usd": 7.5e-05
+   },
+   "run_id": "20261127T095105",
+   "question_id": "X09",
+   "type": "no_evidence",
+   "answerable": false,
+   "expected_key_facts": [
+    "정보 부족 안내"
+   ],
+   "allowed_chunk_ids": [],
+   "grading": null
+  },
+  {
+   "question": "What percentage of ML engineer time does Chamber say it saves?",
+   "config": "A",
+   "status": "insufficient_evidence",
+   "answer": "The provided documents do not contain this information.",
+   "citations": [],
+   "invalid_citations": [],
+   "blocked_reason": null,
+   "error": null,
+   "raw_output": "STATUS: INSUFFICIENT\nANSWER: The provided documents do not contain this information.",
+   "retrieved": [
+    {
+     "n": 1,
+     "chunk_id": "yc-chamber#c00",
+     "doc_id": "yc-chamber",
+     "span": [
+      0,
+      490
+     ],
+     "score": 0.7279369831085205
+    },
+    {
+     "n": 2,
+     "chunk_id": "yc-orchestra#c01",
+     "doc_id": "yc-orchestra",
+     "span": [
+      330,
+      733
+     ],
+     "score": 0.5838698148727417
+    },
+    {
+     "n": 3,
+     "chunk_id": "yc-orchestra#c02",
+     "doc_id": "yc-orchestra",
+     "span": [
+      680,
+      864
+     ],
+     "score": 0.5775151252746582
+    },
+    {
+     "n": 4,
+     "chunk_id": "yc-overshoot#c00",
+     "doc_id": "yc-overshoot",
+     "span": [
+      0,
+      470
+     ],
+     "score": 0.5726186633110046
+    },
+    {
+     "n": 5,
+     "chunk_id": "yc-tensil#c00",
+     "doc_id": "yc-tensil",
+     "span": [
+      0,
+      412
+     ],
+     "score": 0.5685362219810486
+    }
+   ],
+   "timing_ms": {
+    "retrieval": 11.5,
+    "generation": 867.1,
+    "total": 878.7
+   },
+   "generated_tokens": 22,
+   "rewrite": null,
+   "llm_meta": {
+    "requested_model": "gpt-6-luna",
+    "served_model": "gpt-6-luna",
+    "request_id": "req_bb58defe5c524b0bbcde30e14532cd82",
+    "response_id": "resp_0cf331bcd30fb2c4016b08d403e90087d089717432e46e92e8",
+    "input_tokens": 671,
+    "output_tokens": 22,
+    "reasoning_tokens": 0,
+    "status": "completed",
+    "incomplete_reason": null,
+    "cost_usd": 7.8e-05
+   },
+   "run_id": "20261127T095105",
+   "question_id": "X10",
+   "type": "no_evidence",
+   "answerable": false,
+   "expected_key_facts": [
+    "정보 부족 안내"
+   ],
+   "allowed_chunk_ids": [],
+   "grading": null
+  }
+ ]
+}
