@@ -13,7 +13,7 @@
 | 설계·사전 등록 (Claude 제안, 본인 승인) | 성공 기준, 평가셋 30문항, 모델 선택 기준, C+R 시험 계획을 결과 전에 기록 | [problem.md](docs/problem.md), [eval/FREEZE.json](eval/FREEZE.json) |
 | 코드 검토 (별도 컨텍스트 AI 리뷰) | PR #1 지적 9건, Day 3 지적 10건(important 3건 수정) | 커밋 `57016f6`, `3928e86`, problem.md 변경 기록 |
 | 검증 (본인 + Claude) | 새 폴더 재현 점검, 테스트 141건 | [report.md](report.md) 10절 |
-| 채점 | Claude 1차 의미 판정 완료, **사람 확인은 미완료** | [results/test/grading_test_claude_first_pass.csv](results/test/grading_test_claude_first_pass.csv) |
+| 채점 | Claude 1차 의미 판정을 본인이 17문항 모두 확인해 유지(근거 적합은 사람 대조 없음) | [results/test/grading_test_claude_first_pass.csv](results/test/grading_test_claude_first_pass.csv) |
 
 ## 2. PR·커밋
 
@@ -26,6 +26,6 @@
 ## 3. 사람이 확인한 것과 하지 않은 것
 
 - 확인함: 주제·범위·비용 한도·모델·고정 시점의 결정, PR 병합, 최종 평가 실행.
-- 채점 확인: 쟁점 5문항(T03·T04·T11·T13·T17)은 본인이 읽고 1차 판정을 유지했다. **나머지 12문항은 미확인.**
-- **미확인:** 위 5문항 외의 정답 충족 1차 채점. 코드 줄 단위 검토를 본인이 직접 한 기록은 없다.
+- 채점 확인: 정답 충족은 17문항 모두 본인이 확인해 1차 판정을 유지했다(판정 변경 없음).
+- **미확인:** 근거 적합(인용 대조)의 사람 확인. 코드 줄 단위 검토를 본인이 직접 한 기록은 없다.
 - 이 문서의 한계: 개인별 기여를 가를 팀원이 없어 기여 비율은 적지 않는다.
