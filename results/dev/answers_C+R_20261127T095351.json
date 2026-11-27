@@ -1,0 +1,1198 @@
+{
+ "summary": {
+  "run_id": "20261127T095351",
+  "split": "dev",
+  "config": "C+R",
+  "n": 10,
+  "status_counts": {
+   "answered": 8,
+   "insufficient_evidence": 2,
+   "error_retrieval": 0,
+   "error_generation": 0
+  },
+  "answerable_answered": "8/8",
+  "answerable_wrongly_refused": 0,
+  "no_evidence_refused": "2/2",
+  "no_evidence_answered": 0,
+  "errors": 0,
+  "rewrite_fallbacks": {
+   "error": 0,
+   "empty": 0,
+   "too_long": 0,
+   "intent_guard": 0
+  },
+  "generation_ms_mean_median_n": [
+   1014.4,
+   1040.2,
+   10
+  ],
+  "generation_config": {
+   "backend": "openai",
+   "model": "gpt-6-luna",
+   "effort": "low",
+   "max_new_tokens": 1024,
+   "min_max_tokens": 512,
+   "context_chunks": 5,
+   "prefill": null,
+   "store": false,
+   "sampling": "not sent (temperature/top_p 허용 여부 미확인, Responses API 에는 seed 없음)",
+   "budget_usd": 5.0,
+   "prices_usd_per_mtok": {
+    "input": 0.1,
+    "output": 0.5
+   },
+   "prompt_version": "prompt-v3",
+   "prompt_sha256": "2ded3a8d0e0c3bd04f27407038749c0f7561de7f486acbe91a233204683280cf"
+  },
+  "models": {
+   "embedding": {
+    "repo": "BAAI/bge-small-en-v1.5",
+    "revision": "5c38ec7c405ec4b44b94cc5a9bb96e735b38267a",
+    "license": "mit",
+    "local_dir": "data/models/BAAI__bge-small-en-v1.5",
+    "weights_bytes": {
+     "model.safetensors": 133466304
+    }
+   },
+   "reranker": {
+    "repo": "cross-encoder/ms-marco-MiniLM-L6-v2",
+    "revision": "233902d25c440f23af6f7d6e94d2946bac0bee0a",
+    "license": "apache-2.0",
+    "local_dir": "data/models/cross-encoder__ms-marco-MiniLM-L6-v2",
+    "weights_bytes": {
+     "model.safetensors": 90870598
+    }
+   },
+   "generator": {
+    "repo": "Qwen/Qwen2.5-1.5B-Instruct",
+    "revision": "989aa7980e4cf806f80c7fef2b1adb7bc71aa306",
+    "license": "apache-2.0",
+    "local_dir": "data/models/Qwen__Qwen2.5-1.5B-Instruct",
+    "weights_bytes": {
+     "model.safetensors": 3087467144
+    }
+   }
+  },
+  "api_cost_usd": 0.000844,
+  "served_models": [
+   "gpt-6-luna"
+  ]
+ },
+ "rows": [
+  {
+   "question": "Which serverless GPU platform offers over 12 varieties of GPU chips, and what cost savings do customers typically see versus traditional cloud providers?",
+   "config": "C+R",
+   "status": "answered",
+   "answer": "Cerebrium offers over 12 varieties of GPU chips [1]. Customers typically experience 40% in cost savings compared to traditional cloud providers [2].",
+   "citations": [
+    {
+     "n": 1,
+     "chunk_id": "yc-cerebrium#c00",
+     "doc_id": "yc-cerebrium",
+     "span": [
+      0,
+      384
+     ]
+    },
+    {
+     "n": 2,
+     "chunk_id": "yc-cerebrium#c01",
+     "doc_id": "yc-cerebrium",
+     "span": [
+      319,
+      584
+     ]
+    }
+   ],
+   "invalid_citations": [],
+   "blocked_reason": null,
+   "error": null,
+   "raw_output": "STATUS: ANSWER\nANSWER: Cerebrium offers over 12 varieties of GPU chips [1]. Customers typically experience 40% in cost savings compared to traditional cloud providers [2].",
+   "retrieved": [
+    {
+     "n": 1,
+     "chunk_id": "yc-cerebrium#c00",
+     "doc_id": "yc-cerebrium",
+     "span": [
+      0,
+      384
+     ],
+     "score": 3.0462069511413574
+    },
+    {
+     "n": 2,
+     "chunk_id": "yc-cerebrium#c01",
+     "doc_id": "yc-cerebrium",
+     "span": [
+      319,
+      584
+     ],
+     "score": 1.7388659715652466
+    },
+    {
+     "n": 3,
+     "chunk_id": "yc-cedana#c00",
+     "doc_id": "yc-cedana",
+     "span": [
+      0,
+      464
+     ],
+     "score": -2.6935839653015137
+    },
+    {
+     "n": 4,
+     "chunk_id": "yc-tensorpool#c00",
+     "doc_id": "yc-tensorpool",
+     "span": [
+      0,
+      157
+     ],
+     "score": -4.649886608123779
+    },
+    {
+     "n": 5,
+     "chunk_id": "yc-shadeform#c00",
+     "doc_id": "yc-shadeform",
+     "span": [
+      0,
+      397
+     ],
+     "score": -4.7118377685546875
+    }
+   ],
+   "timing_ms": {
+    "retrieval": 1820.2,
+    "generation": 1013.0,
+    "total": 2833.2
+   },
+   "generated_tokens": 42,
+   "rewrite": {
+    "original": "Which serverless GPU platform offers over 12 varieties of GPU chips, and what cost savings do customers typically see versus traditional cloud providers?",
+    "rewritten": "YC company serverless GPU platform over 12 varieties of GPU chips cost savings versus traditional cloud providers",
+    "used": "YC company serverless GPU platform over 12 varieties of GPU chips cost savings versus traditional cloud providers",
+    "fallback_reason": null,
+    "missing_tokens": [],
+    "generated_tokens": 79,
+    "ms": 1751.4,
+    "error": null
+   },
+   "llm_meta": {
+    "requested_model": "gpt-6-luna",
+    "served_model": "gpt-6-luna",
+    "request_id": "req_96bab59f6ff644d7b3c6cc7b2af8c9fd",
+    "response_id": "resp_05fe785e4d229841016b08d4a07eec87d08f16603d1df75cde",
+    "input_tokens": 660,
+    "output_tokens": 42,
+    "reasoning_tokens": 0,
+    "status": "completed",
+    "incomplete_reason": null,
+    "cost_usd": 8.7e-05
+   },
+   "run_id": "20261127T095351",
+   "question_id": "D01",
+   "type": "direct",
+   "answerable": true,
+   "expected_key_facts": [
+    "Cerebrium",
+    "about 40% cost savings versus traditional cloud providers"
+   ],
+   "allowed_chunk_ids": [
+    "yc-cerebrium#c00",
+    "yc-cerebrium#c01"
+   ],
+   "grading": null
+  },
+  {
+   "question": "Which open-source inference engine tunes its kernels on the user's hardware, and how much faster than Ollama does it claim to be?",
+   "config": "C+R",
+   "status": "answered",
+   "answer": "Magnitude is the open-source inference engine that tunes its kernels on your hardware, and it claims to be over 2x faster than Ollama. [1]",
+   "citations": [
+    {
+     "n": 1,
+     "chunk_id": "yc-magnitude#c00",
+     "doc_id": "yc-magnitude",
+     "span": [
+      0,
+      306
+     ]
+    }
+   ],
+   "invalid_citations": [],
+   "blocked_reason": null,
+   "error": null,
+   "raw_output": "STATUS: ANSWER\nANSWER: Magnitude is the open-source inference engine that tunes its kernels on your hardware, and it claims to be over 2x faster than Ollama. [1]",
+   "retrieved": [
+    {
+     "n": 1,
+     "chunk_id": "yc-magnitude#c00",
+     "doc_id": "yc-magnitude",
+     "span": [
+      0,
+      306
+     ],
+     "score": 5.439728736877441
+    },
+    {
+     "n": 2,
+     "chunk_id": "yc-cumulus-labs#c02",
+     "doc_id": "yc-cumulus-labs",
+     "span": [
+      629,
+      891
+     ],
+     "score": -1.4661507606506348
+    },
+    {
+     "n": 3,
+     "chunk_id": "yc-runanywhere#c02",
+     "doc_id": "yc-runanywhere",
+     "span": [
+      537,
+      947
+     ],
+     "score": -2.0376217365264893
+    },
+    {
+     "n": 4,
+     "chunk_id": "yc-isoquant#c00",
+     "doc_id": "yc-isoquant",
+     "span": [
+      0,
+      469
+     ],
+     "score": -2.161503553390503
+    },
+    {
+     "n": 5,
+     "chunk_id": "yc-runanywhere#c00",
+     "doc_id": "yc-runanywhere",
+     "span": [
+      0,
+      394
+     ],
+     "score": -2.4340362548828125
+    }
+   ],
+   "timing_ms": {
+    "retrieval": 1395.6,
+    "generation": 1126.0,
+    "total": 2521.6
+   },
+   "generated_tokens": 44,
+   "rewrite": {
+    "original": "Which open-source inference engine tunes its kernels on the user's hardware, and how much faster than Ollama does it claim to be?",
+    "rewritten": "YC company profile open-source inference engine tunes its kernels on the user's hardware claims faster than Ollama how much",
+    "used": "YC company profile open-source inference engine tunes its kernels on the user's hardware claims faster than Ollama how much",
+    "fallback_reason": null,
+    "missing_tokens": [],
+    "generated_tokens": 97,
+    "ms": 1310.1,
+    "error": null
+   },
+   "llm_meta": {
+    "requested_model": "gpt-6-luna",
+    "served_model": "gpt-6-luna",
+    "request_id": "req_bb6e3e7aabd84b0aafe223f7776df7c6",
+    "response_id": "resp_0c834cf3475c514b016b08d4a2ff7887d08b29b7bcc38f0e8e",
+    "input_tokens": 787,
+    "output_tokens": 44,
+    "reasoning_tokens": 0,
+    "status": "completed",
+    "incomplete_reason": null,
+    "cost_usd": 0.000101
+   },
+   "run_id": "20261127T095351",
+   "question_id": "D02",
+   "type": "direct",
+   "answerable": true,
+   "expected_key_facts": [
+    "Magnitude",
+    "over 2x faster than Ollama"
+   ],
+   "allowed_chunk_ids": [
+    "yc-magnitude#c00"
+   ],
+   "grading": null
+  },
+  {
+   "question": "Which company claims a 10x TTFT speedup by optimizing prefill with KV cache transfer?",
+   "config": "C+R",
+   "status": "answered",
+   "answer": "OneTriangle claims a 10x TTFT speedup by optimizing prefill with KV cache transfer technology. [1]",
+   "citations": [
+    {
+     "n": 1,
+     "chunk_id": "yc-onetriangle#c00",
+     "doc_id": "yc-onetriangle",
+     "span": [
+      0,
+      163
+     ]
+    }
+   ],
+   "invalid_citations": [],
+   "blocked_reason": null,
+   "error": null,
+   "raw_output": "STATUS: ANSWER\nANSWER: OneTriangle claims a 10x TTFT speedup by optimizing prefill with KV cache transfer technology. [1]",
+   "retrieved": [
+    {
+     "n": 1,
+     "chunk_id": "yc-onetriangle#c00",
+     "doc_id": "yc-onetriangle",
+     "span": [
+      0,
+      163
+     ],
+     "score": 5.779227256774902
+    },
+    {
+     "n": 2,
+     "chunk_id": "yc-texel-ai#c00",
+     "doc_id": "yc-texel-ai",
+     "span": [
+      0,
+      287
+     ],
+     "score": -8.88433837890625
+    },
+    {
+     "n": 3,
+     "chunk_id": "yc-cedana#c00",
+     "doc_id": "yc-cedana",
+     "span": [
+      0,
+      464
+     ],
+     "score": -9.209190368652344
+    },
+    {
+     "n": 4,
+     "chunk_id": "yc-runanywhere#c03",
+     "doc_id": "yc-runanywhere",
+     "span": [
+      908,
+      1043
+     ],
+     "score": -9.635826110839844
+    },
+    {
+     "n": 5,
+     "chunk_id": "yc-luminal#c00",
+     "doc_id": "yc-luminal",
+     "span": [
+      0,
+      242
+     ],
+     "score": -10.097071647644043
+    }
+   ],
+   "timing_ms": {
+    "retrieval": 1472.4,
+    "generation": 940.6,
+    "total": 2413.1
+   },
+   "generated_tokens": 35,
+   "rewrite": {
+    "original": "Which company claims a 10x TTFT speedup by optimizing prefill with KV cache transfer?",
+    "rewritten": "10x TTFT speedup optimizing prefill with KV cache transfer YC company profile",
+    "used": "10x TTFT speedup optimizing prefill with KV cache transfer YC company profile",
+    "fallback_reason": null,
+    "missing_tokens": [],
+    "generated_tokens": 68,
+    "ms": 1408.5,
+    "error": null
+   },
+   "llm_meta": {
+    "requested_model": "gpt-6-luna",
+    "served_model": "gpt-6-luna",
+    "request_id": "req_0c1c9524048b490596fe4ebae51fb02c",
+    "response_id": "resp_0d15cc1cace3407b016b08d4a580a087d085c12d29558d19d9",
+    "input_tokens": 589,
+    "output_tokens": 35,
+    "reasoning_tokens": 0,
+    "status": "completed",
+    "incomplete_reason": null,
+    "cost_usd": 7.6e-05
+   },
+   "run_id": "20261127T095351",
+   "question_id": "D03",
+   "type": "direct",
+   "answerable": true,
+   "expected_key_facts": [
+    "OneTriangle",
+    "10x faster TTFT"
+   ],
+   "allowed_chunk_ids": [
+    "yc-onetriangle#c00"
+   ],
+   "grading": null
+  },
+  {
+   "question": "Which company sells inference tokens for a future time window at a price fixed today, and what discount does it advertise?",
+   "config": "C+R",
+   "status": "answered",
+   "answer": "Touchmark sells tokens for a future time window at a price fixed today, advertising 10-30% off the on-demand price. [1]",
+   "citations": [
+    {
+     "n": 1,
+     "chunk_id": "yc-touchmark#c00",
+     "doc_id": "yc-touchmark",
+     "span": [
+      0,
+      190
+     ]
+    }
+   ],
+   "invalid_citations": [],
+   "blocked_reason": null,
+   "error": null,
+   "raw_output": "STATUS: ANSWER\nANSWER: Touchmark sells tokens for a future time window at a price fixed today, advertising 10-30% off the on-demand price. [1]",
+   "retrieved": [
+    {
+     "n": 1,
+     "chunk_id": "yc-touchmark#c00",
+     "doc_id": "yc-touchmark",
+     "span": [
+      0,
+      190
+     ],
+     "score": 4.258950710296631
+    },
+    {
+     "n": 2,
+     "chunk_id": "yc-cedana#c00",
+     "doc_id": "yc-cedana",
+     "span": [
+      0,
+      464
+     ],
+     "score": -4.835245609283447
+    },
+    {
+     "n": 3,
+     "chunk_id": "yc-runanywhere#c03",
+     "doc_id": "yc-runanywhere",
+     "span": [
+      908,
+      1043
+     ],
+     "score": -5.897941589355469
+    },
+    {
+     "n": 4,
+     "chunk_id": "yc-dotwave#c01",
+     "doc_id": "yc-dotwave",
+     "span": [
+      423,
+      603
+     ],
+     "score": -5.918708801269531
+    },
+    {
+     "n": 5,
+     "chunk_id": "yc-sentient-os#c00",
+     "doc_id": "yc-sentient-os",
+     "span": [
+      0,
+      462
+     ],
+     "score": -6.267317771911621
+    }
+   ],
+   "timing_ms": {
+    "retrieval": 1263.5,
+    "generation": 1137.4,
+    "total": 2400.9
+   },
+   "generated_tokens": 41,
+   "rewrite": {
+    "original": "Which company sells inference tokens for a future time window at a price fixed today, and what discount does it advertise?",
+    "rewritten": "YC company profiles inference tokens future time window price fixed today advertised discount",
+    "used": "YC company profiles inference tokens future time window price fixed today advertised discount",
+    "fallback_reason": null,
+    "missing_tokens": [],
+    "generated_tokens": 56,
+    "ms": 1212.5,
+    "error": null
+   },
+   "llm_meta": {
+    "requested_model": "gpt-6-luna",
+    "served_model": "gpt-6-luna",
+    "request_id": "req_ffb784c7ec7e40688486e92394f29631",
+    "response_id": "resp_045a42235f49e2ef016b08d4a7b4e087d0ba4031bf55818776",
+    "input_tokens": 623,
+    "output_tokens": 41,
+    "reasoning_tokens": 0,
+    "status": "completed",
+    "incomplete_reason": null,
+    "cost_usd": 8.3e-05
+   },
+   "run_id": "20261127T095351",
+   "question_id": "D04",
+   "type": "direct",
+   "answerable": true,
+   "expected_key_facts": [
+    "Touchmark",
+    "10-30% off the on-demand price"
+   ],
+   "allowed_chunk_ids": [
+    "yc-touchmark#c00"
+   ],
+   "grading": null
+  },
+  {
+   "question": "Which Claude Code plugin claims to be cheaper than Claude Code alone, and by what range?",
+   "config": "C+R",
+   "status": "answered",
+   "answer": "WOZCODE claims to be cheaper than Claude Code alone by 25-55%. [1]",
+   "citations": [
+    {
+     "n": 1,
+     "chunk_id": "yc-woz#c00",
+     "doc_id": "yc-woz",
+     "span": [
+      0,
+      453
+     ]
+    }
+   ],
+   "invalid_citations": [],
+   "blocked_reason": null,
+   "error": null,
+   "raw_output": "STATUS: ANSWER\nANSWER: WOZCODE claims to be cheaper than Claude Code alone by 25-55%. [1]",
+   "retrieved": [
+    {
+     "n": 1,
+     "chunk_id": "yc-woz#c00",
+     "doc_id": "yc-woz",
+     "span": [
+      0,
+      453
+     ],
+     "score": 8.209957122802734
+    },
+    {
+     "n": 2,
+     "chunk_id": "yc-runanywhere#c01",
+     "doc_id": "yc-runanywhere",
+     "span": [
+      238,
+      536
+     ],
+     "score": 0.8146095275878906
+    },
+    {
+     "n": 3,
+     "chunk_id": "yc-jcode#c00",
+     "doc_id": "yc-jcode",
+     "span": [
+      0,
+      394
+     ],
+     "score": 0.35882332921028137
+    },
+    {
+     "n": 4,
+     "chunk_id": "yc-runlocal-ai#c01",
+     "doc_id": "yc-runlocal-ai",
+     "span": [
+      425,
+      825
+     ],
+     "score": 0.33446693420410156
+    },
+    {
+     "n": 5,
+     "chunk_id": "yc-ncompass-technologies#c01",
+     "doc_id": "yc-ncompass-technologies",
+     "span": [
+      320,
+      735
+     ],
+     "score": -0.9964709281921387
+    }
+   ],
+   "timing_ms": {
+    "retrieval": 1468.1,
+    "generation": 884.7,
+    "total": 2352.8
+   },
+   "generated_tokens": 31,
+   "rewrite": {
+    "original": "Which Claude Code plugin claims to be cheaper than Claude Code alone, and by what range?",
+    "rewritten": "Claude Code plugin cheaper than Claude Code alone by what range",
+    "used": "Claude Code plugin cheaper than Claude Code alone by what range",
+    "fallback_reason": null,
+    "missing_tokens": [],
+    "generated_tokens": 56,
+    "ms": 1412.7,
+    "error": null
+   },
+   "llm_meta": {
+    "requested_model": "gpt-6-luna",
+    "served_model": "gpt-6-luna",
+    "request_id": "req_a792548ef87a43b4a8af5865d276bed5",
+    "response_id": "resp_074f72385108c40a016b08d4aa526087d0a679d695adebd074",
+    "input_tokens": 749,
+    "output_tokens": 31,
+    "reasoning_tokens": 0,
+    "status": "completed",
+    "incomplete_reason": null,
+    "cost_usd": 9e-05
+   },
+   "run_id": "20261127T095351",
+   "question_id": "D05",
+   "type": "direct",
+   "answerable": true,
+   "expected_key_facts": [
+    "WOZCODE (Woz)",
+    "25-55% cheaper than Claude Code alone"
+   ],
+   "allowed_chunk_ids": [
+    "yc-woz#c00"
+   ],
+   "grading": null
+  },
+  {
+   "question": "Which inference provider sells Dedicated Lanes so customers do not pay for idle GPUs, and what do customers pay for?",
+   "config": "C+R",
+   "status": "answered",
+   "answer": ".Wave sells Dedicated Lanes so customers do not pay for idle GPUs [1]. Customers pay only for the capacity and time windows they reserve [1].",
+   "citations": [
+    {
+     "n": 1,
+     "chunk_id": "yc-dotwave#c00",
+     "doc_id": "yc-dotwave",
+     "span": [
+      0,
+      482
+     ]
+    }
+   ],
+   "invalid_citations": [],
+   "blocked_reason": null,
+   "error": null,
+   "raw_output": "STATUS: ANSWER\nANSWER: .Wave sells Dedicated Lanes so customers do not pay for idle GPUs [1]. Customers pay only for the capacity and time windows they reserve [1].",
+   "retrieved": [
+    {
+     "n": 1,
+     "chunk_id": "yc-dotwave#c00",
+     "doc_id": "yc-dotwave",
+     "span": [
+      0,
+      482
+     ],
+     "score": 3.713620662689209
+    },
+    {
+     "n": 2,
+     "chunk_id": "yc-cedana#c00",
+     "doc_id": "yc-cedana",
+     "span": [
+      0,
+      464
+     ],
+     "score": -3.3881824016571045
+    },
+    {
+     "n": 3,
+     "chunk_id": "yc-runanywhere#c03",
+     "doc_id": "yc-runanywhere",
+     "span": [
+      908,
+      1043
+     ],
+     "score": -4.983602523803711
+    },
+    {
+     "n": 4,
+     "chunk_id": "yc-shadeform#c00",
+     "doc_id": "yc-shadeform",
+     "span": [
+      0,
+      397
+     ],
+     "score": -5.465405464172363
+    },
+    {
+     "n": 5,
+     "chunk_id": "yc-onetriangle#c00",
+     "doc_id": "yc-onetriangle",
+     "span": [
+      0,
+      163
+     ],
+     "score": -5.570601463317871
+    }
+   ],
+   "timing_ms": {
+    "retrieval": 1506.0,
+    "generation": 1067.3,
+    "total": 2573.4
+   },
+   "generated_tokens": 42,
+   "rewrite": {
+    "original": "Which inference provider sells Dedicated Lanes so customers do not pay for idle GPUs, and what do customers pay for?",
+    "rewritten": "inference provider \"Dedicated Lanes\" idle GPUs customers pay for YC company profile",
+    "used": "inference provider \"Dedicated Lanes\" idle GPUs customers pay for YC company profile",
+    "fallback_reason": null,
+    "missing_tokens": [],
+    "generated_tokens": 62,
+    "ms": 1453.8,
+    "error": null
+   },
+   "llm_meta": {
+    "requested_model": "gpt-6-luna",
+    "served_model": "gpt-6-luna",
+    "request_id": "req_0825e5fece02432b8b5732a5f1514267",
+    "response_id": "resp_0f698f1a05504205016b08d4acba6487d0a3b367e3158dec9a",
+    "input_tokens": 640,
+    "output_tokens": 42,
+    "reasoning_tokens": 0,
+    "status": "completed",
+    "incomplete_reason": null,
+    "cost_usd": 8.5e-05
+   },
+   "run_id": "20261127T095351",
+   "question_id": "D06",
+   "type": "direct",
+   "answerable": true,
+   "expected_key_facts": [
+    ".Wave",
+    "pay only for reserved capacity and time windows"
+   ],
+   "allowed_chunk_ids": [
+    "yc-dotwave#c00",
+    "yc-dotwave#c01"
+   ],
+   "grading": null
+  },
+  {
+   "question": "Which company is building custom chips that hardcode LLM weights into silicon, and what are the chips called?",
+   "config": "C+R",
+   "status": "answered",
+   "answer": "Lamb Labs is building custom chips that hardcode LLM weights directly into silicon, called Model Processing Units (MPUs). [1]",
+   "citations": [
+    {
+     "n": 1,
+     "chunk_id": "yc-lamb-labs#c00",
+     "doc_id": "yc-lamb-labs",
+     "span": [
+      0,
+      304
+     ]
+    }
+   ],
+   "invalid_citations": [],
+   "blocked_reason": null,
+   "error": null,
+   "raw_output": "STATUS: ANSWER\nANSWER: Lamb Labs is building custom chips that hardcode LLM weights directly into silicon, called Model Processing Units (MPUs). [1]",
+   "retrieved": [
+    {
+     "n": 1,
+     "chunk_id": "yc-lamb-labs#c00",
+     "doc_id": "yc-lamb-labs",
+     "span": [
+      0,
+      304
+     ],
+     "score": 6.399697780609131
+    },
+    {
+     "n": 2,
+     "chunk_id": "yc-reduced-energy-microsystems#c00",
+     "doc_id": "yc-reduced-energy-microsystems",
+     "span": [
+      0,
+      471
+     ],
+     "score": -5.143610954284668
+    },
+    {
+     "n": 3,
+     "chunk_id": "yc-runanywhere#c03",
+     "doc_id": "yc-runanywhere",
+     "span": [
+      908,
+      1043
+     ],
+     "score": -6.525973320007324
+    },
+    {
+     "n": 4,
+     "chunk_id": "yc-litellm#c00",
+     "doc_id": "yc-litellm",
+     "span": [
+      0,
+      401
+     ],
+     "score": -7.603618621826172
+    },
+    {
+     "n": 5,
+     "chunk_id": "yc-cedana#c00",
+     "doc_id": "yc-cedana",
+     "span": [
+      0,
+      464
+     ],
+     "score": -8.758672714233398
+    }
+   ],
+   "timing_ms": {
+    "retrieval": 1352.6,
+    "generation": 1181.5,
+    "total": 2534.1
+   },
+   "generated_tokens": 38,
+   "rewrite": {
+    "original": "Which company is building custom chips that hardcode LLM weights into silicon, and what are the chips called?",
+    "rewritten": "YC company custom chips that hardcode LLM weights into silicon and what are the chips called",
+    "used": "YC company custom chips that hardcode LLM weights into silicon and what are the chips called",
+    "fallback_reason": null,
+    "missing_tokens": [],
+    "generated_tokens": 71,
+    "ms": 1294.6,
+    "error": null
+   },
+   "llm_meta": {
+    "requested_model": "gpt-6-luna",
+    "served_model": "gpt-6-luna",
+    "request_id": "req_1a6fc6a472824c668078aab4dd82dba1",
+    "response_id": "resp_0fa166f3236ea964016b08d4af217087d0984c5cb588ba0e64",
+    "input_tokens": 702,
+    "output_tokens": 38,
+    "reasoning_tokens": 0,
+    "status": "completed",
+    "incomplete_reason": null,
+    "cost_usd": 8.9e-05
+   },
+   "run_id": "20261127T095351",
+   "question_id": "D07",
+   "type": "direct",
+   "answerable": true,
+   "expected_key_facts": [
+    "Lamb Labs",
+    "Model Processing Units (MPUs)"
+   ],
+   "allowed_chunk_ids": [
+    "yc-lamb-labs#c00"
+   ],
+   "grading": null
+  },
+  {
+   "question": "Which coding tools can developers point at the local inference workstation that ships with a tuned inference engine?",
+   "config": "C+R",
+   "status": "answered",
+   "answer": "Developers can point Claude Code, Codex, or OpenCode at the local inference workstation [1].",
+   "citations": [
+    {
+     "n": 1,
+     "chunk_id": "yc-lucebox#c00",
+     "doc_id": "yc-lucebox",
+     "span": [
+      0,
+      454
+     ]
+    }
+   ],
+   "invalid_citations": [],
+   "blocked_reason": null,
+   "error": null,
+   "raw_output": "STATUS: ANSWER\nANSWER: Developers can point Claude Code, Codex, or OpenCode at the local inference workstation [1].",
+   "retrieved": [
+    {
+     "n": 1,
+     "chunk_id": "yc-lucebox#c00",
+     "doc_id": "yc-lucebox",
+     "span": [
+      0,
+      454
+     ],
+     "score": 5.240157127380371
+    },
+    {
+     "n": 2,
+     "chunk_id": "yc-cumulus-labs#c01",
+     "doc_id": "yc-cumulus-labs",
+     "span": [
+      363,
+      733
+     ],
+     "score": -0.11080349236726761
+    },
+    {
+     "n": 3,
+     "chunk_id": "yc-runanywhere#c03",
+     "doc_id": "yc-runanywhere",
+     "span": [
+      908,
+      1043
+     ],
+     "score": -0.8017619252204895
+    },
+    {
+     "n": 4,
+     "chunk_id": "yc-runlocal-ai#c01",
+     "doc_id": "yc-runlocal-ai",
+     "span": [
+      425,
+      825
+     ],
+     "score": -1.8225150108337402
+    },
+    {
+     "n": 5,
+     "chunk_id": "yc-runanywhere#c00",
+     "doc_id": "yc-runanywhere",
+     "span": [
+      0,
+      394
+     ],
+     "score": -2.620678186416626
+    }
+   ],
+   "timing_ms": {
+    "retrieval": 1351.3,
+    "generation": 1200.9,
+    "total": 2552.2
+   },
+   "generated_tokens": 31,
+   "rewrite": {
+    "original": "Which coding tools can developers point at the local inference workstation that ships with a tuned inference engine?",
+    "rewritten": "coding tools developers can point at the local inference workstation that ships with a tuned inference engine YC company profiles",
+    "used": "coding tools developers can point at the local inference workstation that ships with a tuned inference engine YC company profiles",
+    "fallback_reason": null,
+    "missing_tokens": [],
+    "generated_tokens": 63,
+    "ms": 1301.8,
+    "error": null
+   },
+   "llm_meta": {
+    "requested_model": "gpt-6-luna",
+    "served_model": "gpt-6-luna",
+    "request_id": "req_e8bc5af15c8344b79916ff28ed5597bc",
+    "response_id": "resp_0f861acc784691fc016b08d4b1b16087d0acfcf37bce574e64",
+    "input_tokens": 692,
+    "output_tokens": 31,
+    "reasoning_tokens": 0,
+    "status": "completed",
+    "incomplete_reason": null,
+    "cost_usd": 8.5e-05
+   },
+   "run_id": "20261127T095351",
+   "question_id": "D08",
+   "type": "direct",
+   "answerable": true,
+   "expected_key_facts": [
+    "Lucebox",
+    "Claude Code, Codex, OpenCode"
+   ],
+   "allowed_chunk_ids": [
+    "yc-lucebox#c00"
+   ],
+   "grading": null
+  },
+  {
+   "question": "What is Beam's price per GPU-hour for an H100?",
+   "config": "C+R",
+   "status": "insufficient_evidence",
+   "answer": "The provided documents do not contain this information.",
+   "citations": [],
+   "invalid_citations": [],
+   "blocked_reason": null,
+   "error": null,
+   "raw_output": "STATUS: INSUFFICIENT\nANSWER: The provided documents do not contain this information.",
+   "retrieved": [
+    {
+     "n": 1,
+     "chunk_id": "yc-cedana#c00",
+     "doc_id": "yc-cedana",
+     "span": [
+      0,
+      464
+     ],
+     "score": -7.680751800537109
+    },
+    {
+     "n": 2,
+     "chunk_id": "yc-starcloud#c03",
+     "doc_id": "yc-starcloud",
+     "span": [
+      921,
+      1283
+     ],
+     "score": -8.635652542114258
+    },
+    {
+     "n": 3,
+     "chunk_id": "yc-starcloud#c01",
+     "doc_id": "yc-starcloud",
+     "span": [
+      318,
+      747
+     ],
+     "score": -10.239618301391602
+    },
+    {
+     "n": 4,
+     "chunk_id": "yc-thunder-compute#c00",
+     "doc_id": "yc-thunder-compute",
+     "span": [
+      0,
+      166
+     ],
+     "score": -10.729532241821289
+    },
+    {
+     "n": 5,
+     "chunk_id": "yc-beam#c00",
+     "doc_id": "yc-beam",
+     "span": [
+      0,
+      63
+     ],
+     "score": -10.95311450958252
+    }
+   ],
+   "timing_ms": {
+    "retrieval": 1460.0,
+    "generation": 748.8,
+    "total": 2208.9
+   },
+   "generated_tokens": 22,
+   "rewrite": {
+    "original": "What is Beam's price per GPU-hour for an H100?",
+    "rewritten": "Beam price per GPU-hour H100 YC company profile",
+    "used": "Beam price per GPU-hour H100 YC company profile",
+    "fallback_reason": null,
+    "missing_tokens": [],
+    "generated_tokens": 73,
+    "ms": 1402.4,
+    "error": null
+   },
+   "llm_meta": {
+    "requested_model": "gpt-6-luna",
+    "served_model": "gpt-6-luna",
+    "request_id": "req_eb61be2509ef44919bd3b2e5abc0915c",
+    "response_id": "resp_0f0b43341c04050c016b08d4b4512887d09b8a57ce9eca77e6",
+    "input_tokens": 622,
+    "output_tokens": 22,
+    "reasoning_tokens": 0,
+    "status": "completed",
+    "incomplete_reason": null,
+    "cost_usd": 7.3e-05
+   },
+   "run_id": "20261127T095351",
+   "question_id": "D09",
+   "type": "no_evidence",
+   "answerable": false,
+   "expected_key_facts": [
+    "정보 부족 안내"
+   ],
+   "allowed_chunk_ids": [],
+   "grading": null
+  },
+  {
+   "question": "How many GPUs does Thunder Compute operate in its fleet?",
+   "config": "C+R",
+   "status": "insufficient_evidence",
+   "answer": "The provided documents do not contain this information.",
+   "citations": [],
+   "invalid_citations": [],
+   "blocked_reason": null,
+   "error": null,
+   "raw_output": "STATUS: INSUFFICIENT\nANSWER: The provided documents do not contain this information.",
+   "retrieved": [
+    {
+     "n": 1,
+     "chunk_id": "yc-thunder-compute#c00",
+     "doc_id": "yc-thunder-compute",
+     "span": [
+      0,
+      166
+     ],
+     "score": 3.737950086593628
+    },
+    {
+     "n": 2,
+     "chunk_id": "yc-posh#c01",
+     "doc_id": "yc-posh",
+     "span": [
+      447,
+      680
+     ],
+     "score": -5.558237075805664
+    },
+    {
+     "n": 3,
+     "chunk_id": "yc-nodus-compute#c00",
+     "doc_id": "yc-nodus-compute",
+     "span": [
+      0,
+      350
+     ],
+     "score": -6.302340030670166
+    },
+    {
+     "n": 4,
+     "chunk_id": "yc-posh#c00",
+     "doc_id": "yc-posh",
+     "span": [
+      0,
+      493
+     ],
+     "score": -7.841665267944336
+    },
+    {
+     "n": 5,
+     "chunk_id": "yc-sf-tensor#c02",
+     "doc_id": "yc-sf-tensor",
+     "span": [
+      780,
+      1213
+     ],
+     "score": -9.378992080688477
+    }
+   ],
+   "timing_ms": {
+    "retrieval": 1356.7,
+    "generation": 843.5,
+    "total": 2200.3
+   },
+   "generated_tokens": 22,
+   "rewrite": {
+    "original": "How many GPUs does Thunder Compute operate in its fleet?",
+    "rewritten": "Thunder Compute number of GPUs in its fleet",
+    "used": "Thunder Compute number of GPUs in its fleet",
+    "fallback_reason": null,
+    "missing_tokens": [],
+    "generated_tokens": 65,
+    "ms": 1310.5,
+    "error": null
+   },
+   "llm_meta": {
+    "requested_model": "gpt-6-luna",
+    "served_model": "gpt-6-luna",
+    "request_id": "req_2240c73d042048cdb677712283e5eb82",
+    "response_id": "resp_01ff489b8f0eea5d016b08d4b66ce887d0b2dd47c4f4be5548",
+    "input_tokens": 643,
+    "output_tokens": 22,
+    "reasoning_tokens": 0,
+    "status": "completed",
+    "incomplete_reason": null,
+    "cost_usd": 7.5e-05
+   },
+   "run_id": "20261127T095351",
+   "question_id": "D10",
+   "type": "no_evidence",
+   "answerable": false,
+   "expected_key_facts": [
+    "정보 부족 안내"
+   ],
+   "allowed_chunk_ids": [],
+   "grading": null
+  }
+ ]
+}
