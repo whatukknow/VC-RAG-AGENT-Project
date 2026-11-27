@@ -9,7 +9,8 @@ sys.path.insert(0, os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(
 from build_index import map_evidence  # noqa: E402
 from eval_retrieval import score_question  # noqa: E402
 from ragagent.chunking import chunk_document, wrap_span  # noqa: E402
-from ragagent.freeze import FINAL_LOCK, build_final_lock, sha256_file, verify_files, verify_final_lock  # noqa: E402
+from ragagent.freeze import (CODE_FILES, FINAL_FILES, FINAL_LOCK, build_final_lock, check_final_run,  # noqa: E402
+                             sha256_file, verify_files, verify_final_lock)
 from ragagent.pipeline import Retriever  # noqa: E402
 from ragagent.textnorm import find_span, norm  # noqa: E402
 
@@ -109,12 +110,72 @@ class FreezeTest(unittest.TestCase):
             self.assertEqual(verify_files(root, {"a.json": files["a.json"]}), ["해시 불일치: a.json"])
 
     def _make_root(self, root):
-        for rel in ("eval/chunk_map.json", "configs/models.lock.json", "data/index/chunks.jsonl", "eval/test.json",
-                    "eval/dev.json", "docs/doc_list.csv", "data/corpus/corpus.jsonl"):
+        for rel in list(FINAL_FILES) + list(CODE_FILES):
             path = os.path.join(root, rel)
             os.makedirs(os.path.dirname(path), exist_ok=True)
             with open(path, "w", encoding="utf-8", newline="\n") as f:
                 f.write(rel)
+
+    def _write_lock(self, root, **kw):
+        lock = build_final_lock(root, git_commit="abc", **kw)
+        os.makedirs(os.path.join(root, "configs"), exist_ok=True)
+        with open(os.path.join(root, FINAL_LOCK), "w", encoding="utf-8") as f:
+            json.dump(lock, f)
+        return lock
+
+    def test_code_change_after_freeze_is_detected_but_line_endings_are_ignored(self):
+        with tempfile.TemporaryDirectory() as root:
+            self._make_root(root)
+            self._write_lock(root)
+            target = os.path.join(root, "src/ragagent/answer.py")
+            with open(target, "w", encoding="utf-8", newline="\r\n") as f:  # 같은 내용, 줄바꿈만 CRLF
+                f.write("src/ragagent/answer.py")
+            self.assertEqual(verify_final_lock(root), [])
+            with open(target, "w", encoding="utf-8", newline="\n") as f:
+                f.write("src/ragagent/answer.py\n# 한 줄 수정")
+            self.assertEqual(verify_final_lock(root), ["고정 이후 코드가 바뀜: src/ragagent/answer.py"])
+
+    def test_missing_code_file_blocks_freeze_creation(self):
+        with tempfile.TemporaryDirectory() as root:
+            self._make_root(root)
+            os.remove(os.path.join(root, "src/run_answers.py"))
+            with self.assertRaises(FileNotFoundError):
+                build_final_lock(root)
+
+    def test_final_run_rejects_a_backend_different_from_the_locked_one(self):
+        with tempfile.TemporaryDirectory() as root:
+            self._make_root(root)
+            self._write_lock(root, final_backend="openai")
+            self.assertEqual(check_final_run(root, "openai", ["C"], os.path.join(root, "r"), "answers"), [])
+            errs = check_final_run(root, "local", ["C"], os.path.join(root, "r"), "answers")
+            self.assertEqual(len(errs), 1)
+            self.assertIn("openai", errs[0])
+
+    def test_final_rerun_requires_reason_and_ignores_incomplete_files(self):
+        with tempfile.TemporaryDirectory() as root:
+            self._make_root(root)
+            self._write_lock(root)
+            res = os.path.join(root, "results", "test")
+            os.makedirs(res)
+            for name in ("answers_C_20261201T000000_INCOMPLETE.json", "answers_B_20261201T000000.json"):
+                with open(os.path.join(res, name), "w", encoding="utf-8") as f:
+                    f.write("{}")
+            # 불완전 실행만 있는 구성은 다시 실행할 수 있고, 완료된 결과가 있는 구성은 사유가 필요하다
+            self.assertEqual(check_final_run(root, "openai", ["C"], res, "answers"), [])
+            self.assertEqual(len(check_final_run(root, "openai", ["B", "C"], res, "answers")), 1)
+            self.assertEqual(check_final_run(root, "openai", ["B"], res, "answers", "API 일시 장애로 전체 재실행"), [])
+            self.assertEqual(len(check_final_run(root, "openai", ["B"], res, "answers", "   ")), 1)  # 공백 사유는 무효
+
+    def test_plus_in_config_name_is_matched_literally(self):
+        with tempfile.TemporaryDirectory() as root:
+            self._make_root(root)
+            self._write_lock(root)
+            res = os.path.join(root, "results", "test")
+            os.makedirs(res)
+            with open(os.path.join(res, "answers_C+R_20261201T000000.json"), "w", encoding="utf-8") as f:
+                f.write("{}")
+            self.assertEqual(len(check_final_run(root, "openai", ["C+R"], res, "answers")), 1)
+            self.assertEqual(check_final_run(root, "openai", ["C"], res, "answers"), [])  # C 는 C+R 결과와 구분
 
     def test_final_lock_missing_blocks_and_changes_are_detected(self):
         with tempfile.TemporaryDirectory() as root:

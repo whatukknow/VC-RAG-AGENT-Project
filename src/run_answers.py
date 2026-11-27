@@ -12,6 +12,7 @@ import sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from eval_retrieval import SPLIT_FILES, check_freeze  # noqa: E402
+from ragagent.freeze import check_final_run  # noqa: E402
 from ragagent.answer import AnswerPipeline  # noqa: E402
 from ragagent.factory import build_retriever  # noqa: E402
 from ragagent.envfile import load_env  # noqa: E402
@@ -33,6 +34,8 @@ def main():
     ap.add_argument("--split", default="dev", choices=["dev", "dev_extra"])
     ap.add_argument("--limit", type=int, default=None, help="앞에서 N문항만(시간 측정용). --final 에서는 허용하지 않는다.")
     ap.add_argument("--out", default=None)
+    ap.add_argument("--rerun-reason", default=None,
+                    help="--final 에서 같은 구성의 결과가 이미 있을 때 재실행 사유(기록에 남고 기존 결과는 보존된다)")
     ap.add_argument("--backend", default="openai", choices=["openai", "anthropic", "local"],
                     help="openai = gpt-6-luna(기본, 비용 한도·원장), anthropic = Claude Haiku 5.5(미사용 보존), "
                          "local = Qwen2.5-1.5B(이전 기록 재현용)")
@@ -42,6 +45,10 @@ def main():
         if a.limit:
             sys.exit("--final 에서는 --limit 을 쓸 수 없다(일부만 실행한 최종 결과 방지).")
         check_freeze()
+        errs = check_final_run(ROOT, a.backend, a.configs, a.out or os.path.join(ROOT, "results", "test"), "answers",
+                               a.rerun_reason)
+        if errs:
+            sys.exit("최종 실행을 중단한다:\n - " + "\n - ".join(errs))
     with open(os.path.join(ROOT, "eval", SPLIT_FILES[split]), encoding="utf-8") as f:
         qs = json.load(f)["questions"]
     if a.limit:
@@ -83,6 +90,7 @@ def main():
         gen_ms = [r["timing_ms"]["generation"] for r in rows if "generation" in r["timing_ms"]]
         summary = {
             "run_id": run_id, "split": split, "config": cfg, "n": len(rows),
+            "final": a.final, "rerun_reason": a.rerun_reason or None, "backend": a.backend,
             "status_counts": {s: sum(1 for r in rows if r["status"] == s) for s in
                               ("answered", "insufficient_evidence", "error_retrieval", "error_generation")},
             "answerable_answered": f"{sum(r['status'] == 'answered' for r in ans)}/{len(ans)}",
