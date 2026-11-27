@@ -1,0 +1,779 @@
+{
+ "summary": {
+  "run_id": "20261127T105246",
+  "split": "test",
+  "config": "A",
+  "hit_at_5": "17/17",
+  "full_evidence_at_5": "17/17",
+  "mrr": 0.8186,
+  "n_answerable": 17,
+  "pipeline": {
+   "top_k": 5,
+   "candidates_each": 20,
+   "rerank_input_n": 10,
+   "rrf_k": 60,
+   "rrf_weights": {
+    "bm25": 1.0,
+    "vector": 1.0
+   },
+   "version": "pipe-v1"
+  },
+  "models": {
+   "embedding": {
+    "repo": "BAAI/bge-small-en-v1.5",
+    "revision": "5c38ec7c405ec4b44b94cc5a9bb96e735b38267a",
+    "license": "mit",
+    "local_dir": "data/models/BAAI__bge-small-en-v1.5",
+    "weights_bytes": {
+     "model.safetensors": 133466304
+    }
+   },
+   "reranker": {
+    "repo": "cross-encoder/ms-marco-MiniLM-L6-v2",
+    "revision": "233902d25c440f23af6f7d6e94d2946bac0bee0a",
+    "license": "apache-2.0",
+    "local_dir": "data/models/cross-encoder__ms-marco-MiniLM-L6-v2",
+    "weights_bytes": {
+     "model.safetensors": 90870598
+    }
+   },
+   "generator": {
+    "repo": "Qwen/Qwen2.5-1.5B-Instruct",
+    "revision": "989aa7980e4cf806f80c7fef2b1adb7bc71aa306",
+    "license": "apache-2.0",
+    "local_dir": "data/models/Qwen__Qwen2.5-1.5B-Instruct",
+    "weights_bytes": {
+     "model.safetensors": 3087467144
+    }
+   }
+  },
+  "embedding_cache": "hit"
+ },
+ "rows": [
+  {
+   "run_id": "20261127T105246",
+   "question_id": "T01",
+   "type": "direct",
+   "config": "A",
+   "question": "What improvements in cost and time to first token does the GPU live migration company claim?",
+   "top": [
+    {
+     "chunk_id": "yc-sf-tensor#c03",
+     "score": 0.6987485885620117
+    },
+    {
+     "chunk_id": "yc-cedana#c00",
+     "score": 0.6966395378112793
+    },
+    {
+     "chunk_id": "yc-nodus-compute#c00",
+     "score": 0.6959075927734375
+    },
+    {
+     "chunk_id": "yc-cedana#c01",
+     "score": 0.686440110206604
+    },
+    {
+     "chunk_id": "yc-sf-tensor#c01",
+     "score": 0.6861684322357178
+    }
+   ],
+   "candidates": [],
+   "status": "ok",
+   "allowed_chunk_ids": [
+    "yc-cedana#c00"
+   ],
+   "hit_at_5": 1,
+   "rank": 2,
+   "full_evidence_at_5": 1
+  },
+  {
+   "run_id": "20261127T105246",
+   "question_id": "T02",
+   "type": "direct",
+   "config": "A",
+   "question": "Which company says its Ion inference engine delivers 30 to 50 percent more throughput than vLLM or SGLang, and what technique enables it?",
+   "top": [
+    {
+     "chunk_id": "yc-cumulus-labs#c02",
+     "score": 0.7340792417526245
+    },
+    {
+     "chunk_id": "yc-overshoot#c00",
+     "score": 0.6955962181091309
+    },
+    {
+     "chunk_id": "yc-cumulus-labs#c01",
+     "score": 0.6687577366828918
+    },
+    {
+     "chunk_id": "yc-runanywhere#c02",
+     "score": 0.6253005266189575
+    },
+    {
+     "chunk_id": "yc-litellm#c00",
+     "score": 0.6247637271881104
+    }
+   ],
+   "candidates": [],
+   "status": "ok",
+   "allowed_chunk_ids": [
+    "yc-cumulus-labs#c02"
+   ],
+   "hit_at_5": 1,
+   "rank": 1,
+   "full_evidence_at_5": 1
+  },
+  {
+   "run_id": "20261127T105246",
+   "question_id": "T03",
+   "type": "direct",
+   "config": "A",
+   "question": "What serving speed and latency does the self-improving inference cloud report for its open models?",
+   "top": [
+    {
+     "chunk_id": "yc-isoquant#c00",
+     "score": 0.778386116027832
+    },
+    {
+     "chunk_id": "yc-dreamscale-labs#c00",
+     "score": 0.7569454908370972
+    },
+    {
+     "chunk_id": "yc-pipeshift#c00",
+     "score": 0.7292702794075012
+    },
+    {
+     "chunk_id": "yc-cumulus-labs#c02",
+     "score": 0.716614305973053
+    },
+    {
+     "chunk_id": "yc-mystic#c00",
+     "score": 0.710030198097229
+    }
+   ],
+   "candidates": [],
+   "status": "ok",
+   "allowed_chunk_ids": [
+    "yc-isoquant#c00"
+   ],
+   "hit_at_5": 1,
+   "rank": 1,
+   "full_evidence_at_5": 1
+  },
+  {
+   "run_id": "20261127T105246",
+   "question_id": "T04",
+   "type": "direct",
+   "config": "A",
+   "question": "Under what condition does the company that builds custom deployment images for vLLM and SGLang get paid?",
+   "top": [
+    {
+     "chunk_id": "yc-overshoot#c00",
+     "score": 0.6865869164466858
+    },
+    {
+     "chunk_id": "yc-litellm#c00",
+     "score": 0.6225521564483643
+    },
+    {
+     "chunk_id": "yc-unsloth-ai#c00",
+     "score": 0.5902348756790161
+    },
+    {
+     "chunk_id": "yc-cumulus-labs#c02",
+     "score": 0.5869061946868896
+    },
+    {
+     "chunk_id": "yc-baymachines#c00",
+     "score": 0.5861738324165344
+    }
+   ],
+   "candidates": [],
+   "status": "ok",
+   "allowed_chunk_ids": [
+    "yc-overshoot#c00"
+   ],
+   "hit_at_5": 1,
+   "rank": 1,
+   "full_evidence_at_5": 1
+  },
+  {
+   "run_id": "20261127T105246",
+   "question_id": "T05",
+   "type": "direct",
+   "config": "A",
+   "question": "What time to ready-for-service does the modular data center company aim for, and what do customers bring?",
+   "top": [
+    {
+     "chunk_id": "yc-posh#c00",
+     "score": 0.6714779138565063
+    },
+    {
+     "chunk_id": "yc-starcloud#c03",
+     "score": 0.6692861318588257
+    },
+    {
+     "chunk_id": "yc-starcloud#c02",
+     "score": 0.6270573735237122
+    },
+    {
+     "chunk_id": "yc-starcloud#c00",
+     "score": 0.6249176263809204
+    },
+    {
+     "chunk_id": "yc-starcloud#c01",
+     "score": 0.6018776893615723
+    }
+   ],
+   "candidates": [],
+   "status": "ok",
+   "allowed_chunk_ids": [
+    "yc-posh#c00",
+    "yc-posh#c01"
+   ],
+   "hit_at_5": 1,
+   "rank": 1,
+   "full_evidence_at_5": 1
+  },
+  {
+   "run_id": "20261127T105246",
+   "question_id": "T06",
+   "type": "direct",
+   "config": "A",
+   "question": "How many LLM APIs can the open-source LLM gateway call, and in which request format?",
+   "top": [
+    {
+     "chunk_id": "yc-litellm#c00",
+     "score": 0.7946138381958008
+    },
+    {
+     "chunk_id": "yc-runanywhere#c02",
+     "score": 0.6275733113288879
+    },
+    {
+     "chunk_id": "yc-compresr#c00",
+     "score": 0.6016525030136108
+    },
+    {
+     "chunk_id": "yc-runanywhere#c01",
+     "score": 0.5957869291305542
+    },
+    {
+     "chunk_id": "yc-unsloth-ai#c00",
+     "score": 0.5820680260658264
+    }
+   ],
+   "candidates": [],
+   "status": "ok",
+   "allowed_chunk_ids": [
+    "yc-litellm#c00"
+   ],
+   "hit_at_5": 1,
+   "rank": 1,
+   "full_evidence_at_5": 1
+  },
+  {
+   "run_id": "20261127T105246",
+   "question_id": "T07",
+   "type": "direct",
+   "config": "A",
+   "question": "Which company describes itself as a GPU kernel lab and offers batch inference at half price?",
+   "top": [
+    {
+     "chunk_id": "yc-cumulus-labs#c02",
+     "score": 0.7453864812850952
+    },
+    {
+     "chunk_id": "yc-rightnow#c00",
+     "score": 0.7413517832756042
+    },
+    {
+     "chunk_id": "yc-sf-tensor#c01",
+     "score": 0.7268080115318298
+    },
+    {
+     "chunk_id": "yc-sf-tensor#c03",
+     "score": 0.7074053883552551
+    },
+    {
+     "chunk_id": "yc-cumulus-labs#c01",
+     "score": 0.7029151320457458
+    }
+   ],
+   "candidates": [],
+   "status": "ok",
+   "allowed_chunk_ids": [
+    "yc-rightnow#c00"
+   ],
+   "hit_at_5": 1,
+   "rank": 2,
+   "full_evidence_at_5": 1
+  },
+  {
+   "run_id": "20261127T105246",
+   "question_id": "T08",
+   "type": "direct",
+   "config": "A",
+   "question": "Which company put an Nvidia H100 on a satellite, and in which month and year was it launched?",
+   "top": [
+    {
+     "chunk_id": "yc-starcloud#c01",
+     "score": 0.7084215879440308
+    },
+    {
+     "chunk_id": "yc-starcloud#c00",
+     "score": 0.6044119596481323
+    },
+    {
+     "chunk_id": "yc-starcloud#c02",
+     "score": 0.6023560166358948
+    },
+    {
+     "chunk_id": "yc-starcloud#c03",
+     "score": 0.5767619609832764
+    },
+    {
+     "chunk_id": "yc-sf-tensor#c03",
+     "score": 0.5564040541648865
+    }
+   ],
+   "candidates": [],
+   "status": "ok",
+   "allowed_chunk_ids": [
+    "yc-starcloud#c00",
+    "yc-starcloud#c01"
+   ],
+   "hit_at_5": 1,
+   "rank": 1,
+   "full_evidence_at_5": 1
+  },
+  {
+   "run_id": "20261127T105246",
+   "question_id": "T09",
+   "type": "direct",
+   "config": "A",
+   "question": "What latency improvement does the real-time inference runtime company report for voice workloads, and what does that allow in terms of users?",
+   "top": [
+    {
+     "chunk_id": "yc-dotwave#c00",
+     "score": 0.7546931505203247
+    },
+    {
+     "chunk_id": "yc-hopper#c00",
+     "score": 0.749718427658081
+    },
+    {
+     "chunk_id": "yc-pipeshift#c00",
+     "score": 0.7360743284225464
+    },
+    {
+     "chunk_id": "yc-dotwave#c01",
+     "score": 0.7078974843025208
+    },
+    {
+     "chunk_id": "yc-dreamscale-labs#c00",
+     "score": 0.6922672390937805
+    }
+   ],
+   "candidates": [],
+   "status": "ok",
+   "allowed_chunk_ids": [
+    "yc-pipeshift#c00"
+   ],
+   "hit_at_5": 1,
+   "rank": 3,
+   "full_evidence_at_5": 1
+  },
+  {
+   "run_id": "20261127T105246",
+   "question_id": "T10",
+   "type": "direct",
+   "config": "A",
+   "question": "Which open-model AI cloud keeps inference and storage in the EU, and who founded it?",
+   "top": [
+    {
+     "chunk_id": "yc-munito-ai#c01",
+     "score": 0.734644889831543
+    },
+    {
+     "chunk_id": "yc-munito-ai#c00",
+     "score": 0.7339410185813904
+    },
+    {
+     "chunk_id": "yc-beam#c00",
+     "score": 0.6900888681411743
+    },
+    {
+     "chunk_id": "yc-dreamscale-labs#c00",
+     "score": 0.6791996955871582
+    },
+    {
+     "chunk_id": "yc-orchestra#c00",
+     "score": 0.6759847402572632
+    }
+   ],
+   "candidates": [],
+   "status": "ok",
+   "allowed_chunk_ids": [
+    "yc-munito-ai#c00",
+    "yc-munito-ai#c01"
+   ],
+   "hit_at_5": 1,
+   "rank": 1,
+   "full_evidence_at_5": 1
+  },
+  {
+   "run_id": "20261127T105246",
+   "question_id": "T11",
+   "type": "variant_or_confusable",
+   "config": "A",
+   "question": "Which company reports a 40-50% improvement over existing neoclouds, and does that figure describe cost or latency?",
+   "top": [
+    {
+     "chunk_id": "yc-lilac#c00",
+     "score": 0.6886448264122009
+    },
+    {
+     "chunk_id": "yc-starcloud#c03",
+     "score": 0.6763051152229309
+    },
+    {
+     "chunk_id": "yc-orchestra#c02",
+     "score": 0.6349976062774658
+    },
+    {
+     "chunk_id": "yc-dreamscale-labs#c00",
+     "score": 0.6255438327789307
+    },
+    {
+     "chunk_id": "yc-starcloud#c02",
+     "score": 0.6231606602668762
+    }
+   ],
+   "candidates": [],
+   "status": "ok",
+   "allowed_chunk_ids": [
+    "yc-dreamscale-labs#c00"
+   ],
+   "hit_at_5": 1,
+   "rank": 4,
+   "full_evidence_at_5": 1
+  },
+  {
+   "run_id": "20261127T105246",
+   "question_id": "T12",
+   "type": "variant_or_confusable",
+   "config": "A",
+   "question": "Which CLI-based product handles GPU orchestration for ML training at half the cost of major cloud providers?",
+   "top": [
+    {
+     "chunk_id": "yc-tensorpool#c00",
+     "score": 0.8275937438011169
+    },
+    {
+     "chunk_id": "yc-sf-tensor#c01",
+     "score": 0.7558320760726929
+    },
+    {
+     "chunk_id": "yc-orchestra#c00",
+     "score": 0.708977460861206
+    },
+    {
+     "chunk_id": "yc-shadeform#c00",
+     "score": 0.698526918888092
+    },
+    {
+     "chunk_id": "yc-cumulus-labs#c02",
+     "score": 0.698148250579834
+    }
+   ],
+   "candidates": [],
+   "status": "ok",
+   "allowed_chunk_ids": [
+    "yc-tensorpool#c00"
+   ],
+   "hit_at_5": 1,
+   "rank": 1,
+   "full_evidence_at_5": 1
+  },
+  {
+   "run_id": "20261127T105246",
+   "question_id": "T13",
+   "type": "variant_or_confusable",
+   "config": "A",
+   "question": "Which company finds the cheapest GPUs across providers, handles spot preemption, and claims compute cost cuts of up to 80%?",
+   "top": [
+    {
+     "chunk_id": "yc-sf-tensor#c01",
+     "score": 0.6920819282531738
+    },
+    {
+     "chunk_id": "yc-nodus-compute#c00",
+     "score": 0.6337371468544006
+    },
+    {
+     "chunk_id": "yc-thunder-compute#c00",
+     "score": 0.6299982070922852
+    },
+    {
+     "chunk_id": "yc-cumulus-labs#c02",
+     "score": 0.6250022053718567
+    },
+    {
+     "chunk_id": "yc-sf-tensor#c03",
+     "score": 0.6096203327178955
+    }
+   ],
+   "candidates": [],
+   "status": "ok",
+   "allowed_chunk_ids": [
+    "yc-sf-tensor#c01"
+   ],
+   "hit_at_5": 1,
+   "rank": 1,
+   "full_evidence_at_5": 1
+  },
+  {
+   "run_id": "20261127T105246",
+   "question_id": "T14",
+   "type": "variant_or_confusable",
+   "config": "A",
+   "question": "Which company tests models on a team's own traffic and then has providers compete for the workload, and what fallback does it keep ready?",
+   "top": [
+    {
+     "chunk_id": "yc-routerplus#c01",
+     "score": 0.7548730373382568
+    },
+    {
+     "chunk_id": "yc-zibra-labs#c01",
+     "score": 0.6834084987640381
+    },
+    {
+     "chunk_id": "yc-routerplus#c00",
+     "score": 0.6594344973564148
+    },
+    {
+     "chunk_id": "yc-zibra-labs#c00",
+     "score": 0.6472277641296387
+    },
+    {
+     "chunk_id": "yc-overshoot#c00",
+     "score": 0.64566969871521
+    }
+   ],
+   "candidates": [],
+   "status": "ok",
+   "allowed_chunk_ids": [
+    "yc-routerplus#c01"
+   ],
+   "hit_at_5": 1,
+   "rank": 1,
+   "full_evidence_at_5": 1
+  },
+  {
+   "run_id": "20261127T105246",
+   "question_id": "T15",
+   "type": "variant_or_confusable",
+   "config": "A",
+   "question": "Which company starts routing production traffic to a specialized model only after it matches or beats the incumbent frontier model on a held-out evaluation?",
+   "top": [
+    {
+     "chunk_id": "yc-runanywhere#c03",
+     "score": 0.6453961730003357
+    },
+    {
+     "chunk_id": "yc-runanywhere#c00",
+     "score": 0.6401180028915405
+    },
+    {
+     "chunk_id": "yc-orchestra#c01",
+     "score": 0.6169426441192627
+    },
+    {
+     "chunk_id": "yc-overshoot#c00",
+     "score": 0.6014997959136963
+    },
+    {
+     "chunk_id": "yc-routerplus#c00",
+     "score": 0.6007843017578125
+    }
+   ],
+   "candidates": [],
+   "status": "ok",
+   "allowed_chunk_ids": [
+    "yc-orchestra#c01"
+   ],
+   "hit_at_5": 1,
+   "rank": 3,
+   "full_evidence_at_5": 1
+  },
+  {
+   "run_id": "20261127T105246",
+   "question_id": "T16",
+   "type": "variant_or_confusable",
+   "config": "A",
+   "question": "Which company uses unikernels to get fast cold starts for browsers used by AI agents, and what cold-start time does it state?",
+   "top": [
+    {
+     "chunk_id": "yc-kernel#c00",
+     "score": 0.7284084558486938
+    },
+    {
+     "chunk_id": "yc-munito-ai#c00",
+     "score": 0.6605546474456787
+    },
+    {
+     "chunk_id": "yc-texel-ai#c00",
+     "score": 0.6404710412025452
+    },
+    {
+     "chunk_id": "yc-wafer#c00",
+     "score": 0.6385549902915955
+    },
+    {
+     "chunk_id": "yc-munito-ai#c01",
+     "score": 0.6349360942840576
+    }
+   ],
+   "candidates": [],
+   "status": "ok",
+   "allowed_chunk_ids": [
+    "yc-kernel#c00"
+   ],
+   "hit_at_5": 1,
+   "rank": 1,
+   "full_evidence_at_5": 1
+  },
+  {
+   "run_id": "20261127T105246",
+   "question_id": "T17",
+   "type": "variant_or_confusable",
+   "config": "A",
+   "question": "Which AI research lab studies multiple open-source models working together to exceed the capability of any single model?",
+   "top": [
+    {
+     "chunk_id": "yc-tracer#c00",
+     "score": 0.7493207454681396
+    },
+    {
+     "chunk_id": "yc-zibra-labs#c01",
+     "score": 0.6885595917701721
+    },
+    {
+     "chunk_id": "yc-cumulus-labs#c00",
+     "score": 0.6876376271247864
+    },
+    {
+     "chunk_id": "yc-sf-tensor#c00",
+     "score": 0.6846109628677368
+    },
+    {
+     "chunk_id": "yc-morph#c00",
+     "score": 0.6758965253829956
+    }
+   ],
+   "candidates": [],
+   "status": "ok",
+   "allowed_chunk_ids": [
+    "yc-tracer#c00"
+   ],
+   "hit_at_5": 1,
+   "rank": 1,
+   "full_evidence_at_5": 1
+  },
+  {
+   "run_id": "20261127T105246",
+   "question_id": "T18",
+   "type": "no_evidence",
+   "config": "A",
+   "question": "What cost savings does Wafer claim for its serverless and dedicated inference?",
+   "top": [
+    {
+     "chunk_id": "yc-wafer#c00",
+     "score": 0.7219071388244629
+    },
+    {
+     "chunk_id": "yc-dotwave#c00",
+     "score": 0.6674097180366516
+    },
+    {
+     "chunk_id": "yc-isoquant#c00",
+     "score": 0.649737536907196
+    },
+    {
+     "chunk_id": "yc-sentient-os#c00",
+     "score": 0.6351894736289978
+    },
+    {
+     "chunk_id": "yc-sentient-os#c01",
+     "score": 0.6308739185333252
+    }
+   ],
+   "candidates": [],
+   "status": "ok"
+  },
+  {
+   "run_id": "20261127T105246",
+   "question_id": "T19",
+   "type": "no_evidence",
+   "config": "A",
+   "question": "Does Unify currently offer a router that picks a model per prompt based on quality, speed, and cost?",
+   "top": [
+    {
+     "chunk_id": "yc-routerplus#c01",
+     "score": 0.6928070783615112
+    },
+    {
+     "chunk_id": "yc-routerplus#c00",
+     "score": 0.6735827922821045
+    },
+    {
+     "chunk_id": "yc-unify#c00",
+     "score": 0.6653045415878296
+    },
+    {
+     "chunk_id": "yc-pipeshift#c00",
+     "score": 0.6340713500976562
+    },
+    {
+     "chunk_id": "yc-runanywhere#c00",
+     "score": 0.6338488459587097
+    }
+   ],
+   "candidates": [],
+   "status": "ok"
+  },
+  {
+   "run_id": "20261127T105246",
+   "question_id": "T20",
+   "type": "no_evidence",
+   "config": "A",
+   "question": "By what percentage, and under which deployment and usage conditions, is RunAnywhere cheaper than per-token pricing?",
+   "top": [
+    {
+     "chunk_id": "yc-runanywhere#c03",
+     "score": 0.6937953233718872
+    },
+    {
+     "chunk_id": "yc-runanywhere#c02",
+     "score": 0.6874819397926331
+    },
+    {
+     "chunk_id": "yc-touchmark#c00",
+     "score": 0.6699776649475098
+    },
+    {
+     "chunk_id": "yc-runanywhere#c00",
+     "score": 0.6696823835372925
+    },
+    {
+     "chunk_id": "yc-runanywhere#c01",
+     "score": 0.6386993527412415
+    }
+   ],
+   "candidates": [],
+   "status": "ok"
+  }
+ ]
+}

@@ -1,0 +1,2155 @@
+{
+ "summary": {
+  "run_id": "20261127T105023",
+  "split": "test",
+  "config": "A",
+  "n": 20,
+  "final": true,
+  "rerun_reason": null,
+  "backend": "openai",
+  "status_counts": {
+   "answered": 17,
+   "insufficient_evidence": 3,
+   "error_retrieval": 0,
+   "error_generation": 0
+  },
+  "answerable_answered": "17/17",
+  "answerable_wrongly_refused": 0,
+  "no_evidence_refused": "3/3",
+  "no_evidence_answered": 0,
+  "errors": 0,
+  "rewrite_fallbacks": {
+   "error": 0,
+   "empty": 0,
+   "too_long": 0,
+   "intent_guard": 0
+  },
+  "generation_ms_mean_median_n": [
+   1359.7,
+   1301.4,
+   20
+  ],
+  "generation_config": {
+   "backend": "openai",
+   "model": "gpt-6-luna",
+   "effort": "low",
+   "max_new_tokens": 1024,
+   "min_max_tokens": 512,
+   "context_chunks": 5,
+   "prefill": null,
+   "store": false,
+   "sampling": "not sent (temperature/top_p 허용 여부 미확인, Responses API 에는 seed 없음)",
+   "budget_usd": 5.0,
+   "prices_usd_per_mtok": {
+    "input": 0.1,
+    "output": 0.5
+   },
+   "prompt_version": "prompt-v3",
+   "prompt_sha256": "2ded3a8d0e0c3bd04f27407038749c0f7561de7f486acbe91a233204683280cf"
+  },
+  "models": {
+   "embedding": {
+    "repo": "BAAI/bge-small-en-v1.5",
+    "revision": "5c38ec7c405ec4b44b94cc5a9bb96e735b38267a",
+    "license": "mit",
+    "local_dir": "data/models/BAAI__bge-small-en-v1.5",
+    "weights_bytes": {
+     "model.safetensors": 133466304
+    }
+   },
+   "reranker": {
+    "repo": "cross-encoder/ms-marco-MiniLM-L6-v2",
+    "revision": "233902d25c440f23af6f7d6e94d2946bac0bee0a",
+    "license": "apache-2.0",
+    "local_dir": "data/models/cross-encoder__ms-marco-MiniLM-L6-v2",
+    "weights_bytes": {
+     "model.safetensors": 90870598
+    }
+   },
+   "generator": {
+    "repo": "Qwen/Qwen2.5-1.5B-Instruct",
+    "revision": "989aa7980e4cf806f80c7fef2b1adb7bc71aa306",
+    "license": "apache-2.0",
+    "local_dir": "data/models/Qwen__Qwen2.5-1.5B-Instruct",
+    "weights_bytes": {
+     "model.safetensors": 3087467144
+    }
+   }
+  },
+  "api_cost": {
+   "answer_usd": 0.001769,
+   "rewrite_usd": 0.0,
+   "total_usd": 0.001769,
+   "billed_calls": 20
+  },
+  "api_cost_usd": 0.001769,
+  "served_models": [
+   "gpt-6-luna"
+  ]
+ },
+ "rows": [
+  {
+   "question": "What improvements in cost and time to first token does the GPU live migration company claim?",
+   "config": "A",
+   "status": "answered",
+   "answer": "Cedana claims cost savings of up to 80% and accelerates time to first token by 2-10x. [2]",
+   "citations": [
+    {
+     "n": 2,
+     "chunk_id": "yc-cedana#c00",
+     "doc_id": "yc-cedana",
+     "span": [
+      0,
+      464
+     ]
+    }
+   ],
+   "invalid_citations": [],
+   "blocked_reason": null,
+   "error": null,
+   "raw_output": "STATUS: ANSWER\nANSWER: Cedana claims cost savings of up to 80% and accelerates time to first token by 2-10x. [2]",
+   "retrieved": [
+    {
+     "n": 1,
+     "chunk_id": "yc-sf-tensor#c03",
+     "doc_id": "yc-sf-tensor",
+     "span": [
+      1130,
+      1477
+     ],
+     "score": 0.6987485885620117
+    },
+    {
+     "n": 2,
+     "chunk_id": "yc-cedana#c00",
+     "doc_id": "yc-cedana",
+     "span": [
+      0,
+      464
+     ],
+     "score": 0.6966395378112793
+    },
+    {
+     "n": 3,
+     "chunk_id": "yc-nodus-compute#c00",
+     "doc_id": "yc-nodus-compute",
+     "span": [
+      0,
+      350
+     ],
+     "score": 0.6959075927734375
+    },
+    {
+     "n": 4,
+     "chunk_id": "yc-cedana#c01",
+     "doc_id": "yc-cedana",
+     "span": [
+      332,
+      692
+     ],
+     "score": 0.686440110206604
+    },
+    {
+     "n": 5,
+     "chunk_id": "yc-sf-tensor#c01",
+     "doc_id": "yc-sf-tensor",
+     "span": [
+      415,
+      869
+     ],
+     "score": 0.6861684322357178
+    }
+   ],
+   "timing_ms": {
+    "retrieval": 26.1,
+    "generation": 2343.2,
+    "total": 2369.3
+   },
+   "generated_tokens": 39,
+   "rewrite": null,
+   "llm_meta": {
+    "requested_model": "gpt-6-luna",
+    "served_model": "gpt-6-luna",
+    "request_id": "req_9f13efdb2c2141b38408d21c07ba59ce",
+    "response_id": "resp_0cf5c8daa79018bf016b08e1df477c87d0b25365565187ab32",
+    "input_tokens": 712,
+    "output_tokens": 39,
+    "reasoning_tokens": 0,
+    "status": "completed",
+    "incomplete_reason": null,
+    "cost_usd": 9.1e-05
+   },
+   "run_id": "20261127T105023",
+   "question_id": "T01",
+   "type": "direct",
+   "answerable": true,
+   "expected_key_facts": [
+    "Cedana",
+    "cost savings up to 80%",
+    "time to first token 2-10x faster"
+   ],
+   "allowed_chunk_ids": [
+    "yc-cedana#c00"
+   ],
+   "grading": null
+  },
+  {
+   "question": "Which company says its Ion inference engine delivers 30 to 50 percent more throughput than vLLM or SGLang, and what technique enables it?",
+   "config": "A",
+   "status": "answered",
+   "answer": "Cumulus Labs says its Ion inference engine delivers 30 to 50 percent more throughput than standard vLLM or SGLang, using in-house custom GPU kernels. [1]",
+   "citations": [
+    {
+     "n": 1,
+     "chunk_id": "yc-cumulus-labs#c02",
+     "doc_id": "yc-cumulus-labs",
+     "span": [
+      629,
+      891
+     ]
+    }
+   ],
+   "invalid_citations": [],
+   "blocked_reason": null,
+   "error": null,
+   "raw_output": "STATUS: ANSWER\nANSWER: Cumulus Labs says its Ion inference engine delivers 30 to 50 percent more throughput than standard vLLM or SGLang, using in-house custom GPU kernels. [1]",
+   "retrieved": [
+    {
+     "n": 1,
+     "chunk_id": "yc-cumulus-labs#c02",
+     "doc_id": "yc-cumulus-labs",
+     "span": [
+      629,
+      891
+     ],
+     "score": 0.7340792417526245
+    },
+    {
+     "n": 2,
+     "chunk_id": "yc-overshoot#c00",
+     "doc_id": "yc-overshoot",
+     "span": [
+      0,
+      470
+     ],
+     "score": 0.6955962181091309
+    },
+    {
+     "n": 3,
+     "chunk_id": "yc-cumulus-labs#c01",
+     "doc_id": "yc-cumulus-labs",
+     "span": [
+      363,
+      733
+     ],
+     "score": 0.6687577366828918
+    },
+    {
+     "n": 4,
+     "chunk_id": "yc-runanywhere#c02",
+     "doc_id": "yc-runanywhere",
+     "span": [
+      537,
+      947
+     ],
+     "score": 0.6253005266189575
+    },
+    {
+     "n": 5,
+     "chunk_id": "yc-litellm#c00",
+     "doc_id": "yc-litellm",
+     "span": [
+      0,
+      401
+     ],
+     "score": 0.6247637271881104
+    }
+   ],
+   "timing_ms": {
+    "retrieval": 13.6,
+    "generation": 1640.9,
+    "total": 1654.5
+   },
+   "generated_tokens": 49,
+   "rewrite": null,
+   "llm_meta": {
+    "requested_model": "gpt-6-luna",
+    "served_model": "gpt-6-luna",
+    "request_id": "req_8acb23dde8684bd48c709d62858885e4",
+    "response_id": "resp_0a14646956390e8c016b08e1e0e70c87d0bb56f0280edde39c",
+    "input_tokens": 776,
+    "output_tokens": 49,
+    "reasoning_tokens": 0,
+    "status": "completed",
+    "incomplete_reason": null,
+    "cost_usd": 0.000102
+   },
+   "run_id": "20261127T105023",
+   "question_id": "T02",
+   "type": "direct",
+   "answerable": true,
+   "expected_key_facts": [
+    "Cumulus Labs",
+    "30 to 50 percent more throughput",
+    "in-house custom GPU kernels"
+   ],
+   "allowed_chunk_ids": [
+    "yc-cumulus-labs#c02"
+   ],
+   "grading": null
+  },
+  {
+   "question": "What serving speed and latency does the self-improving inference cloud report for its open models?",
+   "config": "A",
+   "status": "answered",
+   "answer": "It reports serving open models at 1200 tokens/sec and sub-500ms latency. [1]",
+   "citations": [
+    {
+     "n": 1,
+     "chunk_id": "yc-isoquant#c00",
+     "doc_id": "yc-isoquant",
+     "span": [
+      0,
+      469
+     ]
+    }
+   ],
+   "invalid_citations": [],
+   "blocked_reason": null,
+   "error": null,
+   "raw_output": "STATUS: ANSWER\nANSWER: It reports serving open models at 1200 tokens/sec and sub-500ms latency. [1]",
+   "retrieved": [
+    {
+     "n": 1,
+     "chunk_id": "yc-isoquant#c00",
+     "doc_id": "yc-isoquant",
+     "span": [
+      0,
+      469
+     ],
+     "score": 0.778386116027832
+    },
+    {
+     "n": 2,
+     "chunk_id": "yc-dreamscale-labs#c00",
+     "doc_id": "yc-dreamscale-labs",
+     "span": [
+      0,
+      309
+     ],
+     "score": 0.7569454908370972
+    },
+    {
+     "n": 3,
+     "chunk_id": "yc-pipeshift#c00",
+     "doc_id": "yc-pipeshift",
+     "span": [
+      0,
+      374
+     ],
+     "score": 0.7292702794075012
+    },
+    {
+     "n": 4,
+     "chunk_id": "yc-cumulus-labs#c02",
+     "doc_id": "yc-cumulus-labs",
+     "span": [
+      629,
+      891
+     ],
+     "score": 0.716614305973053
+    },
+    {
+     "n": 5,
+     "chunk_id": "yc-mystic#c00",
+     "doc_id": "yc-mystic",
+     "span": [
+      0,
+      447
+     ],
+     "score": 0.710030198097229
+    }
+   ],
+   "timing_ms": {
+    "retrieval": 15.0,
+    "generation": 1226.7,
+    "total": 1241.8
+   },
+   "generated_tokens": 32,
+   "rewrite": null,
+   "llm_meta": {
+    "requested_model": "gpt-6-luna",
+    "served_model": "gpt-6-luna",
+    "request_id": "req_9da93ca30e214e43a19918fe0ffda8ef",
+    "response_id": "resp_0ce1ed04b2e9b11e016b08e1e28c0487d09d259f296a70b073",
+    "input_tokens": 706,
+    "output_tokens": 32,
+    "reasoning_tokens": 0,
+    "status": "completed",
+    "incomplete_reason": null,
+    "cost_usd": 8.7e-05
+   },
+   "run_id": "20261127T105023",
+   "question_id": "T03",
+   "type": "direct",
+   "answerable": true,
+   "expected_key_facts": [
+    "isoquant",
+    "4x faster than other providers",
+    "over 1200 tokens/sec",
+    "sub-500ms latency"
+   ],
+   "allowed_chunk_ids": [
+    "yc-isoquant#c00"
+   ],
+   "grading": null
+  },
+  {
+   "question": "Under what condition does the company that builds custom deployment images for vLLM and SGLang get paid?",
+   "config": "A",
+   "status": "answered",
+   "answer": "Overshoot gets paid only if it meets the performance target agreed on with the customer. [1]",
+   "citations": [
+    {
+     "n": 1,
+     "chunk_id": "yc-overshoot#c00",
+     "doc_id": "yc-overshoot",
+     "span": [
+      0,
+      470
+     ]
+    }
+   ],
+   "invalid_citations": [],
+   "blocked_reason": null,
+   "error": null,
+   "raw_output": "STATUS: ANSWER\nANSWER: Overshoot gets paid only if it meets the performance target agreed on with the customer. [1]",
+   "retrieved": [
+    {
+     "n": 1,
+     "chunk_id": "yc-overshoot#c00",
+     "doc_id": "yc-overshoot",
+     "span": [
+      0,
+      470
+     ],
+     "score": 0.6865869164466858
+    },
+    {
+     "n": 2,
+     "chunk_id": "yc-litellm#c00",
+     "doc_id": "yc-litellm",
+     "span": [
+      0,
+      401
+     ],
+     "score": 0.6225521564483643
+    },
+    {
+     "n": 3,
+     "chunk_id": "yc-unsloth-ai#c00",
+     "doc_id": "yc-unsloth-ai",
+     "span": [
+      0,
+      353
+     ],
+     "score": 0.5902348756790161
+    },
+    {
+     "n": 4,
+     "chunk_id": "yc-cumulus-labs#c02",
+     "doc_id": "yc-cumulus-labs",
+     "span": [
+      629,
+      891
+     ],
+     "score": 0.5869061946868896
+    },
+    {
+     "n": 5,
+     "chunk_id": "yc-baymachines#c00",
+     "doc_id": "yc-baymachines",
+     "span": [
+      0,
+      255
+     ],
+     "score": 0.5861738324165344
+    }
+   ],
+   "timing_ms": {
+    "retrieval": 14.8,
+    "generation": 1493.6,
+    "total": 1508.4
+   },
+   "generated_tokens": 31,
+   "rewrite": null,
+   "llm_meta": {
+    "requested_model": "gpt-6-luna",
+    "served_model": "gpt-6-luna",
+    "request_id": "req_ded5795dee4c4b9abcd23135563745b3",
+    "response_id": "resp_0169dfd4f43234a3016b08e1e3cf4887d0bcb83023c68e13a9",
+    "input_tokens": 717,
+    "output_tokens": 31,
+    "reasoning_tokens": 0,
+    "status": "completed",
+    "incomplete_reason": null,
+    "cost_usd": 8.7e-05
+   },
+   "run_id": "20261127T105023",
+   "question_id": "T04",
+   "type": "direct",
+   "answerable": true,
+   "expected_key_facts": [
+    "Overshoot",
+    "customers pay only if the agreed performance target is met"
+   ],
+   "allowed_chunk_ids": [
+    "yc-overshoot#c00"
+   ],
+   "grading": null
+  },
+  {
+   "question": "What time to ready-for-service does the modular data center company aim for, and what do customers bring?",
+   "config": "A",
+   "status": "answered",
+   "answer": "The company aims for 6 months to ready-for-service. [1] Customers bring the GPUs. [1]",
+   "citations": [
+    {
+     "n": 1,
+     "chunk_id": "yc-posh#c00",
+     "doc_id": "yc-posh",
+     "span": [
+      0,
+      493
+     ]
+    }
+   ],
+   "invalid_citations": [],
+   "blocked_reason": null,
+   "error": null,
+   "raw_output": "STATUS: ANSWER\nANSWER: The company aims for 6 months to ready-for-service. [1] Customers bring the GPUs. [1]",
+   "retrieved": [
+    {
+     "n": 1,
+     "chunk_id": "yc-posh#c00",
+     "doc_id": "yc-posh",
+     "span": [
+      0,
+      493
+     ],
+     "score": 0.6714779138565063
+    },
+    {
+     "n": 2,
+     "chunk_id": "yc-starcloud#c03",
+     "doc_id": "yc-starcloud",
+     "span": [
+      921,
+      1283
+     ],
+     "score": 0.6692861318588257
+    },
+    {
+     "n": 3,
+     "chunk_id": "yc-starcloud#c02",
+     "doc_id": "yc-starcloud",
+     "span": [
+      647,
+      1027
+     ],
+     "score": 0.6270573735237122
+    },
+    {
+     "n": 4,
+     "chunk_id": "yc-starcloud#c00",
+     "doc_id": "yc-starcloud",
+     "span": [
+      0,
+      428
+     ],
+     "score": 0.6249176263809204
+    },
+    {
+     "n": 5,
+     "chunk_id": "yc-starcloud#c01",
+     "doc_id": "yc-starcloud",
+     "span": [
+      318,
+      747
+     ],
+     "score": 0.6018776893615723
+    }
+   ],
+   "timing_ms": {
+    "retrieval": 12.4,
+    "generation": 1288.4,
+    "total": 1300.9
+   },
+   "generated_tokens": 34,
+   "rewrite": null,
+   "llm_meta": {
+    "requested_model": "gpt-6-luna",
+    "served_model": "gpt-6-luna",
+    "request_id": "req_b3efa0cad7ca49b98a7b21704b8226f0",
+    "response_id": "resp_0c2c1beac62686a2016b08e1e54b3887d0a3fb5c92af1a76ee",
+    "input_tokens": 757,
+    "output_tokens": 34,
+    "reasoning_tokens": 0,
+    "status": "completed",
+    "incomplete_reason": null,
+    "cost_usd": 9.3e-05
+   },
+   "run_id": "20261127T105023",
+   "question_id": "T05",
+   "type": "direct",
+   "answerable": true,
+   "expected_key_facts": [
+    "Posh",
+    "6 months to ready-for-service",
+    "customers bring the GPUs"
+   ],
+   "allowed_chunk_ids": [
+    "yc-posh#c00",
+    "yc-posh#c01"
+   ],
+   "grading": null
+  },
+  {
+   "question": "How many LLM APIs can the open-source LLM gateway call, and in which request format?",
+   "config": "A",
+   "status": "answered",
+   "answer": "The open-source LLM gateway can call 100+ LLM APIs in the OpenAI format. [1]",
+   "citations": [
+    {
+     "n": 1,
+     "chunk_id": "yc-litellm#c00",
+     "doc_id": "yc-litellm",
+     "span": [
+      0,
+      401
+     ]
+    }
+   ],
+   "invalid_citations": [],
+   "blocked_reason": null,
+   "error": null,
+   "raw_output": "STATUS: ANSWER\nANSWER: The open-source LLM gateway can call 100+ LLM APIs in the OpenAI format. [1]",
+   "retrieved": [
+    {
+     "n": 1,
+     "chunk_id": "yc-litellm#c00",
+     "doc_id": "yc-litellm",
+     "span": [
+      0,
+      401
+     ],
+     "score": 0.7946138381958008
+    },
+    {
+     "n": 2,
+     "chunk_id": "yc-runanywhere#c02",
+     "doc_id": "yc-runanywhere",
+     "span": [
+      537,
+      947
+     ],
+     "score": 0.6275733113288879
+    },
+    {
+     "n": 3,
+     "chunk_id": "yc-compresr#c00",
+     "doc_id": "yc-compresr",
+     "span": [
+      0,
+      160
+     ],
+     "score": 0.6016525030136108
+    },
+    {
+     "n": 4,
+     "chunk_id": "yc-runanywhere#c01",
+     "doc_id": "yc-runanywhere",
+     "span": [
+      238,
+      536
+     ],
+     "score": 0.5957869291305542
+    },
+    {
+     "n": 5,
+     "chunk_id": "yc-unsloth-ai#c00",
+     "doc_id": "yc-unsloth-ai",
+     "span": [
+      0,
+      353
+     ],
+     "score": 0.5820680260658264
+    }
+   ],
+   "timing_ms": {
+    "retrieval": 14.0,
+    "generation": 1255.8,
+    "total": 1269.8
+   },
+   "generated_tokens": 34,
+   "rewrite": null,
+   "llm_meta": {
+    "requested_model": "gpt-6-luna",
+    "served_model": "gpt-6-luna",
+    "request_id": "req_86c06c7ded3845b5b826178f47206e87",
+    "response_id": "resp_0d9b2854a145fdc6016b08e1e69ab087d0b5bc1523d1939122",
+    "input_tokens": 751,
+    "output_tokens": 34,
+    "reasoning_tokens": 0,
+    "status": "completed",
+    "incomplete_reason": null,
+    "cost_usd": 9.2e-05
+   },
+   "run_id": "20261127T105023",
+   "question_id": "T06",
+   "type": "direct",
+   "answerable": true,
+   "expected_key_facts": [
+    "LiteLLM",
+    "100+ LLM APIs",
+    "OpenAI format"
+   ],
+   "allowed_chunk_ids": [
+    "yc-litellm#c00"
+   ],
+   "grading": null
+  },
+  {
+   "question": "Which company describes itself as a GPU kernel lab and offers batch inference at half price?",
+   "config": "A",
+   "status": "answered",
+   "answer": "RightNow describes itself as a GPU kernel lab and offers batch inference at half price. [2]",
+   "citations": [
+    {
+     "n": 2,
+     "chunk_id": "yc-rightnow#c00",
+     "doc_id": "yc-rightnow",
+     "span": [
+      0,
+      365
+     ]
+    }
+   ],
+   "invalid_citations": [],
+   "blocked_reason": null,
+   "error": null,
+   "raw_output": "STATUS: ANSWER\nANSWER: RightNow describes itself as a GPU kernel lab and offers batch inference at half price. [2]",
+   "retrieved": [
+    {
+     "n": 1,
+     "chunk_id": "yc-cumulus-labs#c02",
+     "doc_id": "yc-cumulus-labs",
+     "span": [
+      629,
+      891
+     ],
+     "score": 0.7453864812850952
+    },
+    {
+     "n": 2,
+     "chunk_id": "yc-rightnow#c00",
+     "doc_id": "yc-rightnow",
+     "span": [
+      0,
+      365
+     ],
+     "score": 0.7413517832756042
+    },
+    {
+     "n": 3,
+     "chunk_id": "yc-sf-tensor#c01",
+     "doc_id": "yc-sf-tensor",
+     "span": [
+      415,
+      869
+     ],
+     "score": 0.7268080115318298
+    },
+    {
+     "n": 4,
+     "chunk_id": "yc-sf-tensor#c03",
+     "doc_id": "yc-sf-tensor",
+     "span": [
+      1130,
+      1477
+     ],
+     "score": 0.7074053883552551
+    },
+    {
+     "n": 5,
+     "chunk_id": "yc-cumulus-labs#c01",
+     "doc_id": "yc-cumulus-labs",
+     "span": [
+      363,
+      733
+     ],
+     "score": 0.7029151320457458
+    }
+   ],
+   "timing_ms": {
+    "retrieval": 15.1,
+    "generation": 1377.6,
+    "total": 1392.8
+   },
+   "generated_tokens": 31,
+   "rewrite": null,
+   "llm_meta": {
+    "requested_model": "gpt-6-luna",
+    "served_model": "gpt-6-luna",
+    "request_id": "req_ca1b7448d25b4e5e99c5e73920fbee7a",
+    "response_id": "resp_0a5c2a12ca6b42a7016b08e1e7dd2887d09194690c5f083673",
+    "input_tokens": 656,
+    "output_tokens": 31,
+    "reasoning_tokens": 0,
+    "status": "completed",
+    "incomplete_reason": null,
+    "cost_usd": 8.1e-05
+   },
+   "run_id": "20261127T105023",
+   "question_id": "T07",
+   "type": "direct",
+   "answerable": true,
+   "expected_key_facts": [
+    "RightNow",
+    "batch at half price"
+   ],
+   "allowed_chunk_ids": [
+    "yc-rightnow#c00"
+   ],
+   "grading": null
+  },
+  {
+   "question": "Which company put an Nvidia H100 on a satellite, and in which month and year was it launched?",
+   "config": "A",
+   "status": "answered",
+   "answer": "Starcloud put an Nvidia H100 on its Starcloud-1 satellite, launched in November 2025. [1]",
+   "citations": [
+    {
+     "n": 1,
+     "chunk_id": "yc-starcloud#c01",
+     "doc_id": "yc-starcloud",
+     "span": [
+      318,
+      747
+     ]
+    }
+   ],
+   "invalid_citations": [],
+   "blocked_reason": null,
+   "error": null,
+   "raw_output": "STATUS: ANSWER\nANSWER: Starcloud put an Nvidia H100 on its Starcloud-1 satellite, launched in November 2025. [1]",
+   "retrieved": [
+    {
+     "n": 1,
+     "chunk_id": "yc-starcloud#c01",
+     "doc_id": "yc-starcloud",
+     "span": [
+      318,
+      747
+     ],
+     "score": 0.7084215879440308
+    },
+    {
+     "n": 2,
+     "chunk_id": "yc-starcloud#c00",
+     "doc_id": "yc-starcloud",
+     "span": [
+      0,
+      428
+     ],
+     "score": 0.6044119596481323
+    },
+    {
+     "n": 3,
+     "chunk_id": "yc-starcloud#c02",
+     "doc_id": "yc-starcloud",
+     "span": [
+      647,
+      1027
+     ],
+     "score": 0.6023560166358948
+    },
+    {
+     "n": 4,
+     "chunk_id": "yc-starcloud#c03",
+     "doc_id": "yc-starcloud",
+     "span": [
+      921,
+      1283
+     ],
+     "score": 0.5767619609832764
+    },
+    {
+     "n": 5,
+     "chunk_id": "yc-sf-tensor#c03",
+     "doc_id": "yc-sf-tensor",
+     "span": [
+      1130,
+      1477
+     ],
+     "score": 0.5564040541648865
+    }
+   ],
+   "timing_ms": {
+    "retrieval": 11.1,
+    "generation": 1308.1,
+    "total": 1319.2
+   },
+   "generated_tokens": 36,
+   "rewrite": null,
+   "llm_meta": {
+    "requested_model": "gpt-6-luna",
+    "served_model": "gpt-6-luna",
+    "request_id": "req_71a1d704b3294f018a54241642dd86b7",
+    "response_id": "resp_0bfbbfe4a03548c7016b08e1e9449087d087c0e7c2ec43f6f3",
+    "input_tokens": 717,
+    "output_tokens": 36,
+    "reasoning_tokens": 0,
+    "status": "completed",
+    "incomplete_reason": null,
+    "cost_usd": 9e-05
+   },
+   "run_id": "20261127T105023",
+   "question_id": "T08",
+   "type": "direct",
+   "answerable": true,
+   "expected_key_facts": [
+    "Starcloud",
+    "Starcloud-1",
+    "November 2025"
+   ],
+   "allowed_chunk_ids": [
+    "yc-starcloud#c00",
+    "yc-starcloud#c01"
+   ],
+   "grading": null
+  },
+  {
+   "question": "What latency improvement does the real-time inference runtime company report for voice workloads, and what does that allow in terms of users?",
+   "config": "A",
+   "status": "answered",
+   "answer": "Pipeshift reports typically 3 to 5X lower time-to-first-audio for voice workloads, allowing teams to serve 2x the users on the same hardware. [3]",
+   "citations": [
+    {
+     "n": 3,
+     "chunk_id": "yc-pipeshift#c00",
+     "doc_id": "yc-pipeshift",
+     "span": [
+      0,
+      374
+     ]
+    }
+   ],
+   "invalid_citations": [],
+   "blocked_reason": null,
+   "error": null,
+   "raw_output": "STATUS: ANSWER\nANSWER: Pipeshift reports typically 3 to 5X lower time-to-first-audio for voice workloads, allowing teams to serve 2x the users on the same hardware. [3]",
+   "retrieved": [
+    {
+     "n": 1,
+     "chunk_id": "yc-dotwave#c00",
+     "doc_id": "yc-dotwave",
+     "span": [
+      0,
+      482
+     ],
+     "score": 0.7546931505203247
+    },
+    {
+     "n": 2,
+     "chunk_id": "yc-hopper#c00",
+     "doc_id": "yc-hopper",
+     "span": [
+      0,
+      357
+     ],
+     "score": 0.749718427658081
+    },
+    {
+     "n": 3,
+     "chunk_id": "yc-pipeshift#c00",
+     "doc_id": "yc-pipeshift",
+     "span": [
+      0,
+      374
+     ],
+     "score": 0.7360743284225464
+    },
+    {
+     "n": 4,
+     "chunk_id": "yc-dotwave#c01",
+     "doc_id": "yc-dotwave",
+     "span": [
+      423,
+      603
+     ],
+     "score": 0.7078974843025208
+    },
+    {
+     "n": 5,
+     "chunk_id": "yc-dreamscale-labs#c00",
+     "doc_id": "yc-dreamscale-labs",
+     "span": [
+      0,
+      309
+     ],
+     "score": 0.6922672390937805
+    }
+   ],
+   "timing_ms": {
+    "retrieval": 10.4,
+    "generation": 1356.1,
+    "total": 1366.5
+   },
+   "generated_tokens": 49,
+   "rewrite": null,
+   "llm_meta": {
+    "requested_model": "gpt-6-luna",
+    "served_model": "gpt-6-luna",
+    "request_id": "req_69dbcc36fe14413fb088280493821765",
+    "response_id": "resp_0b8265575694d006016b08e1ea977087d0b9ae0950dbaf1381",
+    "input_tokens": 656,
+    "output_tokens": 49,
+    "reasoning_tokens": 0,
+    "status": "completed",
+    "incomplete_reason": null,
+    "cost_usd": 9e-05
+   },
+   "run_id": "20261127T105023",
+   "question_id": "T09",
+   "type": "direct",
+   "answerable": true,
+   "expected_key_facts": [
+    "Pipeshift",
+    "3 to 5X lower time-to-first-audio",
+    "serve 2x the users on the same hardware"
+   ],
+   "allowed_chunk_ids": [
+    "yc-pipeshift#c00"
+   ],
+   "grading": null
+  },
+  {
+   "question": "Which open-model AI cloud keeps inference and storage in the EU, and who founded it?",
+   "config": "A",
+   "status": "answered",
+   "answer": "Munito AI keeps inference and storage in the EU [2]. It was founded by the former inference lead at Mistral AI [1].",
+   "citations": [
+    {
+     "n": 2,
+     "chunk_id": "yc-munito-ai#c00",
+     "doc_id": "yc-munito-ai",
+     "span": [
+      0,
+      448
+     ]
+    },
+    {
+     "n": 1,
+     "chunk_id": "yc-munito-ai#c01",
+     "doc_id": "yc-munito-ai",
+     "span": [
+      316,
+      641
+     ]
+    }
+   ],
+   "invalid_citations": [],
+   "blocked_reason": null,
+   "error": null,
+   "raw_output": "STATUS: ANSWER\nANSWER: Munito AI keeps inference and storage in the EU [2]. It was founded by the former inference lead at Mistral AI [1].",
+   "retrieved": [
+    {
+     "n": 1,
+     "chunk_id": "yc-munito-ai#c01",
+     "doc_id": "yc-munito-ai",
+     "span": [
+      316,
+      641
+     ],
+     "score": 0.734644889831543
+    },
+    {
+     "n": 2,
+     "chunk_id": "yc-munito-ai#c00",
+     "doc_id": "yc-munito-ai",
+     "span": [
+      0,
+      448
+     ],
+     "score": 0.7339410185813904
+    },
+    {
+     "n": 3,
+     "chunk_id": "yc-beam#c00",
+     "doc_id": "yc-beam",
+     "span": [
+      0,
+      63
+     ],
+     "score": 0.6900888681411743
+    },
+    {
+     "n": 4,
+     "chunk_id": "yc-dreamscale-labs#c00",
+     "doc_id": "yc-dreamscale-labs",
+     "span": [
+      0,
+      309
+     ],
+     "score": 0.6791996955871582
+    },
+    {
+     "n": 5,
+     "chunk_id": "yc-orchestra#c00",
+     "doc_id": "yc-orchestra",
+     "span": [
+      0,
+      395
+     ],
+     "score": 0.6759847402572632
+    }
+   ],
+   "timing_ms": {
+    "retrieval": 11.6,
+    "generation": 1564.8,
+    "total": 1576.5
+   },
+   "generated_tokens": 86,
+   "rewrite": null,
+   "llm_meta": {
+    "requested_model": "gpt-6-luna",
+    "served_model": "gpt-6-luna",
+    "request_id": "req_8122a4bc10d84a5584f9f461d00af990",
+    "response_id": "resp_04e132ca879ee9a2016b08e1ebf0a087d09bdcfd845b775d18",
+    "input_tokens": 636,
+    "output_tokens": 86,
+    "reasoning_tokens": 44,
+    "status": "completed",
+    "incomplete_reason": null,
+    "cost_usd": 0.000107
+   },
+   "run_id": "20261127T105023",
+   "question_id": "T10",
+   "type": "direct",
+   "answerable": true,
+   "expected_key_facts": [
+    "Munito AI",
+    "former inference lead at Mistral AI"
+   ],
+   "allowed_chunk_ids": [
+    "yc-munito-ai#c00",
+    "yc-munito-ai#c01"
+   ],
+   "grading": null
+  },
+  {
+   "question": "Which company reports a 40-50% improvement over existing neoclouds, and does that figure describe cost or latency?",
+   "config": "A",
+   "status": "answered",
+   "answer": "Dreamscale Labs reports a 40-50% improvement over existing neoclouds, and the figure describes latency, not cost. [4]",
+   "citations": [
+    {
+     "n": 4,
+     "chunk_id": "yc-dreamscale-labs#c00",
+     "doc_id": "yc-dreamscale-labs",
+     "span": [
+      0,
+      309
+     ]
+    }
+   ],
+   "invalid_citations": [],
+   "blocked_reason": null,
+   "error": null,
+   "raw_output": "STATUS: ANSWER\nANSWER: Dreamscale Labs reports a 40-50% improvement over existing neoclouds, and the figure describes latency, not cost. [4]",
+   "retrieved": [
+    {
+     "n": 1,
+     "chunk_id": "yc-lilac#c00",
+     "doc_id": "yc-lilac",
+     "span": [
+      0,
+      150
+     ],
+     "score": 0.6886448264122009
+    },
+    {
+     "n": 2,
+     "chunk_id": "yc-starcloud#c03",
+     "doc_id": "yc-starcloud",
+     "span": [
+      921,
+      1283
+     ],
+     "score": 0.6763051152229309
+    },
+    {
+     "n": 3,
+     "chunk_id": "yc-orchestra#c02",
+     "doc_id": "yc-orchestra",
+     "span": [
+      680,
+      864
+     ],
+     "score": 0.6349976062774658
+    },
+    {
+     "n": 4,
+     "chunk_id": "yc-dreamscale-labs#c00",
+     "doc_id": "yc-dreamscale-labs",
+     "span": [
+      0,
+      309
+     ],
+     "score": 0.6255438327789307
+    },
+    {
+     "n": 5,
+     "chunk_id": "yc-starcloud#c02",
+     "doc_id": "yc-starcloud",
+     "span": [
+      647,
+      1027
+     ],
+     "score": 0.6231606602668762
+    }
+   ],
+   "timing_ms": {
+    "retrieval": 11.0,
+    "generation": 1304.2,
+    "total": 1315.2
+   },
+   "generated_tokens": 41,
+   "rewrite": null,
+   "llm_meta": {
+    "requested_model": "gpt-6-luna",
+    "served_model": "gpt-6-luna",
+    "request_id": "req_b457aa0f89bb4e168710abe9c753d8cb",
+    "response_id": "resp_0d8ec200183f75f5016b08e1ed8d6c87d09d45e9a92c76e0b6",
+    "input_tokens": 620,
+    "output_tokens": 41,
+    "reasoning_tokens": 0,
+    "status": "completed",
+    "incomplete_reason": null,
+    "cost_usd": 8.2e-05
+   },
+   "run_id": "20261127T105023",
+   "question_id": "T11",
+   "type": "variant_or_confusable",
+   "answerable": true,
+   "expected_key_facts": [
+    "Dreamscale Labs",
+    "the 40-50% figure is lower latency",
+    "no cost reduction is stated"
+   ],
+   "allowed_chunk_ids": [
+    "yc-dreamscale-labs#c00"
+   ],
+   "grading": null
+  },
+  {
+   "question": "Which CLI-based product handles GPU orchestration for ML training at half the cost of major cloud providers?",
+   "config": "A",
+   "status": "answered",
+   "answer": "TensorPool’s CLI handles GPU orchestration and execution for ML training at half the cost of major cloud providers. [1]",
+   "citations": [
+    {
+     "n": 1,
+     "chunk_id": "yc-tensorpool#c00",
+     "doc_id": "yc-tensorpool",
+     "span": [
+      0,
+      157
+     ]
+    }
+   ],
+   "invalid_citations": [],
+   "blocked_reason": null,
+   "error": null,
+   "raw_output": "STATUS: ANSWER\nANSWER: TensorPool’s CLI handles GPU orchestration and execution for ML training at half the cost of major cloud providers. [1]",
+   "retrieved": [
+    {
+     "n": 1,
+     "chunk_id": "yc-tensorpool#c00",
+     "doc_id": "yc-tensorpool",
+     "span": [
+      0,
+      157
+     ],
+     "score": 0.8275937438011169
+    },
+    {
+     "n": 2,
+     "chunk_id": "yc-sf-tensor#c01",
+     "doc_id": "yc-sf-tensor",
+     "span": [
+      415,
+      869
+     ],
+     "score": 0.7558320760726929
+    },
+    {
+     "n": 3,
+     "chunk_id": "yc-orchestra#c00",
+     "doc_id": "yc-orchestra",
+     "span": [
+      0,
+      395
+     ],
+     "score": 0.708977460861206
+    },
+    {
+     "n": 4,
+     "chunk_id": "yc-shadeform#c00",
+     "doc_id": "yc-shadeform",
+     "span": [
+      0,
+      397
+     ],
+     "score": 0.698526918888092
+    },
+    {
+     "n": 5,
+     "chunk_id": "yc-cumulus-labs#c02",
+     "doc_id": "yc-cumulus-labs",
+     "span": [
+      629,
+      891
+     ],
+     "score": 0.698148250579834
+    }
+   ],
+   "timing_ms": {
+    "retrieval": 11.7,
+    "generation": 1298.6,
+    "total": 1310.3
+   },
+   "generated_tokens": 36,
+   "rewrite": null,
+   "llm_meta": {
+    "requested_model": "gpt-6-luna",
+    "served_model": "gpt-6-luna",
+    "request_id": "req_aeea1f2ad146480fbe5c06fa46307169",
+    "response_id": "resp_0d5fd93963487be1016b08e1eed9c887d08f3bebbcd76efb5e",
+    "input_tokens": 625,
+    "output_tokens": 36,
+    "reasoning_tokens": 0,
+    "status": "completed",
+    "incomplete_reason": null,
+    "cost_usd": 8.1e-05
+   },
+   "run_id": "20261127T105023",
+   "question_id": "T12",
+   "type": "variant_or_confusable",
+   "answerable": true,
+   "expected_key_facts": [
+    "TensorPool",
+    "half the cost of major cloud providers"
+   ],
+   "allowed_chunk_ids": [
+    "yc-tensorpool#c00"
+   ],
+   "grading": null
+  },
+  {
+   "question": "Which company finds the cheapest GPUs across providers, handles spot preemption, and claims compute cost cuts of up to 80%?",
+   "config": "A",
+   "status": "answered",
+   "answer": "SF Tensor finds the cheapest GPUs across providers, handles spot instance preemption, and claims to cut compute costs by up to 80% [1].",
+   "citations": [
+    {
+     "n": 1,
+     "chunk_id": "yc-sf-tensor#c01",
+     "doc_id": "yc-sf-tensor",
+     "span": [
+      415,
+      869
+     ]
+    }
+   ],
+   "invalid_citations": [],
+   "blocked_reason": null,
+   "error": null,
+   "raw_output": "STATUS: ANSWER\nANSWER: SF Tensor finds the cheapest GPUs across providers, handles spot instance preemption, and claims to cut compute costs by up to 80% [1].",
+   "retrieved": [
+    {
+     "n": 1,
+     "chunk_id": "yc-sf-tensor#c01",
+     "doc_id": "yc-sf-tensor",
+     "span": [
+      415,
+      869
+     ],
+     "score": 0.6920819282531738
+    },
+    {
+     "n": 2,
+     "chunk_id": "yc-nodus-compute#c00",
+     "doc_id": "yc-nodus-compute",
+     "span": [
+      0,
+      350
+     ],
+     "score": 0.6337371468544006
+    },
+    {
+     "n": 3,
+     "chunk_id": "yc-thunder-compute#c00",
+     "doc_id": "yc-thunder-compute",
+     "span": [
+      0,
+      166
+     ],
+     "score": 0.6299982070922852
+    },
+    {
+     "n": 4,
+     "chunk_id": "yc-cumulus-labs#c02",
+     "doc_id": "yc-cumulus-labs",
+     "span": [
+      629,
+      891
+     ],
+     "score": 0.6250022053718567
+    },
+    {
+     "n": 5,
+     "chunk_id": "yc-sf-tensor#c03",
+     "doc_id": "yc-sf-tensor",
+     "span": [
+      1130,
+      1477
+     ],
+     "score": 0.6096203327178955
+    }
+   ],
+   "timing_ms": {
+    "retrieval": 15.6,
+    "generation": 1319.4,
+    "total": 1335.0
+   },
+   "generated_tokens": 41,
+   "rewrite": null,
+   "llm_meta": {
+    "requested_model": "gpt-6-luna",
+    "served_model": "gpt-6-luna",
+    "request_id": "req_9048e070cc224d2a8109fdf69ab7ddf8",
+    "response_id": "resp_0be8ace6d999e4be016b08e1f028fc87d08618c71cf9a68944",
+    "input_tokens": 624,
+    "output_tokens": 41,
+    "reasoning_tokens": 0,
+    "status": "completed",
+    "incomplete_reason": null,
+    "cost_usd": 8.3e-05
+   },
+   "run_id": "20261127T105023",
+   "question_id": "T13",
+   "type": "variant_or_confusable",
+   "answerable": true,
+   "expected_key_facts": [
+    "SF Tensor",
+    "Elastic Cloud",
+    "up to 80%"
+   ],
+   "allowed_chunk_ids": [
+    "yc-sf-tensor#c01"
+   ],
+   "grading": null
+  },
+  {
+   "question": "Which company tests models on a team's own traffic and then has providers compete for the workload, and what fallback does it keep ready?",
+   "config": "A",
+   "status": "answered",
+   "answer": "RouterPlus tests models on a team's own traffic and has providers compete for the workload; it keeps a second provider ready as a backup. [1]",
+   "citations": [
+    {
+     "n": 1,
+     "chunk_id": "yc-routerplus#c01",
+     "doc_id": "yc-routerplus",
+     "span": [
+      399,
+      739
+     ]
+    }
+   ],
+   "invalid_citations": [],
+   "blocked_reason": null,
+   "error": null,
+   "raw_output": "STATUS: ANSWER\nANSWER: RouterPlus tests models on a team's own traffic and has providers compete for the workload; it keeps a second provider ready as a backup. [1]",
+   "retrieved": [
+    {
+     "n": 1,
+     "chunk_id": "yc-routerplus#c01",
+     "doc_id": "yc-routerplus",
+     "span": [
+      399,
+      739
+     ],
+     "score": 0.7548730373382568
+    },
+    {
+     "n": 2,
+     "chunk_id": "yc-zibra-labs#c01",
+     "doc_id": "yc-zibra-labs",
+     "span": [
+      182,
+      532
+     ],
+     "score": 0.6834084987640381
+    },
+    {
+     "n": 3,
+     "chunk_id": "yc-routerplus#c00",
+     "doc_id": "yc-routerplus",
+     "span": [
+      0,
+      466
+     ],
+     "score": 0.6594344973564148
+    },
+    {
+     "n": 4,
+     "chunk_id": "yc-zibra-labs#c00",
+     "doc_id": "yc-zibra-labs",
+     "span": [
+      0,
+      351
+     ],
+     "score": 0.6472277641296387
+    },
+    {
+     "n": 5,
+     "chunk_id": "yc-overshoot#c00",
+     "doc_id": "yc-overshoot",
+     "span": [
+      0,
+      470
+     ],
+     "score": 0.64566969871521
+    }
+   ],
+   "timing_ms": {
+    "retrieval": 11.8,
+    "generation": 1081.2,
+    "total": 1093.1
+   },
+   "generated_tokens": 41,
+   "rewrite": null,
+   "llm_meta": {
+    "requested_model": "gpt-6-luna",
+    "served_model": "gpt-6-luna",
+    "request_id": "req_36797355d32f4cf3b2ec1b19dd9413ba",
+    "response_id": "resp_07cf667138037087016b08e1f17c6087d08e682b9f2472a5f2",
+    "input_tokens": 710,
+    "output_tokens": 41,
+    "reasoning_tokens": 0,
+    "status": "completed",
+    "incomplete_reason": null,
+    "cost_usd": 9.2e-05
+   },
+   "run_id": "20261127T105023",
+   "question_id": "T14",
+   "type": "variant_or_confusable",
+   "answerable": true,
+   "expected_key_facts": [
+    "RouterPlus",
+    "a second provider kept ready as a backup"
+   ],
+   "allowed_chunk_ids": [
+    "yc-routerplus#c01"
+   ],
+   "grading": null
+  },
+  {
+   "question": "Which company starts routing production traffic to a specialized model only after it matches or beats the incumbent frontier model on a held-out evaluation?",
+   "config": "A",
+   "status": "answered",
+   "answer": "Orchestra starts routing production traffic to a specialized open-weight model after it matches or beats Claude on a held-out evaluation. [3]",
+   "citations": [
+    {
+     "n": 3,
+     "chunk_id": "yc-orchestra#c01",
+     "doc_id": "yc-orchestra",
+     "span": [
+      330,
+      733
+     ]
+    }
+   ],
+   "invalid_citations": [],
+   "blocked_reason": null,
+   "error": null,
+   "raw_output": "STATUS: ANSWER\nANSWER: Orchestra starts routing production traffic to a specialized open-weight model after it matches or beats Claude on a held-out evaluation. [3]",
+   "retrieved": [
+    {
+     "n": 1,
+     "chunk_id": "yc-runanywhere#c03",
+     "doc_id": "yc-runanywhere",
+     "span": [
+      908,
+      1043
+     ],
+     "score": 0.6453961730003357
+    },
+    {
+     "n": 2,
+     "chunk_id": "yc-runanywhere#c00",
+     "doc_id": "yc-runanywhere",
+     "span": [
+      0,
+      394
+     ],
+     "score": 0.6401180028915405
+    },
+    {
+     "n": 3,
+     "chunk_id": "yc-orchestra#c01",
+     "doc_id": "yc-orchestra",
+     "span": [
+      330,
+      733
+     ],
+     "score": 0.6169426441192627
+    },
+    {
+     "n": 4,
+     "chunk_id": "yc-overshoot#c00",
+     "doc_id": "yc-overshoot",
+     "span": [
+      0,
+      470
+     ],
+     "score": 0.6014997959136963
+    },
+    {
+     "n": 5,
+     "chunk_id": "yc-routerplus#c00",
+     "doc_id": "yc-routerplus",
+     "span": [
+      0,
+      466
+     ],
+     "score": 0.6007843017578125
+    }
+   ],
+   "timing_ms": {
+    "retrieval": 14.4,
+    "generation": 1223.1,
+    "total": 1237.6
+   },
+   "generated_tokens": 37,
+   "rewrite": null,
+   "llm_meta": {
+    "requested_model": "gpt-6-luna",
+    "served_model": "gpt-6-luna",
+    "request_id": "req_f6b673a5a7b64c36ab99c510d768584a",
+    "response_id": "resp_09f4fbea65fd8949016b08e1f2948887d0a94c1e9dfbec3c0f",
+    "input_tokens": 726,
+    "output_tokens": 37,
+    "reasoning_tokens": 0,
+    "status": "completed",
+    "incomplete_reason": null,
+    "cost_usd": 9.1e-05
+   },
+   "run_id": "20261127T105023",
+   "question_id": "T15",
+   "type": "variant_or_confusable",
+   "answerable": true,
+   "expected_key_facts": [
+    "Orchestra",
+    "routing starts once the model matches or beats the incumbent on a held-out evaluation"
+   ],
+   "allowed_chunk_ids": [
+    "yc-orchestra#c01"
+   ],
+   "grading": null
+  },
+  {
+   "question": "Which company uses unikernels to get fast cold starts for browsers used by AI agents, and what cold-start time does it state?",
+   "config": "A",
+   "status": "answered",
+   "answer": "KERNEL uses unikernels to get fast cold starts for browsers used by AI agents [1]. It states sub-150ms cold starts on managed headful browsers [1].",
+   "citations": [
+    {
+     "n": 1,
+     "chunk_id": "yc-kernel#c00",
+     "doc_id": "yc-kernel",
+     "span": [
+      0,
+      497
+     ]
+    }
+   ],
+   "invalid_citations": [],
+   "blocked_reason": null,
+   "error": null,
+   "raw_output": "STATUS: ANSWER\nANSWER: KERNEL uses unikernels to get fast cold starts for browsers used by AI agents [1]. It states sub-150ms cold starts on managed headful browsers [1].",
+   "retrieved": [
+    {
+     "n": 1,
+     "chunk_id": "yc-kernel#c00",
+     "doc_id": "yc-kernel",
+     "span": [
+      0,
+      497
+     ],
+     "score": 0.7284084558486938
+    },
+    {
+     "n": 2,
+     "chunk_id": "yc-munito-ai#c00",
+     "doc_id": "yc-munito-ai",
+     "span": [
+      0,
+      448
+     ],
+     "score": 0.6605546474456787
+    },
+    {
+     "n": 3,
+     "chunk_id": "yc-texel-ai#c00",
+     "doc_id": "yc-texel-ai",
+     "span": [
+      0,
+      287
+     ],
+     "score": 0.6404710412025452
+    },
+    {
+     "n": 4,
+     "chunk_id": "yc-wafer#c00",
+     "doc_id": "yc-wafer",
+     "span": [
+      0,
+      261
+     ],
+     "score": 0.6385549902915955
+    },
+    {
+     "n": 5,
+     "chunk_id": "yc-munito-ai#c01",
+     "doc_id": "yc-munito-ai",
+     "span": [
+      316,
+      641
+     ],
+     "score": 0.6349360942840576
+    }
+   ],
+   "timing_ms": {
+    "retrieval": 12.3,
+    "generation": 1605.1,
+    "total": 1617.4
+   },
+   "generated_tokens": 46,
+   "rewrite": null,
+   "llm_meta": {
+    "requested_model": "gpt-6-luna",
+    "served_model": "gpt-6-luna",
+    "request_id": "req_8c3c9b1abd7c42a19022d06ef9c3faa9",
+    "response_id": "resp_01d7a5836cd743fd016b08e1f3cf1087d0b77a16b5729fc1b7",
+    "input_tokens": 697,
+    "output_tokens": 46,
+    "reasoning_tokens": 0,
+    "status": "completed",
+    "incomplete_reason": null,
+    "cost_usd": 9.3e-05
+   },
+   "run_id": "20261127T105023",
+   "question_id": "T16",
+   "type": "variant_or_confusable",
+   "answerable": true,
+   "expected_key_facts": [
+    "KERNEL",
+    "sub-150ms cold starts"
+   ],
+   "allowed_chunk_ids": [
+    "yc-kernel#c00"
+   ],
+   "grading": null
+  },
+  {
+   "question": "Which AI research lab studies multiple open-source models working together to exceed the capability of any single model?",
+   "config": "A",
+   "status": "answered",
+   "answer": "Tracer studies systems in which multiple open-source models work together to produce capabilities beyond any single model. [1]",
+   "citations": [
+    {
+     "n": 1,
+     "chunk_id": "yc-tracer#c00",
+     "doc_id": "yc-tracer",
+     "span": [
+      0,
+      393
+     ]
+    }
+   ],
+   "invalid_citations": [],
+   "blocked_reason": null,
+   "error": null,
+   "raw_output": "STATUS: ANSWER\nANSWER: Tracer studies systems in which multiple open-source models work together to produce capabilities beyond any single model. [1]",
+   "retrieved": [
+    {
+     "n": 1,
+     "chunk_id": "yc-tracer#c00",
+     "doc_id": "yc-tracer",
+     "span": [
+      0,
+      393
+     ],
+     "score": 0.7493207454681396
+    },
+    {
+     "n": 2,
+     "chunk_id": "yc-zibra-labs#c01",
+     "doc_id": "yc-zibra-labs",
+     "span": [
+      182,
+      532
+     ],
+     "score": 0.6885595917701721
+    },
+    {
+     "n": 3,
+     "chunk_id": "yc-cumulus-labs#c00",
+     "doc_id": "yc-cumulus-labs",
+     "span": [
+      0,
+      423
+     ],
+     "score": 0.6876376271247864
+    },
+    {
+     "n": 4,
+     "chunk_id": "yc-sf-tensor#c00",
+     "doc_id": "yc-sf-tensor",
+     "span": [
+      0,
+      452
+     ],
+     "score": 0.6846109628677368
+    },
+    {
+     "n": 5,
+     "chunk_id": "yc-morph#c00",
+     "doc_id": "yc-morph",
+     "span": [
+      0,
+      210
+     ],
+     "score": 0.6758965253829956
+    }
+   ],
+   "timing_ms": {
+    "retrieval": 10.5,
+    "generation": 1294.4,
+    "total": 1305.0
+   },
+   "generated_tokens": 34,
+   "rewrite": null,
+   "llm_meta": {
+    "requested_model": "gpt-6-luna",
+    "served_model": "gpt-6-luna",
+    "request_id": "req_ac4760f0589a4a40a1ddab538620836b",
+    "response_id": "resp_0c11b373fa833f6e016b08e1f56e0c87d0b8224780e721ee70",
+    "input_tokens": 660,
+    "output_tokens": 34,
+    "reasoning_tokens": 0,
+    "status": "completed",
+    "incomplete_reason": null,
+    "cost_usd": 8.3e-05
+   },
+   "run_id": "20261127T105023",
+   "question_id": "T17",
+   "type": "variant_or_confusable",
+   "answerable": true,
+   "expected_key_facts": [
+    "Tracer",
+    "adaptive inference and ensembling of open-source models"
+   ],
+   "allowed_chunk_ids": [
+    "yc-tracer#c00"
+   ],
+   "grading": null
+  },
+  {
+   "question": "What cost savings does Wafer claim for its serverless and dedicated inference?",
+   "config": "A",
+   "status": "insufficient_evidence",
+   "answer": "The provided documents do not contain this information.",
+   "citations": [],
+   "invalid_citations": [],
+   "blocked_reason": null,
+   "error": null,
+   "raw_output": "STATUS: INSUFFICIENT\nANSWER: The provided documents do not contain this information.",
+   "retrieved": [
+    {
+     "n": 1,
+     "chunk_id": "yc-wafer#c00",
+     "doc_id": "yc-wafer",
+     "span": [
+      0,
+      261
+     ],
+     "score": 0.7219071388244629
+    },
+    {
+     "n": 2,
+     "chunk_id": "yc-dotwave#c00",
+     "doc_id": "yc-dotwave",
+     "span": [
+      0,
+      482
+     ],
+     "score": 0.6674097180366516
+    },
+    {
+     "n": 3,
+     "chunk_id": "yc-isoquant#c00",
+     "doc_id": "yc-isoquant",
+     "span": [
+      0,
+      469
+     ],
+     "score": 0.649737536907196
+    },
+    {
+     "n": 4,
+     "chunk_id": "yc-sentient-os#c00",
+     "doc_id": "yc-sentient-os",
+     "span": [
+      0,
+      462
+     ],
+     "score": 0.6351894736289978
+    },
+    {
+     "n": 5,
+     "chunk_id": "yc-sentient-os#c01",
+     "doc_id": "yc-sentient-os",
+     "span": [
+      284,
+      646
+     ],
+     "score": 0.6308739185333252
+    }
+   ],
+   "timing_ms": {
+    "retrieval": 13.6,
+    "generation": 1260.2,
+    "total": 1273.9
+   },
+   "generated_tokens": 22,
+   "rewrite": null,
+   "llm_meta": {
+    "requested_model": "gpt-6-luna",
+    "served_model": "gpt-6-luna",
+    "request_id": "req_0f72f805e56a49abab73a2714c323f40",
+    "response_id": "resp_03ddc4ca1edf2b18016b08e1f6b99c87d0bf301ca9997703b4",
+    "input_tokens": 726,
+    "output_tokens": 22,
+    "reasoning_tokens": 0,
+    "status": "completed",
+    "incomplete_reason": null,
+    "cost_usd": 8.4e-05
+   },
+   "run_id": "20261127T105023",
+   "question_id": "T18",
+   "type": "no_evidence",
+   "answerable": false,
+   "expected_key_facts": [
+    "정보 부족 안내"
+   ],
+   "allowed_chunk_ids": [],
+   "grading": null
+  },
+  {
+   "question": "Does Unify currently offer a router that picks a model per prompt based on quality, speed, and cost?",
+   "config": "A",
+   "status": "insufficient_evidence",
+   "answer": "The provided documents do not contain this information.",
+   "citations": [],
+   "invalid_citations": [],
+   "blocked_reason": null,
+   "error": null,
+   "raw_output": "STATUS: INSUFFICIENT\nANSWER: The provided documents do not contain this information.",
+   "retrieved": [
+    {
+     "n": 1,
+     "chunk_id": "yc-routerplus#c01",
+     "doc_id": "yc-routerplus",
+     "span": [
+      399,
+      739
+     ],
+     "score": 0.6928070783615112
+    },
+    {
+     "n": 2,
+     "chunk_id": "yc-routerplus#c00",
+     "doc_id": "yc-routerplus",
+     "span": [
+      0,
+      466
+     ],
+     "score": 0.6735827922821045
+    },
+    {
+     "n": 3,
+     "chunk_id": "yc-unify#c00",
+     "doc_id": "yc-unify",
+     "span": [
+      0,
+      88
+     ],
+     "score": 0.6653045415878296
+    },
+    {
+     "n": 4,
+     "chunk_id": "yc-pipeshift#c00",
+     "doc_id": "yc-pipeshift",
+     "span": [
+      0,
+      374
+     ],
+     "score": 0.6340713500976562
+    },
+    {
+     "n": 5,
+     "chunk_id": "yc-runanywhere#c00",
+     "doc_id": "yc-runanywhere",
+     "span": [
+      0,
+      394
+     ],
+     "score": 0.6338488459587097
+    }
+   ],
+   "timing_ms": {
+    "retrieval": 13.9,
+    "generation": 1062.4,
+    "total": 1076.4
+   },
+   "generated_tokens": 22,
+   "rewrite": null,
+   "llm_meta": {
+    "requested_model": "gpt-6-luna",
+    "served_model": "gpt-6-luna",
+    "request_id": "req_6303dc5ddcfe454a82675eeec3221a47",
+    "response_id": "resp_0ed31ee41a64a507016b08e1f8041887d0a70e61f3d814473c",
+    "input_tokens": 686,
+    "output_tokens": 22,
+    "reasoning_tokens": 0,
+    "status": "completed",
+    "incomplete_reason": null,
+    "cost_usd": 8e-05
+   },
+   "run_id": "20261127T105023",
+   "question_id": "T19",
+   "type": "no_evidence",
+   "answerable": false,
+   "expected_key_facts": [
+    "정보 부족 안내"
+   ],
+   "allowed_chunk_ids": [],
+   "grading": null
+  },
+  {
+   "question": "By what percentage, and under which deployment and usage conditions, is RunAnywhere cheaper than per-token pricing?",
+   "config": "A",
+   "status": "insufficient_evidence",
+   "answer": "The provided documents do not contain this information.",
+   "citations": [],
+   "invalid_citations": [],
+   "blocked_reason": null,
+   "error": null,
+   "raw_output": "STATUS: INSUFFICIENT\nANSWER: The provided documents do not contain this information.",
+   "retrieved": [
+    {
+     "n": 1,
+     "chunk_id": "yc-runanywhere#c03",
+     "doc_id": "yc-runanywhere",
+     "span": [
+      908,
+      1043
+     ],
+     "score": 0.6937953233718872
+    },
+    {
+     "n": 2,
+     "chunk_id": "yc-runanywhere#c02",
+     "doc_id": "yc-runanywhere",
+     "span": [
+      537,
+      947
+     ],
+     "score": 0.6874819397926331
+    },
+    {
+     "n": 3,
+     "chunk_id": "yc-touchmark#c00",
+     "doc_id": "yc-touchmark",
+     "span": [
+      0,
+      190
+     ],
+     "score": 0.6699776649475098
+    },
+    {
+     "n": 4,
+     "chunk_id": "yc-runanywhere#c00",
+     "doc_id": "yc-runanywhere",
+     "span": [
+      0,
+      394
+     ],
+     "score": 0.6696823835372925
+    },
+    {
+     "n": 5,
+     "chunk_id": "yc-runanywhere#c01",
+     "doc_id": "yc-runanywhere",
+     "span": [
+      238,
+      536
+     ],
+     "score": 0.6386993527412415
+    }
+   ],
+   "timing_ms": {
+    "retrieval": 12.8,
+    "generation": 890.3,
+    "total": 903.2
+   },
+   "generated_tokens": 22,
+   "rewrite": null,
+   "llm_meta": {
+    "requested_model": "gpt-6-luna",
+    "served_model": "gpt-6-luna",
+    "request_id": "req_79fdcc2097f0435db7f31a412651cfee",
+    "response_id": "resp_02c705b57787a45f016b08e1f9153487d0872a954f421bb68e",
+    "input_tokens": 692,
+    "output_tokens": 22,
+    "reasoning_tokens": 0,
+    "status": "completed",
+    "incomplete_reason": null,
+    "cost_usd": 8e-05
+   },
+   "run_id": "20261127T105023",
+   "question_id": "T20",
+   "type": "no_evidence",
+   "answerable": false,
+   "expected_key_facts": [
+    "정보 부족 안내"
+   ],
+   "allowed_chunk_ids": [],
+   "grading": null
+  }
+ ]
+}

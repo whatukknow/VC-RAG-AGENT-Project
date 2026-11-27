@@ -24,13 +24,13 @@ BM25 + Vector 하이브리드 검색, re-ranking, 근거 인용/근거 부족 �
 - 외부 모델로 보내는 텍스트는 공개 프로필 문구뿐이다. API 키는 `.env`(미커밋)에 둔다. 예시는 `.env.example`.
 
 ## 재현 (현재까지)
-Python 3.13. 1~4단계는 표준 라이브러리만 쓴다. 5단계부터(벡터 검색·reranker) `requirements.txt`의 패키지와 모델 다운로드가 필요하다(전이 의존성까지 고정한 `requirements.lock.txt` 제공).
+Python 3.13. **저장소는 짧은 경로(예: `C:\work\rag`)에 두는 것을 권장한다.** Windows 기본 경로 한도(260자)가 걸리면 torch 설치가 `No such file or directory`로 실패한다(깊은 임시 폴더에서 재현 점검 시 실제로 발생). 1~4단계는 표준 라이브러리만 쓴다. 5단계부터(벡터 검색·reranker) `requirements.txt`의 패키지와 모델 다운로드가 필요하다(전이 의존성까지 고정한 `requirements.lock.txt` 제공).
 
 > **주의(원본 스냅샷):** yc-oss 일괄 JSON은 매일 갱신된다. 고정된 코퍼스·평가셋은 `configs/data_snapshot.json`의 해시(2026-11-26 수집본)와 같은 파일에서만 재현된다. 다른 날 받은 파일이면 2단계의 `curate_corpus.py`가 중단된다. 원문은 재배포하지 않으므로 같은 스냅샷을 얻을 수 없으면 평가셋을 새로 설계해야 한다.
 ```powershell
 # 1) 데이터 수집 (data/raw/all.json)
-mkdir -p data/raw
-curl -L -o data/raw/all.json https://yc-oss.github.io/api/companies/all.json
+New-Item -ItemType Directory -Force data/raw | Out-Null
+curl.exe -L -o data/raw/all.json https://yc-oss.github.io/api/companies/all.json   # PowerShell의 curl 은 별칭이라 curl.exe 를 쓴다
 # 2) 후보 추출 -> 수동 검토 목록 반영 -> 코퍼스·문서 목록
 python -I src/build_corpus.py data/raw/all.json data/corpus/candidates.jsonl
 python -I src/curate_corpus.py data/raw/all.json data/corpus/candidates.jsonl data/corpus/corpus.jsonl docs/doc_list.csv
@@ -41,7 +41,8 @@ python src/build_index.py
 # 5) 격리 환경과 모델(리비전 고정: configs/models.lock.json, CPU)
 python -m venv .venv
 .venv/Scripts/python -m pip install -r requirements.lock.txt
-.venv/Scripts/python src/download_models.py     # bge-small-en-v1.5(133MB, MIT), ms-marco-MiniLM-L6-v2(91MB, Apache-2.0)
+.venv/Scripts/python src/download_models.py embedding reranker   # bge-small-en-v1.5(133MB, MIT), ms-marco-MiniLM-L6-v2(91MB, Apache-2.0)
+# 인자 없이 실행하면 로컬 생성기(Qwen2.5-1.5B, 약 3GB)까지 받는다. OpenAI 백엔드로 재현할 때는 위처럼 두 역할만 받는다.
 # 6) 개발용 셋에서 A(Vector)·B(BM25+RRF)·C(+reranker) 검색 평가, 테스트
 .venv/Scripts/python src/eval_retrieval.py --configs A B C
 .venv/Scripts/python src/eval_retrieval.py --split dev_extra --configs A B C
