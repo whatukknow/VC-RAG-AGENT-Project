@@ -3,7 +3,7 @@
     "repo": "BAAI/bge-small-en-v1.5",
     "revision": "5c38ec7c405ec4b44b94cc5a9bb96e735b38267a",
     "license": "mit",
-    "local_dir": "data\\models\\BAAI__bge-small-en-v1.5",
+    "local_dir": "data/models/BAAI__bge-small-en-v1.5",
     "weights_bytes": {
       "model.safetensors": 133466304
     }
@@ -12,9 +12,18 @@
     "repo": "cross-encoder/ms-marco-MiniLM-L6-v2",
     "revision": "233902d25c440f23af6f7d6e94d2946bac0bee0a",
     "license": "apache-2.0",
-    "local_dir": "data\\models\\cross-encoder__ms-marco-MiniLM-L6-v2",
+    "local_dir": "data/models/cross-encoder__ms-marco-MiniLM-L6-v2",
     "weights_bytes": {
       "model.safetensors": 90870598
+    }
+  },
+  "generator": {
+    "repo": "Qwen/Qwen2.5-1.5B-Instruct",
+    "revision": "989aa7980e4cf806f80c7fef2b1adb7bc71aa306",
+    "license": "apache-2.0",
+    "local_dir": "data/models/Qwen__Qwen2.5-1.5B-Instruct",
+    "weights_bytes": {
+      "model.safetensors": 3087467144
     }
   }
 }
