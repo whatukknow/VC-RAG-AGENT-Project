@@ -1,6 +1,6 @@
 {
   "final_backend": "openai",
-  "git_commit": "83a6a0aa8f2ec0f038b5d8be8bfa028ad82b128b",
+  "git_commit": "3928e869622cb28b1db0f67c2c34d0bde4699111",
   "files": {
     "eval/chunk_map.json": "c922fd5ac311ce076c667c94d2f1b808a10d6a3c0361b2f4d6ae2e4ee556325d",
     "configs/models.lock.json": "c30f6a4859de2deaf2dbbea160c5acc6b779dcad82aed20993e50ac8a029e8a9",
@@ -11,7 +11,7 @@
     "data/corpus/corpus.jsonl": "65796a5c9a8bac76bf765bb17221a8caaa685e086d9f1ad1c2d0882b85c41881"
   },
   "code": {
-    "src/ragagent/answer.py": "7e6915f38c7fa629132a469bf54a73d4343d30940db5c6f1ebc097746938c19c",
+    "src/ragagent/answer.py": "9d0f7e5392bb16db43d45a73707cccb1bc248df445fec509cd97f10d7be170ea",
     "src/ragagent/bm25.py": "35d4480fa5060aeba817f21d64f5c2796ff2ece958cb7cf10faa94813eadddfa",
     "src/ragagent/chunking.py": "8887e44ab6b6b6d0063165c27c3b70268a1abe2f758e5b28a672dc9d2e3a0fa8",
     "src/ragagent/embed.py": "6ef296a7b7b088078219870f6d38aa34ff58933c5749aa0419fb4a5350a7f029",
@@ -20,14 +20,16 @@
     "src/ragagent/factory.py": "d9bcb1ecd7a80ce036b3cb6033982637a5e854fe74be64d0a7d2c3b817b63b7d",
     "src/ragagent/fusion.py": "e4061d470251315108e3344647e91cc5c55503fa78c804b2705fefdb1f28c371",
     "src/ragagent/generate.py": "1d713e9e498d529e88ae88773fc6913d67fa686a8ca44404b6f071be5aecb059",
-    "src/ragagent/generate_api.py": "f3af74276824fdc2399db9f4bcdb1590fe4a97bedc38384f20e18f4e57812076",
-    "src/ragagent/generate_openai.py": "8ba9a36a31d565694f9e62bcd7fe74f1ec9b52f05e06cd702b794c5ba44fd23b",
+    "src/ragagent/generate_api.py": "1490d9c54b8c42d7f204240922c50e9f95eff50e05473245f1c07fff5b6c9b98",
+    "src/ragagent/generate_openai.py": "3ee791805cde9fdf5133419084d8b708a0a0c2c7047003897b293c8dffff1ec0",
     "src/ragagent/pipeline.py": "fccc425a1e7524e39240005b758b1f6a30800f0ef39bfa7fc735fd4427227109",
     "src/ragagent/rerank.py": "fb1b21d6de5da6b5fc2f1bbc01ca0d5ded215f00d39dde19ea168ed14bed87ac",
-    "src/ragagent/rewrite.py": "f0bf6de06c58dd8732ca6a8aa0516c33161730bee83ac99759b73ff9596c2dd9",
+    "src/ragagent/rewrite.py": "6e8eaa552d505930f284349e1444bdec2c6a5de0488f7b7f8e755fbf30f6e921",
     "src/ragagent/textnorm.py": "69b5ab550fdb737a29f9c69463794955cfa74e76f92f03f96198e4c64237fa2d",
-    "src/run_answers.py": "8aa3604c0384eac301dfd9db7d9e4400ef5186d2037804e03bab8a3f4469ae22",
-    "src/eval_retrieval.py": "4bd504b9903072bbb065a05aacb502713a3816834700900d81cf094cc89ec524"
+    "src/run_answers.py": "e46975c5ec385d0d22aa0ba6f4529252a5fba22a52fd4102ce253bebdb18a8a4",
+    "src/eval_retrieval.py": "4bd504b9903072bbb065a05aacb502713a3816834700900d81cf094cc89ec524",
+    "src/ragagent/grading.py": "9dec3c4cf675fe430e6688a13f0507cec78f78f224ba57c1418d8771c4e4c240",
+    "src/ragagent/freeze.py": "2be7ef1a3a7ecdfe4862a0e3015310d0dd6309a87447794ea01b9e9d9424e3c6"
   },
   "configs": {
     "chunk": {
@@ -125,5 +127,14 @@
       "prompt_version": "rewrite-v1",
       "prompt_sha256": "c1223097b2526b6af5d9409116aed330a27f14688fcd836abb947f0c9badd294"
     }
-  }
+  },
+  "history": [
+    {
+      "date": "2026-11-27",
+      "reason": "Day 3 코드 리뷰 지적 수정 반영(채점 중복 방지, 비용 집계, 재고정 가드). 최종 평가는 실행하지 않은 상태",
+      "previous_git_commit": "83a6a0aa8f2ec0f038b5d8be8bfa028ad82b128b",
+      "previous_lock_sha256": "f66a72ffcb6d9afb22d61ef29db3882dc199309b4cad1ed0276ed4f2518e9e4f",
+      "final_results_existed": false
+    }
+  ]
 }
