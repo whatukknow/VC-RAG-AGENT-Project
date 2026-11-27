@@ -18,6 +18,7 @@ from ragagent.envfile import load_env  # noqa: E402
 from ragagent.errors import BudgetExceeded  # noqa: E402
 from ragagent.generate import Generator  # noqa: E402
 from ragagent.generate_api import ApiGenerator  # noqa: E402
+from ragagent.generate_openai import OpenAIGenerator  # noqa: E402
 from ragagent.rewrite import Rewriter, RewritingRetriever  # noqa: E402
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -32,8 +33,9 @@ def main():
     ap.add_argument("--split", default="dev", choices=["dev", "dev_extra"])
     ap.add_argument("--limit", type=int, default=None, help="앞에서 N문항만(시간 측정용). --final 에서는 허용하지 않는다.")
     ap.add_argument("--out", default=None)
-    ap.add_argument("--backend", default="api", choices=["api", "local"],
-                    help="api = Claude Haiku 5.5(기본, 비용 한도·원장), local = Qwen2.5-1.5B(이전 기록 재현용)")
+    ap.add_argument("--backend", default="openai", choices=["openai", "anthropic", "local"],
+                    help="openai = gpt-6-luna(기본, 비용 한도·원장), anthropic = Claude Haiku 5.5(미사용 보존), "
+                         "local = Qwen2.5-1.5B(이전 기록 재현용)")
     a = ap.parse_args()
     split = "test" if a.final else a.split
     if a.final:
@@ -47,9 +49,12 @@ def main():
     with open(os.path.join(ROOT, "eval", "chunk_map.json"), encoding="utf-8") as f:
         cmap = json.load(f)["map"]
     retr, meta = build_retriever()
-    if a.backend == "api":
+    if a.backend in ("openai", "anthropic"):
         load_env(os.path.join(ROOT, ".env"))  # 키 값은 환경변수에만 들어가고 출력·기록되지 않는다
-        gen = ApiGenerator(os.path.join(ROOT, "results", "api_cost_ledger.jsonl"))
+        if a.backend == "openai":
+            gen = OpenAIGenerator(os.path.join(ROOT, "results", "openai_cost_ledger.jsonl"))
+        else:
+            gen = ApiGenerator(os.path.join(ROOT, "results", "api_cost_ledger.jsonl"))
     else:
         gen = Generator(os.path.join(ROOT, meta["models"]["generator"]["local_dir"]))
     pipe = AnswerPipeline(RewritingRetriever(retr, Rewriter(gen)), gen)  # 리라이트는 같은 생성 모델을 쓴다

@@ -93,6 +93,25 @@ API_GEN_CONFIG = {
 }
 
 
+# --- OpenAI 백엔드(gpt-6-luna) — 프롬프트는 API용 v3 와 동일 ------------------------
+# 문서(2026-11-27)에서 확인 못 한 temperature/top_p, 응답 prefill 은 보내지 않는다. Responses API 에는 seed 가 없다.
+OPENAI_GEN_CONFIG = {
+    "backend": "openai",
+    "model": "gpt-6-luna",
+    "effort": "low",                 # reasoning.effort (none~max, 기본 medium)
+    "max_new_tokens": 1024,          # max_output_tokens. 추론 토큰이 출력에 합산되므로 여유를 둔다
+    "min_max_tokens": 512,           # 리라이트처럼 짧은 출력 요청에도 추론 토큰 여유 확보
+    "context_chunks": 5,
+    "prefill": None,
+    "store": False,                  # Responses 의 기본 30일 상태 보관을 막는다
+    "sampling": "not sent (temperature/top_p 허용 여부 미확인, Responses API 에는 seed 없음)",
+    "budget_usd": 5.0,
+    "prices_usd_per_mtok": {"input": 0.10, "output": 0.50},  # 272K 이하 기준, 출력에는 추론 토큰 포함
+    "prompt_version": "prompt-v3",
+    "prompt_sha256": API_GEN_CONFIG["prompt_sha256"],
+}
+
+
 def build_documents(chunks):
     """검색된 청크를 [1], [2] ... 번호가 붙은 문서 블록으로 만든다(청크의 색인용 텍스트 사용)."""
     return "\n\n".join(f"[{i}] {c['text']}" for i, c in enumerate(chunks, start=1))

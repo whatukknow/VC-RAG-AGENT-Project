@@ -37,13 +37,14 @@ def current_configs():
     from .chunking import CHUNK_CONFIG
     from .embed import EMBED_CONFIG
     from .fusion import RRF_CONFIG
-    from .generate import API_GEN_CONFIG, GEN_CONFIG
+    from .generate import API_GEN_CONFIG, GEN_CONFIG, OPENAI_GEN_CONFIG
     from .pipeline import PIPELINE_CONFIG
     from .rerank import RERANK_CONFIG
     from .rewrite import REWRITE_CONFIG
     return json.loads(json.dumps({"chunk": CHUNK_CONFIG, "bm25": BM25_CONFIG, "rrf": RRF_CONFIG,
                                   "embed": EMBED_CONFIG, "rerank": RERANK_CONFIG, "pipeline": PIPELINE_CONFIG,
                                   "generation": GEN_CONFIG, "generation_api": API_GEN_CONFIG,
+                                  "generation_openai": OPENAI_GEN_CONFIG,
                                   "rewrite": REWRITE_CONFIG}))
 
 
