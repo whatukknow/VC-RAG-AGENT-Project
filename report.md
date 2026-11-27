@@ -170,10 +170,10 @@ T03 원문: A·B·C는 "It reports serving open models at 1200 tokens/sec and su
 | 테스트 | `tests/`(141건) |
 | 작업일지 | `docs/worklog/day3.md`(작업 폴더, 미커밋). `day1.md`·`day2.md`는 로컬 `feat/vector-search` 브랜치의 미푸시 커밋에 있음. 저장소 게시 여부 미정 |
 
-## 12. 제출 전 확인 항목 (미완료)
+## 12. 제출 전 확인 항목
 
 - [x] 정답 충족 1차 채점 직접 확인 완료: 17문항×4구성 판정 유지(2026-11-27). 근거 적합은 직접 대조 안 함
 - [x] 새 폴더에서 README로 재현해 보기(10절 결과; 타인 재현은 아님)
-- [ ] `contributions.md`(코드 작성·검증·리뷰의 개인별 근거 링크)
-- [ ] 발표 자료·시연(정상, 근거 없음, 최적화)
-- [ ] 결과 PR(#3) 머지, 제출 태그 `ax1-project3-submit`
+- [x] `contributions.md`(역할별 근거 링크, [contributions.md](contributions.md))
+- [x] 발표 자료 10장(비공개 아티팩트)과 시연 실행 확인(T11 정상 답변, T18 근거 없음 거절, C와 C+R 답변 동일). Streamlit 화면을 클릭해 돌린 것은 아니고 화면과 같은 파이프라인을 실행했다
+- [x] 결과 PR(#3) 병합(main `9664032`), 제출 태그 `ax1-project3-submit`
