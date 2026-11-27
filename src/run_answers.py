@@ -13,6 +13,7 @@ import sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from eval_retrieval import SPLIT_FILES, check_freeze  # noqa: E402
 from ragagent.freeze import check_final_run  # noqa: E402
+from ragagent.grading import api_cost  # noqa: E402
 from ragagent.answer import AnswerPipeline  # noqa: E402
 from ragagent.factory import build_retriever  # noqa: E402
 from ragagent.envfile import load_env  # noqa: E402
@@ -103,7 +104,8 @@ def main():
             "generation_ms_mean_median_n": [round(statistics.mean(gen_ms), 1) if gen_ms else None,
                                             round(statistics.median(gen_ms), 1) if gen_ms else None, len(gen_ms)],
             "generation_config": gen.cfg, "models": meta["models"],
-            "api_cost_usd": round(sum((r.get("llm_meta") or {}).get("cost_usd", 0.0) for r in rows), 6),
+            "api_cost": api_cost(rows),  # 답변·리라이트 호출을 나눠 합산(실패했지만 청구된 호출 포함)
+            "api_cost_usd": api_cost(rows)["total_usd"],
             "served_models": sorted({(r.get("llm_meta") or {}).get("served_model") for r in rows} - {None}),
         }
         with open(os.path.join(outdir, f"answers_{cfg}_{run_id}.json"), "w", encoding="utf-8", newline="\n") as f:

@@ -111,6 +111,46 @@ class LedgerTest(unittest.TestCase):
             self.assertEqual(client.calls, [])
 
 
+class MetaAccountingTest(unittest.TestCase):
+    def test_failed_call_before_any_response_does_not_inherit_previous_meta(self):
+        with tempfile.TemporaryDirectory() as d:
+            client = FakeClient()
+            gen = make(d, client)
+            gen.generate("s", "u")
+            self.assertEqual(gen.last_meta["request_id"], "req_abc")
+            client._exc = TimeoutError("slow")  # 두 번째 호출은 응답 없이 실패
+            with self.assertRaises(TimeoutError):
+                gen.generate("s", "u")
+            self.assertIsNone(gen.last_meta)  # 이전 호출의 비용이 남아 중복 집계되면 안 된다
+
+    def test_billed_but_incomplete_call_keeps_its_cost_in_the_record(self):
+        with tempfile.TemporaryDirectory() as d:
+            gen = make(d, FakeClient(response(status="incomplete", reason="max_output_tokens", in_tok=500, out_tok=200)))
+            rec = AnswerPipeline(PipelineIntegrationTest.Retr(PipelineIntegrationTest.CHUNKS), gen).answer("q?", "C")
+            self.assertEqual(rec["status"], "error_generation")
+            self.assertEqual((rec["llm_meta"]["input_tokens"], rec["llm_meta"]["output_tokens"]), (500, 200))
+            self.assertGreater(rec["llm_meta"]["cost_usd"], 0)
+
+    def test_failed_call_without_response_records_no_meta_in_pipeline_record(self):
+        with tempfile.TemporaryDirectory() as d:
+            gen = make(d, FakeClient(exc=TimeoutError("slow")))
+            rec = AnswerPipeline(PipelineIntegrationTest.Retr(PipelineIntegrationTest.CHUNKS), gen).answer("q?", "C")
+            self.assertEqual(rec["status"], "error_generation")
+            self.assertIsNone(rec["llm_meta"])
+
+    def test_rewriter_records_its_own_billed_call(self):
+        with tempfile.TemporaryDirectory() as d:
+            rw = Rewriter(make(d, FakeClient(response("Cerebrium serverless GPU", in_tok=40, out_tok=10)))).rewrite("Which Cerebrium GPU?")
+            self.assertEqual((rw["llm_meta"]["input_tokens"], rw["llm_meta"]["request_id"]), (40, "req_abc"))
+
+    def test_rewriter_failure_keeps_billed_meta_but_falls_back(self):
+        with tempfile.TemporaryDirectory() as d:
+            gen = make(d, FakeClient(response(status="incomplete", reason="max_output_tokens")))
+            rw = Rewriter(gen).rewrite("Which company?")
+            self.assertEqual((rw["fallback_reason"], rw["used"]), ("error", "Which company?"))
+            self.assertIsNotNone(rw["llm_meta"])
+
+
 class PipelineIntegrationTest(unittest.TestCase):
     CHUNKS = [{"chunk_id": "d1#c00", "doc_id": "d1", "text": "Co1: x\nbody", "start": 0, "end": 5}]
 

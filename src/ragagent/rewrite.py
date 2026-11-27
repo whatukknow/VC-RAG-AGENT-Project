@@ -53,7 +53,7 @@ class Rewriter:
 
     def rewrite(self, question):
         rec = {"original": question, "rewritten": None, "used": question, "fallback_reason": None,
-               "missing_tokens": [], "generated_tokens": None, "ms": None, "error": None}
+               "missing_tokens": [], "generated_tokens": None, "ms": None, "error": None, "llm_meta": None}
         t0 = time.perf_counter()
         try:
             text, n = self.generator.generate(SYSTEM_PROMPT, question, self.cfg["max_new_tokens"])
@@ -61,8 +61,10 @@ class Rewriter:
             raise  # 비용 한도는 실행 전체를 멈춘다
         except Exception as e:  # 리라이트 실패는 검색 실패가 아니다: 원질문으로 계속한다
             rec.update(fallback_reason="error", error=f"{type(e).__name__}: {e}")
+            rec["llm_meta"] = getattr(self.generator, "last_meta", None)  # 실패해도 청구된 비용은 기록
             rec["ms"] = round((time.perf_counter() - t0) * 1000, 1)
             return rec
+        rec["llm_meta"] = getattr(self.generator, "last_meta", None)  # 리라이트 호출의 모델·토큰·비용
         rec["ms"] = round((time.perf_counter() - t0) * 1000, 1)
         rec["generated_tokens"] = n
         line = text.strip().splitlines()[0].strip().strip('"').strip("'") if text.strip() else ""

@@ -8,15 +8,26 @@
 import csv
 import statistics
 
-SHEET_FIELDS = ["question_id", "config", "type", "answerable", "status", "question", "expected_key_facts", "answer",
-                "citations", "allowed_chunk_ids", "correct", "grounded", "grader", "note"]
+SHEET_FIELDS = ["question_id", "config", "run_id", "type", "answerable", "status", "question", "expected_key_facts",
+                "answer", "citations", "allowed_chunk_ids", "correct", "grounded", "grader", "note"]
+
+
+def check_unique(rows):
+    """같은 (질문, 구성) 행이 둘 이상이면 오류. 재실행·다른 백엔드·불완전 실행 결과가 섞여 집계되는 것을 막는다."""
+    seen = {}
+    for r in rows:
+        seen.setdefault((r["question_id"], r["config"]), []).append(r.get("run_id") or "(run_id 없음)")
+    dups = {k: v for k, v in seen.items() if len(v) > 1}
+    if dups:
+        sample = ", ".join(f"{q}/{c}: {sorted(set(v))}" for (q, c), v in sorted(dups.items())[:3])
+        raise ValueError(f"같은 (질문, 구성) 행이 {len(dups)}건 중복된다 — 실행(run_id) 하나만 골라 입력해야 한다. 예: {sample}")
 
 
 def make_sheet_rows(rows):
     out = []
     for r in rows:
         out.append({
-            "question_id": r["question_id"], "config": r["config"], "type": r["type"],
+            "question_id": r["question_id"], "config": r["config"], "run_id": r.get("run_id", ""), "type": r["type"],
             "answerable": int(bool(r["answerable"])), "status": r["status"], "question": r["question"],
             "expected_key_facts": " | ".join(r["expected_key_facts"]), "answer": r["answer"],
             "citations": " | ".join(f"[{c['n']}] {c['chunk_id']}" for c in r["citations"]),
@@ -27,6 +38,7 @@ def make_sheet_rows(rows):
 
 
 def write_sheet(path, rows):
+    check_unique(rows)
     with open(path, "w", encoding="utf-8-sig", newline="") as f:
         w = csv.DictWriter(f, fieldnames=SHEET_FIELDS)
         w.writeheader()
@@ -48,12 +60,31 @@ def read_grades(path):
         for r in csv.DictReader(f):
             grades[(r["question_id"], r["config"])] = {
                 "correct": _bit(r.get("correct")), "grounded": _bit(r.get("grounded")),
+                "run_id": (r.get("run_id") or "").strip(),
                 "grader": (r.get("grader") or "").strip(), "note": r.get("note", "")}
     return grades
 
 
+def api_cost(rows):
+    """실행 기록에서 API 비용 합계. 답변 호출과 리라이트 호출(C+R)을 나눠 합산하며, 실패했지만 청구된 호출도 포함한다."""
+    answer = rewrite = 0.0
+    calls = 0
+    for r in rows:
+        m = r.get("llm_meta")
+        if m:
+            answer += m.get("cost_usd", 0.0)
+            calls += 1
+        rm = (r.get("rewrite") or {}).get("llm_meta")
+        if rm:
+            rewrite += rm.get("cost_usd", 0.0)
+            calls += 1
+    return {"answer_usd": round(answer, 6), "rewrite_usd": round(rewrite, 6),
+            "total_usd": round(answer + rewrite, 6), "billed_calls": calls}
+
+
 def score(rows, grades):
     """구성별 지표. 채점이 비어 있는 '답변한' 문항이 있으면 ungraded 에 담고 complete=False 로 표시한다."""
+    check_unique(rows)
     result = {}
     for cfg in sorted({r["config"] for r in rows}):
         rs = [r for r in rows if r["config"] == cfg]
@@ -67,6 +98,9 @@ def score(rows, grades):
             g = grades.get((r["question_id"], cfg))
             if g is None or g["correct"] is None or g["grounded"] is None:
                 ungraded.append(r["question_id"])
+                continue
+            if g.get("run_id") and r.get("run_id") and g["run_id"] != r["run_id"]:
+                ungraded.append(r["question_id"])  # 다른 실행에 대해 매긴 채점은 이 실행에 적용하지 않는다
                 continue
             correct += g["correct"]
             grounded += g["grounded"]

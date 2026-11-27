@@ -47,6 +47,8 @@ class AnswerPipeline:
         except BudgetExceeded:
             raise  # 비용 한도는 실행 전체를 멈춘다(개별 질문 오류로 삼키지 않는다)
         except Exception as e:
+            # 불완전·거절 응답처럼 비용이 이미 청구된 실패 호출도 기록한다(요청 전에 실패했다면 last_meta 는 None)
+            rec["llm_meta"] = getattr(self.generator, "last_meta", None)
             rec.update(status="error_generation", error=f"{type(e).__name__}: {e}")
             return rec
         rec["timing_ms"]["generation"] = round((time.perf_counter() - t1) * 1000, 1)

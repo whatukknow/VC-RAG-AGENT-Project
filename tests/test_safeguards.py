@@ -10,7 +10,7 @@ from build_index import map_evidence  # noqa: E402
 from eval_retrieval import score_question  # noqa: E402
 from ragagent.chunking import chunk_document, wrap_span  # noqa: E402
 from ragagent.freeze import (CODE_FILES, FINAL_FILES, FINAL_LOCK, build_final_lock, check_final_run,  # noqa: E402
-                             sha256_file, verify_files, verify_final_lock)
+                             final_results_exist, plan_refreeze, sha256_file, verify_files, verify_final_lock)
 from ragagent.pipeline import Retriever  # noqa: E402
 from ragagent.textnorm import find_span, norm  # noqa: E402
 
@@ -165,6 +165,75 @@ class FreezeTest(unittest.TestCase):
             self.assertEqual(len(check_final_run(root, "openai", ["B", "C"], res, "answers")), 1)
             self.assertEqual(check_final_run(root, "openai", ["B"], res, "answers", "API 일시 장애로 전체 재실행"), [])
             self.assertEqual(len(check_final_run(root, "openai", ["B"], res, "answers", "   ")), 1)  # 공백 사유는 무효
+
+    def _results(self, root, *names):
+        res = os.path.join(root, "results", "test")
+        os.makedirs(res, exist_ok=True)
+        for n in names:
+            with open(os.path.join(res, n), "w", encoding="utf-8") as f:
+                f.write("{}")
+
+    def test_first_freeze_needs_no_flags(self):
+        with tempfile.TemporaryDirectory() as root:
+            self._make_root(root)
+            self.assertEqual(plan_refreeze(root), ([], None))
+
+    def test_refreeze_requires_force_and_a_reason(self):
+        with tempfile.TemporaryDirectory() as root:
+            self._make_root(root)
+            self._write_lock(root)
+            self.assertIn("--force", plan_refreeze(root)[1])
+            self.assertIn("--reason", plan_refreeze(root, force=True)[1])
+            self.assertIn("--reason", plan_refreeze(root, force=True, reason="   ")[1])
+
+    def test_refreeze_after_final_results_is_refused_unless_explicitly_acknowledged(self):
+        with tempfile.TemporaryDirectory() as root:
+            self._make_root(root)
+            self._write_lock(root)
+            self._results(root, "answers_C_20261201T000000.json")
+            history, err = plan_refreeze(root, force=True, reason="버그 수정")
+            self.assertIsNone(history)
+            self.assertIn("--after-final", err)
+            history, err = plan_refreeze(root, force=True, reason="버그 수정", after_final=True)
+            self.assertIsNone(err)
+            self.assertTrue(history[-1]["final_results_existed"])
+
+    def test_incomplete_results_do_not_count_as_final_results(self):
+        with tempfile.TemporaryDirectory() as root:
+            self._make_root(root)
+            self._write_lock(root)
+            self._results(root, "answers_C_20261201T000000_INCOMPLETE.json")
+            self.assertEqual(final_results_exist(root), [])
+            history, err = plan_refreeze(root, force=True, reason="리뷰 수정")
+            self.assertIsNone(err)
+            self.assertFalse(history[-1]["final_results_existed"])
+
+    def test_history_is_chained_with_previous_commit_and_lock_hash(self):
+        with tempfile.TemporaryDirectory() as root:
+            self._make_root(root)
+            first = self._write_lock(root)
+            h1, _ = plan_refreeze(root, force=True, reason="1차", today="2026-11-27")
+            self.assertEqual(h1[0]["previous_git_commit"], first["git_commit"])
+            self.assertEqual(h1[0]["previous_lock_sha256"], sha256_file(os.path.join(root, FINAL_LOCK)))
+            second = build_final_lock(root, "def", history=h1)
+            with open(os.path.join(root, FINAL_LOCK), "w", encoding="utf-8") as f:
+                json.dump(second, f)
+            h2, _ = plan_refreeze(root, force=True, reason="2차", today="2026-11-28")
+            self.assertEqual([h["reason"] for h in h2], ["1차", "2차"])  # 앞선 이력이 보존된다
+            self.assertEqual(h2[1]["previous_git_commit"], "def")
+
+    def test_history_does_not_affect_verification(self):
+        with tempfile.TemporaryDirectory() as root:
+            self._make_root(root)
+            lock = build_final_lock(root, "abc", history=[{"reason": "x"}])
+            os.makedirs(os.path.join(root, "configs"), exist_ok=True)
+            with open(os.path.join(root, FINAL_LOCK), "w", encoding="utf-8") as f:
+                json.dump(lock, f)
+            self.assertEqual(verify_final_lock(root), [])
+
+    def test_dependencies_of_locked_scripts_are_locked(self):
+        self.assertIn("src/ragagent/grading.py", CODE_FILES)  # run_answers 가 불러오는 비용 집계
+        self.assertIn("src/ragagent/freeze.py", CODE_FILES)   # run_answers·eval_retrieval 이 부르는 실행 가드
 
     def test_plus_in_config_name_is_matched_literally(self):
         with tempfile.TemporaryDirectory() as root:

@@ -28,6 +28,7 @@ class OpenAIGenerator:
         """반환: (텍스트, 출력 토큰 수[추론 토큰 포함]). 정상 완료(status=completed)가 아니면 예외를 던진다."""
         if prefill:
             raise ValueError("응답 prefill 은 쓰지 않는다")
+        self.last_meta = None  # 이번 호출의 메타만 남기도록 먼저 비운다(실패한 호출이 이전 호출의 비용을 가져가지 않게)
         max_out = max(max_new_tokens or self.cfg["max_new_tokens"], self.cfg["min_max_tokens"])
         self.ledger.check((len(system) + len(user)) // 3 + 64, max_out)  # 글자 수/3 = 보수적 토큰 추정
         resp = self.client.responses.create(

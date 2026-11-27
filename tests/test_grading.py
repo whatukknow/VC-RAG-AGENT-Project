@@ -1,10 +1,11 @@
+import json
 import os
 import sys
 import tempfile
 import unittest
 
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "src"))
-from ragagent.grading import read_grades, score, write_sheet  # noqa: E402
+from ragagent.grading import api_cost, read_grades, score, write_sheet  # noqa: E402
 
 
 def row(qid, status, answerable=True, cfg="C", total=1000.0, cites=1):
@@ -69,6 +70,66 @@ class GradingTest(unittest.TestCase):
         rows = [row("Q1", "answered", cfg="B"), row("Q1", "insufficient_evidence", cfg="C")]
         res = score(rows, {("Q1", "B"): {"correct": 1, "grounded": 1, "grader": "h", "note": ""}})
         self.assertEqual((res["B"]["correct"], res["C"]["correct"]), ("1/1", "0/1"))
+
+
+class DuplicateAndRunIdTest(unittest.TestCase):
+    def test_duplicate_question_config_rows_are_rejected_not_double_counted(self):
+        # 리뷰에서 재현한 사례: 같은 (질문, 구성) 행 2개 -> 예전에는 정답 충족 2/2 로 집계됨
+        g = {("Q1", "C"): {"correct": 1, "grounded": 1, "grader": "h", "note": ""}}
+        with self.assertRaises(ValueError) as cm:
+            score([row("Q1", "answered"), row("Q1", "answered")], g)
+        self.assertIn("중복", str(cm.exception))
+
+    def test_sheet_creation_also_rejects_duplicates_and_names_the_runs(self):
+        a, b = dict(row("Q1", "answered"), run_id="run1"), dict(row("Q1", "answered"), run_id="run2")
+        with tempfile.TemporaryDirectory() as d:
+            with self.assertRaises(ValueError) as cm:
+                write_sheet(os.path.join(d, "g.csv"), [a, b])
+            self.assertIn("run1", str(cm.exception))
+            self.assertIn("run2", str(cm.exception))
+
+    def test_same_question_in_different_configs_is_not_a_duplicate(self):
+        score([row("Q1", "answered", cfg="B"), row("Q1", "answered", cfg="C")], {})
+
+    def test_sheet_carries_run_id_and_it_roundtrips(self):
+        with tempfile.TemporaryDirectory() as d:
+            path = os.path.join(d, "g.csv")
+            write_sheet(path, [dict(row("Q1", "answered"), run_id="runA")])
+            self.assertEqual(read_grades(path)[("Q1", "C")]["run_id"], "runA")
+
+    def test_grade_from_another_run_is_not_applied(self):
+        r = dict(row("Q1", "answered"), run_id="run2")
+        stale = {("Q1", "C"): {"correct": 1, "grounded": 1, "run_id": "run1", "grader": "h", "note": ""}}
+        m = score([r], stale)["C"]
+        self.assertEqual((m["complete"], m["ungraded"], m["correct"]), (False, ["Q1"], "0/1"))
+        fresh = {("Q1", "C"): {"correct": 1, "grounded": 1, "run_id": "run2", "grader": "h", "note": ""}}
+        self.assertEqual(score([r], fresh)["C"]["correct"], "1/1")
+
+    def test_load_rows_skips_incomplete_files_and_lists_inputs(self):
+        sys.path.insert(0, os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "src"))
+        from grade import load_rows
+        with tempfile.TemporaryDirectory() as d:
+            for name in ("answers_C_run1.json", "answers_C_run2_INCOMPLETE.json"):
+                with open(os.path.join(d, name), "w", encoding="utf-8") as f:
+                    json.dump({"summary": {"run_id": name, "generation_config": {"backend": "openai", "model": "m",
+                               "prompt_version": "v3"}}, "rows": [dict(row("Q1", "answered"), run_id=name)]}, f)
+            rows = load_rows([os.path.join(d, "answers_C_*.json")])
+            self.assertEqual([r["run_id"] for r in rows], ["answers_C_run1.json"])
+
+
+class ApiCostTest(unittest.TestCase):
+    def test_cost_sums_answer_rewrite_and_failed_billed_calls(self):
+        rows = [
+            {"llm_meta": {"cost_usd": 0.001}, "rewrite": {"llm_meta": {"cost_usd": 0.0004}}},      # 정상 + 리라이트
+            {"llm_meta": {"cost_usd": 0.002}, "rewrite": None},                                     # 리라이트 없는 구성
+            {"llm_meta": {"cost_usd": 0.003}, "status": "error_generation", "rewrite": None},       # 실패했지만 청구됨
+            {"llm_meta": None, "rewrite": {"llm_meta": None}},                                      # 요청 전 실패: 비용 없음
+        ]
+        c = api_cost(rows)
+        self.assertEqual((c["answer_usd"], c["rewrite_usd"], c["total_usd"], c["billed_calls"]), (0.006, 0.0004, 0.0064, 4))
+
+    def test_empty_rows(self):
+        self.assertEqual(api_cost([])["total_usd"], 0.0)
 
 
 if __name__ == "__main__":

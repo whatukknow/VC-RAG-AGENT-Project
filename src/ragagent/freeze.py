@@ -18,7 +18,10 @@ CODE_FILES = ["src/ragagent/answer.py", "src/ragagent/bm25.py", "src/ragagent/ch
               "src/ragagent/envfile.py", "src/ragagent/errors.py", "src/ragagent/factory.py", "src/ragagent/fusion.py",
               "src/ragagent/generate.py", "src/ragagent/generate_api.py", "src/ragagent/generate_openai.py",
               "src/ragagent/pipeline.py", "src/ragagent/rerank.py", "src/ragagent/rewrite.py",
-              "src/ragagent/textnorm.py", "src/run_answers.py", "src/eval_retrieval.py"]
+              "src/ragagent/textnorm.py", "src/run_answers.py", "src/eval_retrieval.py",
+              # 고정된 실행 스크립트가 불러오는 파일(비용 집계·최종 실행 가드). 검증기가 자기 자신을 완전히 잠글 수는 없으므로
+              # freeze.py 의 변경은 git 이력으로도 확인한다.
+              "src/ragagent/grading.py", "src/ragagent/freeze.py"]
 
 
 def sha256_file(path):
@@ -74,14 +77,47 @@ def current_configs():
                                   "rewrite": REWRITE_CONFIG}))
 
 
-def build_final_lock(root, git_commit=None, final_backend="openai"):
+def build_final_lock(root, git_commit=None, final_backend="openai", history=None):
     missing = [f for f in FINAL_FILES + CODE_FILES if not os.path.exists(os.path.join(root, f))]
     if missing:
         raise FileNotFoundError(f"고정에 필요한 파일이 없다: {missing}")
     return {"final_backend": final_backend, "git_commit": git_commit,
             "files": {f: sha256_file(os.path.join(root, f)) for f in FINAL_FILES},
             "code": {f: sha256_lf(os.path.join(root, f)) for f in CODE_FILES},
-            "configs": current_configs()}
+            "configs": current_configs(),
+            "history": list(history or [])}  # 재고정 이력(사유·이전 커밋·이전 고정 파일 해시). 검증에는 쓰지 않는다
+
+
+def final_results_exist(root):
+    """results/test 에 완료된 최종 결과(INCOMPLETE 제외)가 있는지. 있으면 해당 파일 목록."""
+    found = []
+    for prefix in ("answers", "retrieval"):
+        found += [p for p in glob.glob(os.path.join(root, "results", "test", f"{prefix}_*.json")) if "INCOMPLETE" not in p]
+    return sorted(found)
+
+
+def plan_refreeze(root, force=False, reason=None, after_final=False, today=None):
+    """재고정 계획. 반환: (history 목록, 오류 메시지). 오류가 있으면 history 는 None.
+    - 고정 파일이 없으면 최초 고정이다.
+    - 이미 있으면 --force 와 --reason 이 모두 있어야 한다.
+    - 최종 결과가 이미 있으면 --after-final 로 '결과를 본 뒤의 재고정'임을 명시해야 하며, 이 사실이 이력에 남는다."""
+    old = load_final_lock(root)
+    if old is None:
+        return [], None
+    if not force:
+        return None, f"이미 고정되어 있다: {FINAL_LOCK} (덮어쓰려면 --force --reason \"사유\")"
+    if not (reason or "").strip():
+        return None, "--force 에는 --reason \"사유\" 가 필요하다(이력에 기록된다)"
+    results = final_results_exist(root)
+    if results and not after_final:
+        return None, (f"최종 결과가 이미 있다({len(results)}개). 결과를 본 뒤의 재고정은 기본적으로 허용하지 않는다. "
+                      "불가피하면 --after-final 로 명시하고 problem.md 에 사유를 남긴다")
+    import datetime
+    entry = {"date": today or datetime.date.today().isoformat(), "reason": reason.strip(),
+             "previous_git_commit": old.get("git_commit"),
+             "previous_lock_sha256": sha256_file(os.path.join(root, FINAL_LOCK)),
+             "final_results_existed": bool(results)}
+    return list(old.get("history", [])) + [entry], None
 
 
 def load_final_lock(root):
