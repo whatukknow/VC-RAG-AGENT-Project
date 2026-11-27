@@ -1,0 +1,129 @@
+{
+  "final_backend": "openai",
+  "git_commit": "83a6a0aa8f2ec0f038b5d8be8bfa028ad82b128b",
+  "files": {
+    "eval/chunk_map.json": "c922fd5ac311ce076c667c94d2f1b808a10d6a3c0361b2f4d6ae2e4ee556325d",
+    "configs/models.lock.json": "c30f6a4859de2deaf2dbbea160c5acc6b779dcad82aed20993e50ac8a029e8a9",
+    "data/index/chunks.jsonl": "d91e54096541ee04e207cb70d6a5b09e0249579db0739cfa5844beb78b97df80",
+    "eval/test.json": "fd91c6da770e55c608c51b7241c1b53fcaaedc95f1c1acf0b2ae704061a0536d",
+    "eval/dev.json": "884fff10391609bc92116f4ad46404454cf8d35d2ef945196f69d7172be4c9d7",
+    "docs/doc_list.csv": "c943c193f8c58aec0a10de77c55020a1131dd37c178270b4b3ac1df3f8a127af",
+    "data/corpus/corpus.jsonl": "65796a5c9a8bac76bf765bb17221a8caaa685e086d9f1ad1c2d0882b85c41881"
+  },
+  "code": {
+    "src/ragagent/answer.py": "7e6915f38c7fa629132a469bf54a73d4343d30940db5c6f1ebc097746938c19c",
+    "src/ragagent/bm25.py": "35d4480fa5060aeba817f21d64f5c2796ff2ece958cb7cf10faa94813eadddfa",
+    "src/ragagent/chunking.py": "8887e44ab6b6b6d0063165c27c3b70268a1abe2f758e5b28a672dc9d2e3a0fa8",
+    "src/ragagent/embed.py": "6ef296a7b7b088078219870f6d38aa34ff58933c5749aa0419fb4a5350a7f029",
+    "src/ragagent/envfile.py": "696c01dad7193bd65fe0f596dd4d0ebdf2ca3347670f71451e1701df5e3cc917",
+    "src/ragagent/errors.py": "4acd0e3408350be27d5bbb7e74b3de4a6c63c5e3acb382645e76a73abbadef82",
+    "src/ragagent/factory.py": "d9bcb1ecd7a80ce036b3cb6033982637a5e854fe74be64d0a7d2c3b817b63b7d",
+    "src/ragagent/fusion.py": "e4061d470251315108e3344647e91cc5c55503fa78c804b2705fefdb1f28c371",
+    "src/ragagent/generate.py": "1d713e9e498d529e88ae88773fc6913d67fa686a8ca44404b6f071be5aecb059",
+    "src/ragagent/generate_api.py": "f3af74276824fdc2399db9f4bcdb1590fe4a97bedc38384f20e18f4e57812076",
+    "src/ragagent/generate_openai.py": "8ba9a36a31d565694f9e62bcd7fe74f1ec9b52f05e06cd702b794c5ba44fd23b",
+    "src/ragagent/pipeline.py": "fccc425a1e7524e39240005b758b1f6a30800f0ef39bfa7fc735fd4427227109",
+    "src/ragagent/rerank.py": "fb1b21d6de5da6b5fc2f1bbc01ca0d5ded215f00d39dde19ea168ed14bed87ac",
+    "src/ragagent/rewrite.py": "f0bf6de06c58dd8732ca6a8aa0516c33161730bee83ac99759b73ff9596c2dd9",
+    "src/ragagent/textnorm.py": "69b5ab550fdb737a29f9c69463794955cfa74e76f92f03f96198e4c64237fa2d",
+    "src/run_answers.py": "8aa3604c0384eac301dfd9db7d9e4400ef5186d2037804e03bab8a3f4469ae22",
+    "src/eval_retrieval.py": "4bd504b9903072bbb065a05aacb502713a3816834700900d81cf094cc89ec524"
+  },
+  "configs": {
+    "chunk": {
+      "max_chars": 500,
+      "overlap_sentences": 1,
+      "title_prefix": true,
+      "version": "chunk-v2"
+    },
+    "bm25": {
+      "k1": 1.5,
+      "b": 0.75,
+      "tokenizer": "lower+[a-z0-9]+, stopwords-v1, no-stemming"
+    },
+    "rrf": {
+      "k": 60,
+      "weights": {
+        "bm25": 1.0,
+        "vector": 1.0
+      },
+      "dedup": "chunk_id",
+      "method": "rrf"
+    },
+    "embed": {
+      "model": "BAAI/bge-small-en-v1.5",
+      "query_prefix": "Represent this sentence for searching relevant passages: ",
+      "normalize": true,
+      "device": "cpu",
+      "similarity": "cosine(=dot of normalized)"
+    },
+    "rerank": {
+      "model": "cross-encoder/ms-marco-MiniLM-L6-v2",
+      "input": "(query, chunk.text)",
+      "device": "cpu"
+    },
+    "pipeline": {
+      "top_k": 5,
+      "candidates_each": 20,
+      "rerank_input_n": 10,
+      "rrf_k": 60,
+      "rrf_weights": {
+        "bm25": 1.0,
+        "vector": 1.0
+      },
+      "version": "pipe-v1"
+    },
+    "generation": {
+      "model": "Qwen/Qwen2.5-1.5B-Instruct",
+      "dtype": "bfloat16",
+      "device": "cpu",
+      "max_new_tokens": 160,
+      "do_sample": false,
+      "context_chunks": 5,
+      "prefill": "STATUS:",
+      "prompt_version": "prompt-v2",
+      "prompt_sha256": "2f33038b309298c6599a35e50c54a112c8ce8b515e9c5b7c59a0de06087d771a"
+    },
+    "generation_api": {
+      "backend": "api",
+      "model": "claude-haiku-5-5",
+      "effort": "low",
+      "max_new_tokens": 1024,
+      "min_max_tokens": 512,
+      "context_chunks": 5,
+      "prefill": null,
+      "sampling": "provider default (temperature 등은 이 모델에서 설정할 수 없다)",
+      "budget_usd": 5.0,
+      "prices_usd_per_mtok": {
+        "input": 0.1,
+        "output": 0.5
+      },
+      "prompt_version": "prompt-v3",
+      "prompt_sha256": "2ded3a8d0e0c3bd04f27407038749c0f7561de7f486acbe91a233204683280cf"
+    },
+    "generation_openai": {
+      "backend": "openai",
+      "model": "gpt-6-luna",
+      "effort": "low",
+      "max_new_tokens": 1024,
+      "min_max_tokens": 512,
+      "context_chunks": 5,
+      "prefill": null,
+      "store": false,
+      "sampling": "not sent (temperature/top_p 허용 여부 미확인, Responses API 에는 seed 없음)",
+      "budget_usd": 5.0,
+      "prices_usd_per_mtok": {
+        "input": 0.1,
+        "output": 0.5
+      },
+      "prompt_version": "prompt-v3",
+      "prompt_sha256": "2ded3a8d0e0c3bd04f27407038749c0f7561de7f486acbe91a233204683280cf"
+    },
+    "rewrite": {
+      "max_new_tokens": 48,
+      "max_chars": 200,
+      "prompt_version": "rewrite-v1",
+      "prompt_sha256": "c1223097b2526b6af5d9409116aed330a27f14688fcd836abb947f0c9badd294"
+    }
+  }
+}

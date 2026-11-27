@@ -50,8 +50,9 @@ python -m venv .venv
 
 ### 최종 평가의 고정 절차 (Day 3 종료 시점 → Day 4)
 1. `eval/FREEZE.json`: 평가셋·코퍼스·문서목록 해시. 누락·불일치는 모두 오류다.
-2. `.venv/Scripts/python src/freeze_final.py`: chunk_map·모델 리비전·청크 색인·모든 검색 설정을 `configs/final.lock.json`에 고정한다. **이 파일이 없으면 `--final`은 거부된다.**
-3. `.venv/Scripts/python src/eval_retrieval.py --final`: 위 두 검사를 통과해야 실행된다. 최종 평가는 Day 4에 한 번만 수행한다.
+2. `.venv/Scripts/python src/freeze_final.py`: chunk_map·모델 리비전·청크 색인·모든 검색·답변 설정(프롬프트 해시 포함)·**평가 결과를 만드는 코드의 해시**·최종 생성 백엔드를 `configs/final.lock.json`에 고정한다(커밋되지 않은 변경이 있으면 거부). **이 파일이 없으면 `--final`은 거부된다.** 현재 고정됨(`openai`, `gpt-6-luna`).
+3. `--final` 실행(Day 4에 한 번만): `.venv/Scripts/python src/run_answers.py --final --backend openai --configs A B C C+R`, `.venv/Scripts/python src/eval_retrieval.py --final --configs A B C`. FREEZE와 final.lock을 모두 통과해야 하고, 고정 이후 코드·설정이 바뀌었거나 다른 백엔드이면 거부된다.
+4. 같은 구성의 최종 결과가 이미 있으면 `--rerun-reason "사유"` 없이는 실행되지 않으며, 재실행해도 기존 결과는 삭제하지 않는다(좋은 결과만 고르지 않기 위함).
 
 ## 실행 인터페이스(Streamlit)
 ```powershell
